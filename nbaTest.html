@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto IU</title>
+    <script>const options = {
+        method: 'GET',
+        headers: {
+            'X-RapidAPI-Key': '786a671047msh97e9b29bc022906p155db3jsn7b8e5a24025c',
+            'X-RapidAPI-Host': 'free-nba.p.rapidapi.com'
+        }
+    };
+    
+    fetch('https://free-nba.p.rapidapi.com/players?page=4&per_page=100', options)
+        .then(response => response.json())
+        .then(response => console.log(response))
+        .catch(err => console.error(err));</script>
+</head>
+<body>
+    <h1>Proyecto de Interfaces de Usuario</h1>
+</body>
+</html>

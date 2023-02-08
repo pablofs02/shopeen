@@ -1,9 +1,9 @@
-import { API_KEY } from "./key.js";
+import { API_FUT } from "./key.js";
 
 const options = {
 	method: 'GET',
 	headers: {
-		'X-RapidAPI-Key': API_KEY,
+		'X-RapidAPI-Key': API_FUT,
 		'X-RapidAPI-Host': 'football98.p.rapidapi.com'
 	}
 };

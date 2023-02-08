@@ -13,7 +13,9 @@ const options = {
 // 	.then(response => console.log(response))
 // 	.catch(err => console.error(err));
 
-fetch('https://football98.p.rapidapi.com/laliga/table/squadposition/1', options)
+//https://football98.p.rapidapi.com/laliga/table/squadposition/1
+
+fetch('https://football98.p.rapidapi.com/laliga/news/', options)
     .then(response => response.json())
     .then(response => console.log(response))
     .catch(err => console.error(err));

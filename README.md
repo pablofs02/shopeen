@@ -6,7 +6,7 @@
 - Javier Leiva Dueñas
 - Guillermo Tell González
 
-<h2>Tecnología usada: </h2>
+<h2>Tecnología usada</h2>
 <h3>React junto con:</h3>
 <ul>
   <li>TypeScript + SWC</li>

@@ -1,9 +1,9 @@
 import { Row, Button, Container, Col } from "react-bootstrap/";
 import { Routes, Route, Link } from "react-router-dom";
-import About from "./About";
-import Help from "./Help";
-import Home from "./Home";
-import Store from "./Store";
+import About from "../pages/About";
+import Help from "../pages/Help";
+import Home from "../pages/Home";
+import Store from "../pages/Store";
 
 function Navbar() {
   return (

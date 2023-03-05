@@ -3,12 +3,13 @@ import { Routes, Route, Link } from "react-router-dom";
 import About from "./About";
 import Help from "./Help";
 import Home from "./Home";
+import SearchBar from "./SearchBar";
 import Store from "./Store";
 
 function Navbar() {
   return (
     <>
-      <Container className="d-flex justify-content-center align-items-center">
+      <Container className="navbarTop">
         <Row>
           <Col>
             <Link to={"/"}>Home</Link>
@@ -23,6 +24,7 @@ function Navbar() {
             <Link to={"/help"}>Help</Link>
           </Col>
         </Row>
+        <SearchBar></SearchBar>
       </Container>
     </>
   );

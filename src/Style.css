@@ -1,0 +1,53 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(250, 250, 250);
+}
+
+#root {
+    width: 100%;
+    height: 100%;
+}
+
+.navbarTop {
+    max-width: 100vw!important;
+    margin: 0!important;
+    padding: 5px!important;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    background-color: white;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+.navbarTop a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+    transition: transform 0.2s ease;
+}
+
+.navbarTop a:hover {
+    transform: scale(1.3);
+}
+
+.navbarTop a:active {
+    transform: scale(1);
+}
+
+.navbarTop .searchBar {
+    margin-left: auto;
+    height: 45px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}

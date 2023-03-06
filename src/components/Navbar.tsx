@@ -4,6 +4,7 @@ import About from "../pages/About";
 import Help from "../pages/Help";
 import Home from "../pages/Home";
 import Store from "../pages/Store";
+import SearchBar from "./SearchBar";
 
 function Navbar() {
   return (

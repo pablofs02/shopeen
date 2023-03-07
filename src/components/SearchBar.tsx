@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 function SearchBar() {
-  return (
-    <input
-      type="text"
-      className="searchBar"
-    />
-  );
+  return <div className="searchBar">
+    <input type="text"/>
+    <Link to={"/store"}>
+      <img src="/src/assets/search.svg" alt="search icon" />
+    </Link>
+  </div>
 }
 
 export default SearchBar;

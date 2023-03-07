@@ -24,7 +24,15 @@ function Navbar() {
             <Link to={"/help"}>Help</Link>
           </Col>
         </Row>
+
         <SearchBar></SearchBar>
+
+        <Link to={"/store"}>
+          <img src="/src/assets/shopping_cart.svg" alt="shopping cart"/>
+        </Link>
+        <Link to={"/"}>
+          <img src="/src/assets/account.svg" alt="my account"/>
+        </Link>
       </Container>
     </>
   );

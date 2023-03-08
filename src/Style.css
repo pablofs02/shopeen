@@ -38,7 +38,7 @@ body {
 }
 
 .navbarTop .col > a:hover {
-    transform: scale(1.3);
+    transform: scale(1.1);
 }
 
 .navbarTop .col > a:active {
@@ -87,8 +87,30 @@ body {
     bottom: 0;
 }
 
+.hamburger-menu {
+    display: none;
+    padding: 0 15px 0 0;
+}
 
+.hamburger-button {
+    border: none;
+    background-color: transparent;
+}
 
+.hamburger-button > img {
+    height: 2.5rem;
+    margin: 0;
+}
+
+@media (max-width: 800px) {
+    .navbarTop .hamburger-menu {
+        display: block;
+    }
+
+    .navbarTop .col:not(:first-child) {
+        display: none;
+    }
+}
 
 
 

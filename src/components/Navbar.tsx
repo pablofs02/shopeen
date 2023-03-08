@@ -1,4 +1,5 @@
-import { Row, Button, Container, Col } from "react-bootstrap/";
+import { useState } from "react";
+import { Row, Button, Container, Col, Offcanvas } from "react-bootstrap/";
 import { Routes, Route, Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import About from "../pages/About";
@@ -9,11 +10,20 @@ import SearchBar from "./SearchBar";
 
 function Navbar() {
   const location = useLocation();
-  
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   return (
     <>
       <Container className="navbarTop">
         <Row md={2} lg={4} s={2} xs={1}>
+          <Col className="hamburger-menu">
+            <button className="hamburger-button" onClick={handleShow}>
+              <img src="/src/assets/hamburger-menu.svg" alt="hamburger menu button" />
+            </button>
+          </Col>
           <Col>
             <Link to={"/"}  className={location.pathname === '/' ? 'active' : ''}>Home</Link>
           </Col>
@@ -27,6 +37,20 @@ function Navbar() {
             <Link to={"/help"} className={location.pathname === '/help' ? 'active' : ''}>Help</Link>
           </Col>
         </Row>
+
+        <Offcanvas show={show} onHide={handleClose}>
+          <Offcanvas.Header closeButton>
+            <Offcanvas.Title>Navigation options</Offcanvas.Title>
+          </Offcanvas.Header>
+          <Offcanvas.Body>
+            
+            <Link to={"/"}  className={location.pathname === '/' ? 'active' : ''} onClick={handleClose}>Home</Link><br/>
+            <Link to={"/about"} className={location.pathname === '/about' ? 'active' : ''} onClick={handleClose}>About</Link><br/>
+            <Link to={"/store"} className={location.pathname === '/store' ? 'active' : ''} onClick={handleClose}>Store</Link><br/>
+            <Link to={"/help"} className={location.pathname === '/help' ? 'active' : ''} onClick={handleClose}>Help</Link>
+
+          </Offcanvas.Body>
+        </Offcanvas>
 
         <SearchBar></SearchBar>
 

@@ -1,7 +1,7 @@
 import { Col, Row } from "react-bootstrap";
 import { HomeShortcut } from "../components/HomeShortcuts";
 import homeShortcut from "../data/shortcuts.json";
-import '../homeStyle.css'
+import '../styles/homeStyle.css'
 
 export default function Home() {
 	return (

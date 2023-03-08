@@ -39,16 +39,14 @@ function Navbar() {
         </Row>
 
         <Offcanvas show={show} onHide={handleClose}>
-          <Offcanvas.Header closeButton>
+          <Offcanvas.Header className="header-oc" closeButton>
             <Offcanvas.Title>Navigation options</Offcanvas.Title>
           </Offcanvas.Header>
-          <Offcanvas.Body>
-            
-            <Link to={"/"}  className={location.pathname === '/' ? 'active' : ''} onClick={handleClose}>Home</Link><br/>
-            <Link to={"/about"} className={location.pathname === '/about' ? 'active' : ''} onClick={handleClose}>About</Link><br/>
-            <Link to={"/store"} className={location.pathname === '/store' ? 'active' : ''} onClick={handleClose}>Store</Link><br/>
+          <Offcanvas.Body className="body-oc">
+            <Link to={"/"}  className={location.pathname === '/' ? 'active' : ''} onClick={handleClose}>Home</Link>
+            <Link to={"/about"} className={location.pathname === '/about' ? 'active' : ''} onClick={handleClose}>About</Link>
+            <Link to={"/store"} className={location.pathname === '/store' ? 'active' : ''} onClick={handleClose}>Store</Link>
             <Link to={"/help"} className={location.pathname === '/help' ? 'active' : ''} onClick={handleClose}>Help</Link>
-
           </Offcanvas.Body>
         </Offcanvas>
 

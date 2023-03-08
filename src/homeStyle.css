@@ -3,7 +3,7 @@ section {
 }
 
 .col > div:hover {
-	background-color: #194;
+	/* background-color: #194; */
 	opacity: 90%;
 }
 

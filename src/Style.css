@@ -81,11 +81,11 @@ body {
     background-color: rgb(232, 232, 232);
 }
 
-.botonCard {
+/* .botonCard {
     position: absolute;
     right: 0;
     bottom: 0;
-}
+} */
 
 .hamburger-menu {
     display: none;
@@ -128,4 +128,17 @@ body {
 ::-webkit-scrollbar-thumb {
     background-color: #e6e6e6;
     border-radius: 100vw;
+}
+
+.expandContractButton {
+    background: transparent;
+    border: none;
+    position: absolute;
+    font-weight: 500;
+    right: 15px;
+    bottom: 15px;
+}
+
+.alertStock {
+    margin-bottom: 15px;
 }

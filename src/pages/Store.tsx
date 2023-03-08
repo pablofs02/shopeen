@@ -1,4 +1,4 @@
-import { Container } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 import { StoreItem } from "../components/StoreItem";
 import storeItems from "../data/noRatingProducts.json";
 
@@ -6,9 +6,13 @@ function Store() {
   return (
     <>
       <h1>Store</h1>
+      <Row md={2} lg={3} xs={1} className="g-3">
       {storeItems.map((item) => (
-        <StoreItem key={item.id} {...item}></StoreItem>
+        <Col key={item.id}>
+          <StoreItem {...item}></StoreItem>
+        </Col>
       ))}
+      </Row>
     </>
   );
 }

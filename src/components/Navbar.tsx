@@ -18,7 +18,7 @@ function Navbar() {
   return (
     <>
       <Container className="navbarTop">
-        <Row md={2} lg={4} s={2} xs={1}>
+        <Row md={4} lg={4}>
           <Col className="hamburger-menu">
             <button className="hamburger-button" onClick={handleShow}>
               <img src="/src/assets/hamburger-menu.svg" alt="hamburger menu button" />

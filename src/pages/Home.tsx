@@ -1,15 +1,18 @@
+import { Col, Row } from "react-bootstrap";
 import { HomeShortcut } from "../components/HomeShortcuts.tsx";
 import homeShortcut from "../data/shortcuts.json";
+import '../homeStyle.css'
 
-function Home() {
+export default function Home() {
 	return (
-		<>
-			<h1>Home</h1>
-			{homeShortcut.map((item) => (
-				<HomeShortcut {...item}></HomeShortcut>
-			))}
-		</>
+		<section>
+			<Row md={2} lg={3} xs={1} className="g-3">
+				{homeShortcut.map((item) => (
+					<Col key={item.title}>
+						<HomeShortcut {...item}></HomeShortcut>
+					</Col>
+				))}
+			</Row>
+		</section>
 	);
 }
-
-export default Home;

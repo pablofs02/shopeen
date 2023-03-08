@@ -15,7 +15,7 @@ export function StoreItem(props: StoreItemsProps) {
 
   return (
     <Card className="h-100 p-2">
-      <Card.Body>
+      <Card.Body className="position-relative">
         <Card.Img
           variant="top"
           src={props.image}
@@ -26,17 +26,18 @@ export function StoreItem(props: StoreItemsProps) {
           {props.title}
         </Card.Title>
         {showMore ? (
-          <Card.Text className="d-flex justify-content-center align-items-center card-description mt-2">
+          <Card.Text className="d-flex justify-content-center align-items-center card-description mt-2 mb-5">
             {props.description}
           </Card.Text>
         ) : (
-          <Card.Text className="d-flex justify-content-center align-items-center card-description mt-2">
+          <Card.Text className="d-flex justify-content-center align-items-center card-description mt-2 mb-5">
             {props.description.slice(0, 50)}...
           </Card.Text>
         )}
         <Button
           onClick={() => setShowMore(!showMore)}
           variant="outline-primary"
+          className="botonCard"
         >
           {showMore ? "Show Less" : "Show More"}
         </Button>

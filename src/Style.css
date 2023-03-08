@@ -64,6 +64,7 @@ body {
     background-color: rgba(230, 230, 230, 0.3);
     border-radius: 100vw;
     padding-inline: 0.8rem;
+    border: 1px solid black;
 }
 
 .searchBar input:hover,
@@ -79,6 +80,21 @@ body {
 .navbarTop .col:has(.active) {
     background-color: rgb(232, 232, 232);
 }
+
+.botonCard {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+
+
+
+
+
+
+
+
 
 ::-webkit-scrollbar {
     width: auto;

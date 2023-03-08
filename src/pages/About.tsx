@@ -11,7 +11,7 @@ function About(){
                 Los creadores de esta aplicación somos:
                 <ul>
                     <li>Pablo Fernández Serrano</li>
-                    <li>Guillermo TellA González</li>
+                    <li>Guillermo Tell González</li>
                     <li>Javier Lanceta Salas</li>
                     <li>Javier Leiva Dueñas</li>
                 </ul>

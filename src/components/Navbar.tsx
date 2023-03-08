@@ -13,7 +13,7 @@ function Navbar() {
   return (
     <>
       <Container className="navbarTop">
-        <Row>
+        <Row md={2} lg={4} s={2} xs={1}>
           <Col>
             <Link to={"/"}  className={location.pathname === '/' ? 'active' : ''}>Home</Link>
           </Col>

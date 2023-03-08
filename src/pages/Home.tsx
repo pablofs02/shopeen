@@ -1,5 +1,5 @@
 import { Col, Row } from "react-bootstrap";
-import { HomeShortcut } from "../components/HomeShortcuts.tsx";
+import { HomeShortcut } from "../components/HomeShortcuts";
 import homeShortcut from "../data/shortcuts.json";
 import '../homeStyle.css'
 

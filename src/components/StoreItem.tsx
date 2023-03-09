@@ -60,7 +60,7 @@ export function StoreItem(props: StoreItemsProps) {
               <>
                 <Alert variant="danger" className="text-center">
                   <span className="fw-bold fs-5 p-auto">
-                    No queda stock del producto
+                    There is no stock left.
                   </span>
                 </Alert>
               </>

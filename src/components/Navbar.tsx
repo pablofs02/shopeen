@@ -18,7 +18,7 @@ function Navbar() {
   return (
     <>
       <Container className="navbarTop">
-        <Row md={4} lg={4}>
+        <Row md={4} lg={4} className="text-center">
           <Col className="hamburger-menu">
             <button className="hamburger-button" onClick={handleShow}>
               <img src="/src/assets/hamburger-menu.svg" alt="hamburger menu button" />
@@ -28,10 +28,10 @@ function Navbar() {
             <Link to={"/"}  className={location.pathname === '/' ? 'active' : ''}>Home</Link>
           </Col>
           <Col>
-            <Link to={"/about"} className={location.pathname === '/about' ? 'active' : ''}>About</Link>
+            <Link to={"/store"} className={location.pathname === '/store' ? 'active' : ''}>Store</Link>
           </Col>
           <Col>
-            <Link to={"/store"} className={location.pathname === '/store' ? 'active' : ''}>Store</Link>
+            <Link to={"/about"} className={location.pathname === '/about' ? 'active' : ''}>About</Link>
           </Col>
           <Col>
             <Link to={"/help"} className={location.pathname === '/help' ? 'active' : ''}>Help</Link>
@@ -44,8 +44,8 @@ function Navbar() {
           </Offcanvas.Header>
           <Offcanvas.Body className="body-oc">
             <Link to={"/"}  className={location.pathname === '/' ? 'active' : ''} onClick={handleClose}>Home</Link>
-            <Link to={"/about"} className={location.pathname === '/about' ? 'active' : ''} onClick={handleClose}>About</Link>
             <Link to={"/store"} className={location.pathname === '/store' ? 'active' : ''} onClick={handleClose}>Store</Link>
+            <Link to={"/about"} className={location.pathname === '/about' ? 'active' : ''} onClick={handleClose}>About</Link>
             <Link to={"/help"} className={location.pathname === '/help' ? 'active' : ''} onClick={handleClose}>Help</Link>
           </Offcanvas.Body>
         </Offcanvas>

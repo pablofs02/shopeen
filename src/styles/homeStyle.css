@@ -1,9 +1,4 @@
-section {
-	margin: 40px;
-}
-
 .col > div:hover {
-	/* background-color: #194; */
 	opacity: 90%;
 }
 

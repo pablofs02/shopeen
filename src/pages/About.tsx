@@ -1,22 +1,39 @@
+import '../styles/AboutStyle.css'
+
 function About(){
     return(
-        <div>
-            <h1>About</h1>
+        <section className="cuerpo about">
+            <h1>About us:</h1>
             <section>
-                <h2>Historia de la tienda</h2>
-                Esta es una tienda creada con el propósito de aprender React.
+                <div className="story-store">
+                    <h2>Story of the store</h2>
+                </div>
+                <h5 className="">This app has been created as a project for the class "Interfaces de Usuario" at Universidad de Málaga.</h5>
             </section>
-            <section>
-                <h2>Equipo</h2>
-                Los creadores de esta aplicación somos:
+            <section className="team-section mt-4">
+                <div className="team">
+                <h2>Team</h2>
+                <h5>The team is composed by:</h5>
+                </div>
+                    <ul>
+                        <li><h5>Pablo Fernández Serrano</h5></li>
+                        <li><h5>Guillermo Tell González</h5></li>
+                        <li><h5>Javier Lanceta Salas</h5></li>
+                        <li><h5>Javier Leiva Dueñas</h5></li>
+                    </ul>
+            </section>
+            <footer className='tech-used'>
+                <h2>In this project we used: </h2>
                 <ul>
-                    <li>Pablo Fernández Serrano</li>
-                    <li>Guillermo Tell González</li>
-                    <li>Javier Lanceta Salas</li>
-                    <li>Javier Leiva Dueñas</li>
+                    <li><h5>React</h5></li>
+                    <li><h5>React Router</h5></li>
+                    <li><h5>React Bootstrap</h5></li>
+                    <li><h5>React Icons</h5></li>
+                    <li><h5>CSS</h5></li>
+                    <li><h5>Google fonts</h5></li>
                 </ul>
-            </section>
-        </div>
+            </footer>
+        </section>
     );
 }
 

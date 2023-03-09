@@ -5,7 +5,7 @@ import '../styles/homeStyle.css'
 
 export default function Home() {
 	return (
-		<section>
+		<section className="cuerpo">
 			<Row md={2} lg={3} xs={1} className="g-3">
 				{homeShortcut.map((item) => (
 					<Col key={item.title}>

@@ -1,5 +1,7 @@
 function Help() {
-    return <h1>Help</h1>
+    return <section className="cuerpo">
+        <h1>Help</h1>
+    </section>
 }
 
 export default Help

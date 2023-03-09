@@ -7,6 +7,9 @@
     background-color: white;
     box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
     overflow: hidden;
+    position: fixed;
+    z-index: 15;
+    top: 0;
 }
 
 .navbarTop .col > a {

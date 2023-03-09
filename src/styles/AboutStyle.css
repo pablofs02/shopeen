@@ -1,0 +1,79 @@
+.story-store {
+    padding: 50px;
+    margin-top: 5rem;
+    margin-bottom: 3rem;
+    position: relative;
+    isolation: isolate;
+    text-align: center;
+}
+
+.story-store::after {
+    content: "";
+    transform: skewY(-2deg);
+    background: linear-gradient(to right, #cc2b5e , #753a88);
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+}
+
+.about {
+    text-align: center;
+    position: relative;
+}
+
+.about .team {
+    padding: 50px;
+    margin-top: 4rem;
+    margin-bottom: 3rem;
+    position: relative;
+    isolation: isolate;
+    text-align: center;
+}
+
+.about .team::after {
+    content: "";
+    transform: skewY(-2deg);
+    background: linear-gradient(to right, #42275a, #734b6d);
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+}
+
+.about ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.about li:not(:last-child) { 
+    margin-bottom: 15px;  
+}
+
+.about {
+    /* Claro */
+    background: linear-gradient(to bottom, rgb(250, 250, 250), rgb(235, 233, 233));
+    color: black;
+
+    /* Oscuro */
+    /* background: linear-gradient(to bottom, #1f1f1f, black);
+    color: white; */
+
+    overflow: hidden;
+}
+
+.about .tech-used {
+    padding: 30px;
+    margin-top: 4rem;
+    position: relative;
+    isolation: isolate;
+    text-align: center;
+}
+
+.about .tech-used::after {
+    content: "";
+    transform: skewY(-2deg);
+    background: linear-gradient(to left, #cc2b5e , #753a88);
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+}

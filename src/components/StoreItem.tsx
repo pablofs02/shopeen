@@ -1,5 +1,5 @@
 import { Alert, Button, Card } from "react-bootstrap";
-import { FaExpand, FaCompress } from "react-icons/fa";
+import { MdExpandMore, MdExpandLess } from "react-icons/md";
 import { useState } from "react";
 import { formatCurrency } from "../utilities/formatCurrency";
 
@@ -46,11 +46,11 @@ export function StoreItem(props: StoreItemsProps) {
         >
           {showMore ? (
             <>
-              Show Less <FaCompress className="ms-1" />
+              Show Less <MdExpandLess className="ms-1" />
             </>
           ) : (
             <>
-              Show More <FaExpand className="ms-1" />
+              Show More <MdExpandMore className="ms-1" />
             </>
           )}
         </button>

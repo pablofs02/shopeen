@@ -5,6 +5,10 @@
     position: relative;
     isolation: isolate;
     text-align: center;
+    opacity: 0;
+    animation-name: fade;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
 }
 
 .story-store::after {
@@ -28,6 +32,10 @@
     position: relative;
     isolation: isolate;
     text-align: center;
+    opacity: 0;
+    animation-name: fade;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
 }
 
 .about .team::after {
@@ -57,7 +65,7 @@
     /* Oscuro */
     /* background: linear-gradient(to bottom, #1f1f1f, black);
     color: white; */
-
+    
     overflow: hidden;
 }
 
@@ -67,6 +75,10 @@
     position: relative;
     isolation: isolate;
     text-align: center;
+    opacity: 0;
+    animation-name: fade;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
 }
 
 .about .tech-used::after {
@@ -77,3 +89,12 @@
     inset: 0;
     z-index: -1;
 }
+
+@keyframes fade {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }

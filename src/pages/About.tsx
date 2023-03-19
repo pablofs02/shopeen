@@ -18,7 +18,7 @@ function About(){
                     <ul>
                         <li><h5>Pablo Fernández Serrano</h5></li>
                         <li><h5>Guillermo Tell González</h5></li>
-                        <li><h5>Javier Lanceta Salas</h5></li>
+                        <li><h5>Javier Lanceta Salas (Team Leader)</h5></li>
                         <li><h5>Javier Leiva Dueñas</h5></li>
                     </ul>
             </section>

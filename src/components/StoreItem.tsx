@@ -15,6 +15,8 @@ type StoreItemsProps = {
 
 export function StoreItem(props: StoreItemsProps) {
   const [showMore, setShowMore] = useState(false);
+  
+  const [stock, setStock] = useState(props.stock);
 
   return (
     <Card className="h-100 p-2">
@@ -41,7 +43,9 @@ export function StoreItem(props: StoreItemsProps) {
           </Card.Text>
         )}
         <button
-          onClick={() => setShowMore(!showMore)}
+          onClick={() => {
+            setShowMore(!showMore);
+          }}
           className="expandContractButton"
         >
           {showMore ? (
@@ -56,7 +60,7 @@ export function StoreItem(props: StoreItemsProps) {
         </button>
         <div className="alertStock">
           {
-            (props.stock === 0 ? (
+            (stock <= 0 ? (
               <>
                 <Alert variant="danger" className="text-center">
                   <span className="fw-bold fs-5 p-auto">

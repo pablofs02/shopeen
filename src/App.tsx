@@ -6,10 +6,12 @@ import About from "./pages/About";
 import Help from "./pages/Help";
 import Home from "./pages/Home";
 import Store from "./pages/Store";
+import { GlobalProvider } from "./context/GlobalContext";
 
 function App() {
   return (
     <BrowserRouter>
+      <GlobalProvider>
       <Navbar />
       <Routes>
         <Route path="/" element={<Container><Home /></Container>} />
@@ -17,6 +19,7 @@ function App() {
         <Route path="/store" element={<Container><Store /></Container>}></Route>
         <Route path="/help" element={<Help />}></Route>
       </Routes>
+      </GlobalProvider>
     </BrowserRouter>
   );
 }

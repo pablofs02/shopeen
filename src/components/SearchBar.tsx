@@ -1,13 +1,22 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useGlobalContext } from "../context/GlobalContext";
 
 function SearchBar() {
-  return <div className="searchBar">
-    <input type="text"/>
-    <Link to={"/store"}>
-      <img src="/src/assets/search.svg" alt="search icon" />
-    </Link>
-  </div>
+  const { setFilter } = useGlobalContext();
+
+  const handleChange = (e: any) => {
+    setFilter(e.target.value);
+  };
+
+  return (
+    <div className="searchBar">
+      <input type="text" onChange={handleChange} />
+      <Link to={"/store"}>
+        <img src="/src/assets/search.svg" alt="search icon" />
+      </Link>
+    </div>
+  );
 }
 
 export default SearchBar;

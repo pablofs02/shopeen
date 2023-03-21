@@ -1,4 +1,4 @@
-.col > div:hover {
+.col > div:hover:not(:has(.cart-buttons)) {
 	opacity: 90%;
 }
 

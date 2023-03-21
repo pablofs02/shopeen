@@ -10,10 +10,15 @@ import SearchBar from "./SearchBar";
 
 function Navbar() {
   const location = useLocation();
+  
   const [show, setShow] = useState(false);
-
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const [showAcc, setShowAcc] = useState(false);
+  const handleCloseAcc = () => setShowAcc(false);
+  const handleShowAcc = () => setShowAcc(true);
+
 
   return (
     <>
@@ -55,9 +60,18 @@ function Navbar() {
         <Link to={"/store"}>
           <img src="/src/assets/shopping_cart.svg" alt="shopping cart"/>
         </Link>
-        <Link to={"/"}>
+        <Link to={"/"} onClick={handleShowAcc}>
           <img src="/src/assets/account.svg" alt="my account"/>
         </Link>
+
+        <Offcanvas show={showAcc} onHide={handleCloseAcc} placement="end">
+          <Offcanvas.Header className="header-oc" closeButton>
+            <Offcanvas.Title>Mi cuenta</Offcanvas.Title>
+          </Offcanvas.Header>
+          <Offcanvas.Body className="body-oc">
+            <h1>Informacion de la cuenta</h1>
+          </Offcanvas.Body>
+        </Offcanvas>
       </Container>
     </>
   );

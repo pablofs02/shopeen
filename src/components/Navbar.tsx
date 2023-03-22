@@ -8,6 +8,7 @@ import Home from "../pages/Home";
 import Store from "../pages/Store";
 import CartItem from "./CartItem";
 import SearchBar from "./SearchBar";
+import { useGlobalContext } from '../context/GlobalContext';
 
 function Navbar() {
   const location = useLocation();
@@ -23,6 +24,8 @@ function Navbar() {
   const [showCart, setShowCart] = useState(false);
   const handleCloseCart = () => setShowCart(false);
   const handleShowCart = () => setShowCart(true);
+
+  const {cartItems} = useGlobalContext()
 
   return (
     <>
@@ -95,11 +98,17 @@ function Navbar() {
             <h3>Placeholder info about the cart</h3>
             <Container>
               {/* Hard coded cart item for testing purposes */}
-              <CartItem
+              {/* <CartItem
                 id={1}
-                title={"Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops"}
-                price={109.95}
-                image="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"></CartItem>
+                quantity={1}></CartItem>
+            </Container> */}
+            {cartItems.map((item) => (
+              <CartItem
+                key={item.id}
+                id={item.id}
+                quantity={item.quantity}
+              ></CartItem>
+            ))}
             </Container>
           </Offcanvas.Body>
         </Offcanvas>

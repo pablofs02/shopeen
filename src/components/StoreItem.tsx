@@ -2,6 +2,7 @@ import { Alert, Button, Card } from "react-bootstrap";
 import { MdExpandMore, MdExpandLess } from "react-icons/md";
 import { useState } from "react";
 import { formatCurrency } from "../utilities/formatCurrency";
+import { useGlobalContext } from "../context/GlobalContext";
 
 type StoreItemsProps = {
   id: number;
@@ -16,7 +17,14 @@ type StoreItemsProps = {
 export function StoreItem(props: StoreItemsProps) {
   const [showMore, setShowMore] = useState(false);
 
-  const quantity = 1;
+  const { getQuantity, addToCart } = useGlobalContext();
+
+  const quantity = getQuantity(props.id);
+
+  const handleAdd = (e: any) => {
+    e.preventDefault();
+    addToCart(props.id);
+  };
 
   return (
     <Card className="h-100 p-2">
@@ -44,25 +52,25 @@ export function StoreItem(props: StoreItemsProps) {
         )}
         {props.stock - quantity > 0 ? (
           quantity === 0 ? (
-            <Button className="addToCart">+ Add to cart</Button>
+            <Button onClick={handleAdd} className="addToCart">
+              + Add to cart
+            </Button>
           ) : (
             <div className="cart-buttons-store-item">
-              <button
-                className="btn btn-primary"
-              >
+              <button onClick={handleAdd} className="btn btn-primary">
                 +
               </button>
-              <span className="count-store fw-bold fs-5">{quantity} in cart </span>
-              <button
-                className="btn btn-danger"
-              >
-                -
+              <span className="count-store fw-bold fs-5">
+                {quantity} in cart{" "}
+              </span>
+              <button className="btn btn-danger">-</button>
+              <button className="remove btn btn-danger">
+                Remove from cart
               </button>
-              <button className="remove btn btn-danger">Remove from cart</button>
             </div>
           )
         ) : (
-          <div className="alertStock">
+          <div className="alertStock mt-auto">
             <Alert variant="danger" className="text-center">
               <span className="fw-bold fs-5 p-auto">
                 There is no stock left.

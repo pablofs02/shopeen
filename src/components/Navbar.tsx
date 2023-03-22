@@ -94,15 +94,12 @@ function Navbar() {
           <Offcanvas.Body className="body-oc p-2">
             <h3>Placeholder info about the cart</h3>
             <Container>
-              <Row>
-                <Col>
-                  <CartItem
-                    id={1}
-                    title={"Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops"}
-                    price={109.95}
-                    image="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"></CartItem>
-                </Col>
-              </Row>
+              {/* Hard coded cart item for testing purposes */}
+              <CartItem
+                id={1}
+                title={"Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops"}
+                price={109.95}
+                image="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"></CartItem>
             </Container>
           </Offcanvas.Body>
         </Offcanvas>

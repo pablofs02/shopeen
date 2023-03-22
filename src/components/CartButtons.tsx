@@ -8,8 +8,13 @@ function CartButtons() {
 
     return (
     <div className="cart-buttons">
-        <button className="btn btn-primary" onClick={() => {setCount(count + 1)}}>+</button>
-        <button className="btn btn-danger" onClick={() => {setCount(count - 1)}}>-</button>
+        <button className="btn btn-primary" onClick={() => {
+          setCount(count + 1)
+        }}>+</button>
+        <button className="btn btn-danger" onClick={() => {
+          if (count === 0) return;
+          setCount(count - 1)
+        }}>-</button>
     </div>
   );
 }

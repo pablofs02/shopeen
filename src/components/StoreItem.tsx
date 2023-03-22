@@ -16,14 +16,14 @@ type StoreItemsProps = {
 export function StoreItem(props: StoreItemsProps) {
   const [showMore, setShowMore] = useState(false);
 
-  const [stock, setStock] = useState(props.stock);
+  const quantity = 1;
 
   return (
     <Card className="h-100 p-2">
       <Card.Img
         variant="top"
         src={props.image}
-        height="200px"
+        height="170px"
         style={{ objectFit: "contain" }}
       />
       <Card.Body className="d-flex flex-column">
@@ -34,13 +34,41 @@ export function StoreItem(props: StoreItemsProps) {
           </span>
         </Card.Title>
         {showMore ? (
-          <Card.Text className="d-flex justify-content-center align-items-center card-description mt-2 mb-5">
+          <Card.Text className="desc-store d-flex justify-content-center align-items-center card-description mt-2 mb-5">
             {props.description}
           </Card.Text>
         ) : (
-          <Card.Text className="d-flex justify-content-center align-items-center card-description mt-2 mb-5">
+          <Card.Text className="desc-store d-flex justify-content-center align-items-center card-description mt-2 mb-5">
             {props.description.slice(0, 50)}...
           </Card.Text>
+        )}
+        {props.stock - quantity > 0 ? (
+          quantity === 0 ? (
+            <Button className="addToCart">+ Add to cart</Button>
+          ) : (
+            <div className="cart-buttons-store-item">
+              <button
+                className="btn btn-primary"
+              >
+                +
+              </button>
+              <span className="count-store fw-bold fs-5">{quantity} in cart </span>
+              <button
+                className="btn btn-danger"
+              >
+                -
+              </button>
+              <button className="remove btn btn-danger">Remove from cart</button>
+            </div>
+          )
+        ) : (
+          <div className="alertStock">
+            <Alert variant="danger" className="text-center">
+              <span className="fw-bold fs-5 p-auto">
+                There is no stock left.
+              </span>
+            </Alert>
+          </div>
         )}
         <button
           onClick={() => {
@@ -58,19 +86,6 @@ export function StoreItem(props: StoreItemsProps) {
             </>
           )}
         </button>
-        <div className="alertStock">
-          {stock <= 0 ? (
-            <>
-              <Alert variant="danger" className="text-center">
-                <span className="fw-bold fs-5 p-auto">
-                  There is no stock left.
-                </span>
-              </Alert>
-            </>
-          ) : (
-            <></>
-          )}
-        </div>
       </Card.Body>
     </Card>
   );

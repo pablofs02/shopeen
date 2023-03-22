@@ -92,6 +92,35 @@
     margin-bottom: 15px;
 }
 
+.addToCart {
+    position: absolute;
+    /* margin-bottom: 15px; */
+    right: 130px;
+    bottom: 15px;
+    width: 60%;
+}
+
+.cart-buttons-store-item {
+    position: absolute;
+    bottom: 15px;
+    right: 30px;
+    margin-left: 10px;
+}
+
+.remove {
+    margin-left: 15px;
+    margin-top: 5px;
+}
+
+.count-store{
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.desc-store{
+    margin-bottom: 15px;
+}
+
 .header-oc {
     box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
 }

@@ -18,6 +18,10 @@ section.cuerpo {
     padding-bottom: 50px;
 }
 
+.navbarTop img{
+    cursor: pointer;
+}
+
 /* ::-webkit-scrollbar {
     width: auto;
 }

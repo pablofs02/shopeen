@@ -8,6 +8,8 @@ function Store() {
   const { getSearchBarValue } = useGlobalContext();
 
 
+  // To add accesibility we could check if the filter is not empty and then add a string saying Filtered by: {filter}
+
   return (
     <section className="cuerpo">
       <h1>Store</h1>

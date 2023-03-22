@@ -87,7 +87,7 @@ function Navbar() {
         <img src="/src/assets/account.svg" alt="my account" onClick={handleShowAcc} />
 
         {/* Placeholder show */}
-        <Offcanvas show={true} onHide={handleCloseCart} placement="end">
+        <Offcanvas show={showCart} onHide={handleCloseCart} placement="end">
           <Offcanvas.Header className="header-oc" closeButton>
             <Offcanvas.Title>My cart</Offcanvas.Title>
           </Offcanvas.Header>

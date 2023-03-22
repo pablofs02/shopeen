@@ -17,13 +17,24 @@ type StoreItemsProps = {
 export function StoreItem(props: StoreItemsProps) {
   const [showMore, setShowMore] = useState(false);
 
-  const { getQuantity, addToCart } = useGlobalContext();
+  const { getQuantity, addToCart, decreaseQuantity, removeItem } =
+    useGlobalContext();
 
   const quantity = getQuantity(props.id);
 
   const handleAdd = (e: any) => {
     e.preventDefault();
     addToCart(props.id);
+  };
+
+  const handleDec = (e: any) => {
+    e.preventDefault();
+    decreaseQuantity(props.id);
+  };
+
+  const handleRem = (e: any) => {
+    e.preventDefault();
+    removeItem(props.id);
   };
 
   return (
@@ -63,8 +74,10 @@ export function StoreItem(props: StoreItemsProps) {
               <span className="count-store fw-bold fs-5">
                 {quantity} in cart{" "}
               </span>
-              <button className="btn btn-danger">-</button>
-              <button className="remove btn btn-danger">
+              <button className="btn btn-danger" onClick={handleDec}>
+                -
+              </button>
+              <button className="remove btn btn-danger" onClick={handleRem}>
                 Remove from cart
               </button>
             </div>

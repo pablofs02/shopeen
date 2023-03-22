@@ -4,16 +4,16 @@ import { CartItemContext } from "../context/CartItemContext";
 
 function CartButtons() {
     
-    const {count, setCount} = useContext(CartItemContext);
+    const { id, addToCart, getQuantity, decreaseQuantity } = useContext(CartItemContext);
 
     return (
     <div className="cart-buttons">
         <button className="btn btn-primary" onClick={() => {
-          setCount(count + 1)
+          addToCart(id)
         }}>+</button>
         <button className="btn btn-danger" onClick={() => {
-          if (count === 0) return;
-          setCount(count - 1)
+          if (getQuantity(id) === 0) return;
+          decreaseQuantity(id);
         }}>-</button>
     </div>
   );

@@ -10,12 +10,14 @@ type GlobalContext = {
   cartItems: CartItem[];
   addToCart: (id: number) => void;
   getQuantity: (id: number) => number;
+  decreaseQuantity: (id: number) => void;
+  removeItem: (id: number) => void;
 };
 
 type CartItem = {
   id: number;
   quantity: number;
-}
+};
 
 const GlobalContext = createContext({} as GlobalContext);
 
@@ -60,11 +62,46 @@ export function GlobalProvider({ children }: GlobalProviderProps) {
       }
     });
   }
-  
 
+  function decreaseQuantity(id: number) {
+    setCartItems((items) => {
+      const item = items.find((item) => item.id === id);
+      if (item) {
+        if (item.quantity === 1) {
+          return items.filter((item) => item.id !== id);
+        }
+
+        return items.map((item) => {
+          if (item.id === id) {
+            return { ...item, quantity: item.quantity - 1 };
+          } else {
+            return item;
+          }
+        });
+      } else {
+        return items;
+      }
+    });
+  }
+
+  function removeItem(id: number) {
+    setCartItems((items) => {
+      return items.filter((item) => item.id !== id);
+    });
+  }
 
   return (
-    <GlobalContext.Provider value={{ setFilter, getSearchBarValue, cartItems, addToCart, getQuantity }}>
+    <GlobalContext.Provider
+      value={{
+        setFilter,
+        getSearchBarValue,
+        cartItems,
+        addToCart,
+        getQuantity,
+        decreaseQuantity,
+        removeItem,
+      }}
+    >
       {children}
     </GlobalContext.Provider>
   );

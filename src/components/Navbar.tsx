@@ -8,7 +8,7 @@ import Home from "../pages/Home";
 import Store from "../pages/Store";
 import CartItem from "./CartItem";
 import SearchBar from "./SearchBar";
-import { useGlobalContext } from '../context/GlobalContext';
+import { useGlobalContext } from "../context/GlobalContext";
 
 function Navbar() {
   const location = useLocation();
@@ -25,7 +25,7 @@ function Navbar() {
   const handleCloseCart = () => setShowCart(false);
   const handleShowCart = () => setShowCart(true);
 
-  const {cartItems} = useGlobalContext()
+  const { cartItems } = useGlobalContext();
 
   return (
     <>
@@ -89,30 +89,22 @@ function Navbar() {
 
         <img src="/src/assets/account.svg" alt="my account" onClick={handleShowAcc} />
 
-        {/* Placeholder show */}
+        {/* Offcanvas of user cart */}
         <Offcanvas show={showCart} onHide={handleCloseCart} placement="end">
           <Offcanvas.Header className="header-oc" closeButton>
             <Offcanvas.Title>My cart</Offcanvas.Title>
           </Offcanvas.Header>
           <Offcanvas.Body className="body-oc p-2">
             <h3>Placeholder info about the cart</h3>
-            <Container>
-              {/* Hard coded cart item for testing purposes */}
-              {/* <CartItem
-                id={1}
-                quantity={1}></CartItem>
-            </Container> */}
-            {cartItems.map((item) => (
-              <CartItem
-                key={item.id}
-                id={item.id}
-                quantity={item.quantity}
-              ></CartItem>
-            ))}
+            <Container className="p-3">
+              {cartItems.map((item) => (
+                <CartItem key={item.id} id={item.id} quantity={item.quantity}></CartItem>
+              ))}
             </Container>
           </Offcanvas.Body>
         </Offcanvas>
 
+        {/* Offcanvas of the user account */}
         <Offcanvas show={showAcc} onHide={handleCloseAcc} placement="end">
           <Offcanvas.Header className="header-oc" closeButton>
             <Offcanvas.Title>My account</Offcanvas.Title>

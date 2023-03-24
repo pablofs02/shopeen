@@ -1,29 +1,46 @@
+.about {
+    /* Claro */
+    background: linear-gradient(to bottom, rgb(250, 250, 250), rgb(235, 233, 233));
+    color: black;
+
+    /* Oscuro */
+    /* background: linear-gradient(to bottom, #1f1f1f, black);
+    color: white; */
+
+    text-align: center;
+    position: relative;
+    
+    overflow: hidden;
+    --start: #0062ac21;
+    --end: transparent;
+}
+
+.about section, .about footer {
+    opacity: 0.7;
+    animation-name: fade;
+    animation-duration: 1.5s;
+    animation-fill-mode: forwards;
+}
+
 .story-store {
     padding: 50px;
     margin-top: 5rem;
     margin-bottom: 3rem;
     position: relative;
     isolation: isolate;
-    text-align: center;
-    opacity: 0;
-    animation-name: fade;
-    animation-duration: 1s;
-    animation-fill-mode: forwards;
+    text-align: center;    
 }
 
 .story-store::after {
     content: "";
     transform: skewY(-2deg);
-    background: linear-gradient(to right, #cc2b5e , #753a88);
+    background: linear-gradient(to bottom, var(--start) , var(--end));
     position: absolute;
     inset: 0;
     z-index: -1;
 }
 
-.about {
-    text-align: center;
-    position: relative;
-}
+
 
 .about .team {
     padding: 50px;
@@ -41,7 +58,7 @@
 .about .team::after {
     content: "";
     transform: skewY(-2deg);
-    background: linear-gradient(to right, #42275a, #734b6d);
+    /* background: linear-gradient(to bottom, var(--end), #0062ac28 , var(--end)); */
     position: absolute;
     inset: 0;
     z-index: -1;
@@ -55,18 +72,6 @@
 
 .about li:not(:last-child) { 
     margin-bottom: 15px;  
-}
-
-.about {
-    /* Claro */
-    background: linear-gradient(to bottom, rgb(250, 250, 250), rgb(235, 233, 233));
-    color: black;
-
-    /* Oscuro */
-    /* background: linear-gradient(to bottom, #1f1f1f, black);
-    color: white; */
-    
-    overflow: hidden;
 }
 
 .about .tech-used {
@@ -84,7 +89,7 @@
 .about .tech-used::after {
     content: "";
     transform: skewY(-2deg);
-    background: linear-gradient(to left, #cc2b5e , #753a88);
+    background: linear-gradient(to top, var(--start) , var(--end));
     position: absolute;
     inset: 0;
     z-index: -1;

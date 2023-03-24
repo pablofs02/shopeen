@@ -4,7 +4,7 @@ import { CartItemContext } from "../context/CartItemContext";
 import { formatCurrency } from "../utilities/formatCurrency";
 import CartButtons from "./CartButtons";
 import storeItems from "../data/noRatingProducts.json";
-import { useGlobalContext } from '../context/GlobalContext';
+import { useGlobalContext } from "../context/GlobalContext";
 
 interface CartItemProps {
   id: number;
@@ -12,20 +12,18 @@ interface CartItemProps {
 }
 
 function CartItem(props: CartItemProps) {
-  const [count, setCount] = useState(1);
+  const item = storeItems.find((item) => item.id === props.id);
 
-  const item = storeItems.find(item => item.id === props.id)
-
-  const { getQuantity, addToCart, decreaseQuantity } = useGlobalContext();
+  const { getQuantity, addItem, decreaseItemQuantity } = useGlobalContext();
 
   const quantity = getQuantity(props.id);
 
-  const id = props.id
+  const id = props.id;
 
-  if(!item) return null;
+  if (!item || quantity <= 0) return null;
 
-  return count > 0 ? (
-    <Row>
+  return (
+    <Row className="mb-3">
       <Col>
         <Card className="cart-item">
           <Card.Img variant="top" src={item.image} height="100px" style={{ objectFit: "contain" }} />
@@ -33,7 +31,7 @@ function CartItem(props: CartItemProps) {
             <Card.Title>{item.title}</Card.Title>
             <Card.Text>{formatCurrency(item.price * quantity)}</Card.Text>
           </Card.Body>
-          <CartItemContext.Provider value={{id, addToCart, getQuantity, decreaseQuantity}}>
+          <CartItemContext.Provider value={{ id, addItem, getQuantity, decreaseItemQuantity }}>
             <div className="count-buttons">
               <h2>{quantity}</h2>
               <CartButtons />
@@ -42,7 +40,7 @@ function CartItem(props: CartItemProps) {
         </Card>
       </Col>
     </Row>
-  ) : null;
+  );
 }
 
 export default CartItem;

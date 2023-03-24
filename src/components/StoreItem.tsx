@@ -17,96 +17,82 @@ type StoreItemsProps = {
 export function StoreItem(props: StoreItemsProps) {
   const [showMore, setShowMore] = useState(false);
 
-  const { getQuantity, addToCart, decreaseQuantity, removeItem } =
-    useGlobalContext();
+  const { getQuantity, addItem, decreaseItemQuantity, removeItem } = useGlobalContext();
 
   const quantity = getQuantity(props.id);
 
   const handleAdd = (e: any) => {
     e.preventDefault();
-    addToCart(props.id);
+    addItem(props.id);
   };
 
-  const handleDec = (e: any) => {
+  const handleDecrease = (e: any) => {
     e.preventDefault();
-    decreaseQuantity(props.id);
+    decreaseItemQuantity(props.id);
   };
 
-  const handleRem = (e: any) => {
+  const handleRemove = (e: any) => {
     e.preventDefault();
     removeItem(props.id);
   };
 
   return (
-    <Card className="h-100 p-2">
-      <Card.Img
-        variant="top"
-        src={props.image}
-        height="170px"
-        style={{ objectFit: "contain" }}
-      />
-      <Card.Body className="d-flex flex-column">
-        <Card.Title className="mt-3 d-flex justify-content-between align-items-baseline">
+    <Card className="h-100 p-3 pt-4 pb-4 store-item">
+      <Card.Img variant="top" src={props.image} height="170px" style={{ objectFit: "contain" }} />
+      <Card.Body className="d-flex flex-column h-100 p-0 ps-2 pe-2">
+        <Card.Title className="mt-4 d-flex justify-content-between align-items-baseline">
           <span>{props.title}</span>
-          <span className="fw-bold price fs-5 ms-3 text-muted">
-            {formatCurrency(props.price)}
-          </span>
+          <span className="fw-bold price fs-5 ms-3 text-muted">{formatCurrency(props.price)}</span>
         </Card.Title>
-        {showMore ? (
-          <Card.Text className="desc-store d-flex justify-content-center align-items-center card-description mt-2 mb-5">
-            {props.description}
-          </Card.Text>
-        ) : (
-          <Card.Text className="desc-store d-flex justify-content-center align-items-center card-description mt-2 mb-5">
-            {props.description.slice(0, 50)}...
-          </Card.Text>
-        )}
-        {props.stock - quantity > 0 ? (
-          quantity === 0 ? (
-            <Button onClick={handleAdd} className="addToCart">
-              + Add to cart
-            </Button>
-          ) : (
-            <div className="cart-buttons-store-item">
-              <button onClick={handleAdd} className="btn btn-primary">
-                +
-              </button>
-              <span className="count-store fw-bold fs-5">
-                {quantity} in cart{" "}
-              </span>
-              <button className="btn btn-danger" onClick={handleDec}>
-                -
-              </button>
-              <button className="remove btn btn-danger" onClick={handleRem}>
+
+        <Card.Text className="desc-store d-flex justify-content-center align-items-center card-description mt-3 mb-auto">
+          {showMore ? props.description : props.description.slice(0, 50) + " ..."}
+        </Card.Text>
+
+        <div className="position-relative h-100 options">
+          {props.stock - quantity > 0 ? (
+            quantity === 0 ? (
+              <Button onClick={handleAdd} className="addItem">
+                + Add to cart
+              </Button>
+            ) : (
+              <button className="remove btn btn-danger m-0" onClick={handleRemove}>
                 Remove from cart
               </button>
-            </div>
-          )
-        ) : (
-          <div className="alertStock mt-auto">
-            <Alert variant="danger" className="text-center">
-              <span className="fw-bold fs-5 p-auto">
-                There is no stock left.
-              </span>
-            </Alert>
-          </div>
-        )}
-        <button
-          onClick={() => {
-            setShowMore(!showMore);
-          }}
-          className="expandContractButton"
-        >
-          {showMore ? (
-            <>
-              Show Less <MdExpandLess className="ms-1" />
-            </>
+              // <div className="cart-buttons-store-item">
+              //   <button onClick={handleAdd} className="btn btn-primary">
+              //     +
+              //   </button>
+              //   <span className="count-store fw-bold fs-5">{quantity} in cart </span>
+              //   <button className="btn btn-danger" onClick={handleDecrease}>
+              //     -
+              //   </button>
+
+              // </div>
+            )
           ) : (
-            <>
-              Show More <MdExpandMore className="ms-1" />
-            </>
+            <div className="alertStock mb-0">
+              <Alert variant="danger" className="text-center mb-0">
+                <span className="fw-bold fs-5 p-auto">There is no stock left.</span>
+              </Alert>
+            </div>
           )}
-        </button>
+          <button
+            onClick={() => {
+              setShowMore(!showMore);
+            }}
+            className="expandContractButton">
+            {showMore ? (
+              <>
+                <span>Show Less</span> <MdExpandLess className="ms-1" />
+              </>
+            ) : (
+              <>
+                <span>Show More</span> <MdExpandMore className="ms-1" />
+              </>
+            )}
+          </button>
+        </div>
       </Card.Body>
     </Card>
   );

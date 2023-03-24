@@ -1,3 +1,7 @@
+:root {
+    --mainColor: #0061ac;
+}
+
 .navbarTop {
     max-width: 100vw!important;
     margin: 0!important;
@@ -25,6 +29,7 @@
 
 .navbarTop .col > a:hover {
     transform: scale(1.1);
+    color: var(--mainColor);
 }
 
 .navbarTop .col > a:active {
@@ -79,32 +84,8 @@
     margin: 0;
 }
 
-.expandContractButton {
-    background: transparent;
-    border: none;
-    position: absolute;
-    font-weight: 500;
-    right: 15px;
-    bottom: 15px;
-}
-
 .alertStock {
     margin-bottom: 15px;
-}
-
-.addToCart {
-    position: absolute;
-    /* margin-bottom: 15px; */
-    right: 130px;
-    bottom: 15px;
-    width: 60%;
-}
-
-.cart-buttons-store-item {
-    position: absolute;
-    bottom: 15px;
-    right: 30px;
-    margin-left: 10px;
 }
 
 .remove {
@@ -140,6 +121,39 @@
 
 .body-oc .active {
     background-color: rgb(232, 232, 232);
+}
+
+.expandContractButton {
+    position: relative;
+    background: transparent;
+    border: none;
+    font-weight: 500;
+    right: 15px;
+    bottom: 15px;
+    
+    right: 0;
+    bottom: 0;
+}
+
+.addItem {
+    position: relative;
+    right: 130px;
+    bottom: 15px;
+    width: 60%;
+    left: 0;
+    bottom: 0;
+}
+
+.options {
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+    justify-content: space-between;
+    margin-top: 25px;
+}
+
+.store-item {
+    box-shadow: 0 0 10px 1px rgba(55, 55, 55, 0.1);
 }
 
 @media (max-width: 800px) {

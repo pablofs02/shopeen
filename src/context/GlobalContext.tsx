@@ -8,9 +8,9 @@ type GlobalContext = {
   setFilter: (s: string) => void;
   getSearchBarValue: () => string;
   cartItems: CartItem[];
-  addToCart: (id: number) => void;
+  addItem: (id: number) => void;
   getQuantity: (id: number) => number;
-  decreaseQuantity: (id: number) => void;
+  decreaseItemQuantity: (id: number) => void;
   removeItem: (id: number) => void;
 };
 
@@ -37,6 +37,11 @@ export function GlobalProvider({ children }: GlobalProviderProps) {
     return searchBarValue;
   }
 
+  /**
+   * This function gets the quantity of an item in the cart
+   * @param id Id of the item to get quantity of
+   * @returns the quantity of the item in the cart
+   */
   function getQuantity(id: number) {
     const item = cartItems.find((item) => item.id === id);
     if (item) {
@@ -46,7 +51,11 @@ export function GlobalProvider({ children }: GlobalProviderProps) {
     }
   }
 
-  function addToCart(id: number) {
+  /**
+   * This function adds an item to the cart or increases the quantity of the item if it already exists in the cart
+   * @param id Id of the item to add to cart or increase quantity of
+   */
+  function addItem(id: number) {
     setCartItems((items) => {
       const item = items.find((item) => item.id === id);
       if (item) {
@@ -63,7 +72,11 @@ export function GlobalProvider({ children }: GlobalProviderProps) {
     });
   }
 
-  function decreaseQuantity(id: number) {
+  /**
+   * This function decreases the quantity of an item in the cart or removes the item from the cart if the quantity is 1
+   * @param id Id of the item to decrease quantity of
+   */
+  function decreaseItemQuantity(id: number) {
     setCartItems((items) => {
       const item = items.find((item) => item.id === id);
       if (item) {
@@ -84,6 +97,10 @@ export function GlobalProvider({ children }: GlobalProviderProps) {
     });
   }
 
+  /**
+   * This function removes an item from the cart
+   * @param id Id of the item to remove from the cart
+   */
   function removeItem(id: number) {
     setCartItems((items) => {
       return items.filter((item) => item.id !== id);
@@ -96,9 +113,9 @@ export function GlobalProvider({ children }: GlobalProviderProps) {
         setFilter,
         getSearchBarValue,
         cartItems,
-        addToCart,
+        addItem,
         getQuantity,
-        decreaseQuantity,
+        decreaseItemQuantity,
         removeItem,
       }}
     >

@@ -88,10 +88,6 @@
     margin-bottom: 15px;
 }
 
-.remove {
-    margin-left: 15px;
-    margin-top: 5px;
-}
 
 .count-store{
     margin-left: 15px;
@@ -124,24 +120,13 @@
 }
 
 .expandContractButton {
-    position: relative;
     background: transparent;
     border: none;
     font-weight: 500;
-    right: 15px;
-    bottom: 15px;
-    
-    right: 0;
-    bottom: 0;
 }
 
-.addItem {
-    position: relative;
-    right: 130px;
-    bottom: 15px;
-    width: 60%;
-    left: 0;
-    bottom: 0;
+.addItem, .remove {
+    width: 50%;
 }
 
 .options {

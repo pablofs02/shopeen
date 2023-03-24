@@ -57,7 +57,7 @@ export function StoreItem(props: StoreItemsProps) {
               </Button>
             ) : (
               <button className="remove btn btn-danger m-0" onClick={handleRemove}>
-                Remove from cart
+                - Remove from cart
               </button>
               // <div className="cart-buttons-store-item">
               //   <button onClick={handleAdd} className="btn btn-primary">

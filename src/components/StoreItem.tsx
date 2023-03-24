@@ -50,7 +50,7 @@ export function StoreItem(props: StoreItemsProps) {
         </Card.Text>
 
         <div className="position-relative h-100 options">
-          {props.stock - quantity > 0 ? (
+          {props.stock > 0 ? (
             quantity === 0 ? (
               <Button onClick={handleAdd} className="addItem">
                 + Add to cart

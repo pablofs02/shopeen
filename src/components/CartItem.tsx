@@ -19,6 +19,7 @@ function CartItem(props: CartItemProps) {
   const quantity = getQuantity(props.id);
 
   const id = props.id;
+  const stock: number = item!.stock;
 
   if (!item || quantity <= 0) return null;
 
@@ -29,11 +30,11 @@ function CartItem(props: CartItemProps) {
           <Card.Img variant="top" src={item.image} height="100px" style={{ objectFit: "contain" }} />
           <Card.Body>
             <Card.Title>{item.title}</Card.Title>
-            <Card.Text>{formatCurrency(item.price * quantity)}</Card.Text>
+            <Card.Text className="text-muted">Total: {formatCurrency(item.price * quantity)}</Card.Text>
           </Card.Body>
-          <CartItemContext.Provider value={{ id, addItem, getQuantity, decreaseItemQuantity }}>
+          <CartItemContext.Provider value={{ id, addItem, getQuantity, decreaseItemQuantity, stock }}>
             <div className="count-buttons">
-              <h2>{quantity}</h2>
+              <h5>Quantity: {quantity}</h5>
               <CartButtons />
             </div>
           </CartItemContext.Provider>

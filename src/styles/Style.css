@@ -141,6 +141,22 @@
     box-shadow: 0 0 10px 1px rgba(55, 55, 55, 0.1);
 }
 
+.cart-amount {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 10;
+    background: var(--mainColor); /* Alternative -> #db324e */
+    border-radius: 50%;
+    color: white;
+    height: 1.3rem;
+    aspect-ratio: 1/1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgba(55, 55, 55, 1);
+}
+
 @media (max-width: 800px) {
     .navbarTop .hamburger-menu {
         display: block;

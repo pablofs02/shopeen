@@ -8,7 +8,8 @@ function CartButtons() {
 
     return (
     <div className="cart-buttons">
-        <button className="btn btn-primary" onClick={() => {
+        {getQuantity(id) === stock ? <p className="alert text-danger">Out of stock</p> : null}
+        <button disabled={getQuantity(id) === stock} className="btn btn-primary" onClick={() => {
           if (getQuantity(id) === stock) return;
           addItem(id)
         }}>+</button>

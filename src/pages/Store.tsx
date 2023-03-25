@@ -3,6 +3,8 @@ import { StoreItem } from "../components/StoreItem";
 import { useGlobalContext } from "../context/GlobalContext";
 import storeItems from "../data/noRatingProducts.json";
 import { useEffect } from "react";
+import Filter from "../components/Filter";
+import '../styles/FilterStyle.css'
 
 function Store() {
   const { getSearchBarValue } = useGlobalContext();
@@ -10,7 +12,8 @@ function Store() {
 
   // To add accesibility we could check if the filter is not empty and then add a string saying Filtered by: {filter}
 
-  return (
+  return <>
+    <Filter/>
     <section className="cuerpo">
       <h1>Store</h1>
       <Row md={2} lg={3} xs={1} className="g-3">
@@ -25,7 +28,7 @@ function Store() {
           ))}
       </Row>
     </section>
-  );
+    </>
 }
 
 export default Store;

@@ -1,51 +1,16 @@
-import { useState } from "react";
+import { useState, useEffect } from 'react';
 import { Offcanvas } from "react-bootstrap";
+import { useGlobalContext } from '../context/GlobalContext';
 
 function Filter() {
   const [show, setShow] = useState(false);
 
-  const [minPrice, setMinPrice] = useState(0); // This is the state that will hold the min price from the range
-  const [maxPrice, setMaxPrice] = useState(10000); // This is the state that will hold the max price from the range
+  const {minPrice, maxPrice, handleCheckboxChange, handleClearCategory, handleClearRange, handleMaxPriceChange,
+  handleMinPriceChange, selectedOptions} = useGlobalContext();
 
-  const [selectedOptions, setSelectedOptions] = useState<string[]>([]); // This is the state that will hold the selected options from the checkboxes
-
-  const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const option = event.target.value;
-    const isChecked = event.target.checked;
-
-    setSelectedOptions((prevSelectedOptions) => {
-      if (isChecked) {
-        return [...prevSelectedOptions, option];
-      } else {
-        return prevSelectedOptions.filter((selectedOption) => selectedOption !== option);
-      }
-    });
-  };
-
-  const handleClearCategory = () => {
-    setSelectedOptions([]);
-  };
-
-  const handleClearRange = () => {
-    setMinPrice(0);
-    setMaxPrice(10000);
-  };
-
-  const handleMinPriceChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (!event.target.value) {
-      setMinPrice(0);
-    } else {
-      setMinPrice(parseInt(event.target.value));
-    }
-  };
-
-  const handleMaxPriceChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (!event.target.value) {
-      setMaxPrice(0);
-    } else {
-      setMaxPrice(parseInt(event.target.value));
-    }
-  };
+    // useEffect(() => {
+    //     console.log(selectedOptions);
+    // }, [selectedOptions]);
 
   return (
     <>

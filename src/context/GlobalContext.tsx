@@ -12,6 +12,15 @@ type GlobalContext = {
   getQuantity: (id: number) => number;
   decreaseItemQuantity: (id: number) => void;
   removeItem: (id: number) => void;
+  maxPrice: number;
+  minPrice: number;
+  selectedOptions: string[];
+  handleCheckboxChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleClearCategory: () => void;
+  handleMinPriceChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleMaxPriceChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleClearRange: () => void;
+
 };
 
 type CartItem = {
@@ -107,6 +116,50 @@ export function GlobalProvider({ children }: GlobalProviderProps) {
     });
   }
 
+
+  const [minPrice, setMinPrice] = useState(0); // This is the state that will hold the min price from the range
+  const [maxPrice, setMaxPrice] = useState(10000); // This is the state that will hold the max price from the range
+
+  const [selectedOptions, setSelectedOptions] = useState<string[]>([]); // This is the state that will hold the selected options from the checkboxes
+
+  const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const option = event.target.value;
+    const isChecked = event.target.checked;
+
+    setSelectedOptions((prevSelectedOptions) => {
+      if (isChecked) {
+        return [...prevSelectedOptions, option];
+      } else {
+        return prevSelectedOptions.filter((selectedOption) => selectedOption !== option);
+      }
+    });
+  };
+
+  const handleClearCategory = () => {
+    setSelectedOptions([]);
+  };
+
+  const handleClearRange = () => {
+    setMinPrice(0);
+    setMaxPrice(10000);
+  };
+
+  const handleMinPriceChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (!event.target.value) {
+      setMinPrice(0);
+    } else {
+      setMinPrice(parseInt(event.target.value));
+    }
+  };
+
+  const handleMaxPriceChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (!event.target.value) {
+      setMaxPrice(0);
+    } else {
+      setMaxPrice(parseInt(event.target.value));
+    }
+  };
+
   return (
     <GlobalContext.Provider
       value={{
@@ -117,6 +170,14 @@ export function GlobalProvider({ children }: GlobalProviderProps) {
         getQuantity,
         decreaseItemQuantity,
         removeItem,
+        maxPrice,
+        minPrice,
+        selectedOptions,
+        handleCheckboxChange,
+        handleClearCategory,
+        handleMinPriceChange,
+        handleMaxPriceChange,
+        handleClearRange,
       }}
     >
       {children}

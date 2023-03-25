@@ -7,7 +7,7 @@ import Filter from "../components/Filter";
 import '../styles/FilterStyle.css'
 
 function Store() {
-  const { getSearchBarValue } = useGlobalContext();
+  const {minPrice, maxPrice, getSearchBarValue, selectedOptions} = useGlobalContext();
 
 
   // To add accesibility we could check if the filter is not empty and then add a string saying Filtered by: {filter}
@@ -19,7 +19,9 @@ function Store() {
       <Row md={2} lg={3} xs={1} className="g-3">
         {storeItems
           .filter((item) =>
-            item.title.toLowerCase().includes(getSearchBarValue().toLowerCase())
+            item.title.toLowerCase().includes(getSearchBarValue().toLowerCase()) &&
+            item.price >= minPrice && item.price <= maxPrice &&
+            (selectedOptions.length === 0 || selectedOptions.includes(item.category.toLowerCase()))
           )
           .map((item) => (
             <Col key={item.id}>

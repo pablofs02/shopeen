@@ -1,16 +1,13 @@
 import { useState, useEffect } from 'react';
 import { Offcanvas } from "react-bootstrap";
 import { useGlobalContext } from '../context/GlobalContext';
+import { useFilterContext } from '../context/FilterContext';
 
 function Filter() {
   const [show, setShow] = useState(false);
 
   const {minPrice, maxPrice, handleCheckboxChange, handleClearCategory, handleClearRange, handleMaxPriceChange,
-  handleMinPriceChange, selectedOptions} = useGlobalContext();
-
-    // useEffect(() => {
-    //     console.log(selectedOptions);
-    // }, [selectedOptions]);
+  handleMinPriceChange, selectedOptions} = useFilterContext();
 
   return (
     <>

@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useGlobalContext } from "../context/GlobalContext";
+import { useFilterContext } from '../context/FilterContext';
 
 function SearchBar() {
-  const { setFilter } = useGlobalContext();
+  const { setSearch } = useFilterContext();
 
   const handleChange = (e: any) => {
-    setFilter(e.target.value);
+    setSearch(e.target.value);
   };
 
   return (

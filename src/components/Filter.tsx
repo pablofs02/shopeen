@@ -6,8 +6,8 @@ import { useFilterContext } from '../context/FilterContext';
 function Filter() {
   const [show, setShow] = useState(false);
 
-  const {minPrice, maxPrice, handleCheckboxChange, handleClearCategory, handleClearRange, handleMaxPriceChange,
-  handleMinPriceChange, selectedOptions} = useFilterContext();
+  const {minPrice, maxPrice, selectedOptions, handleCheckboxChange, handleClearCategory, handleClearRange, handleMaxPriceChange,
+  handleMinPriceChange, handleActiveFilter} = useFilterContext();
 
   return (
     <>
@@ -43,12 +43,6 @@ function Filter() {
               <span className="text-muted">Min €</span> <span className="text-muted">Max €</span>
               <input type="number" name="min" value={minPrice} onChange={handleMinPriceChange} placeholder="0" />
               <input type="number" name="max" value={maxPrice} onChange={handleMaxPriceChange} placeholder="10000" />
-              <button
-                onClick={() => {
-                  console.log(`${minPrice} <-> ${maxPrice}`);
-                }}>
-                Filter
-              </button>
             </div>
           </div>
           <div className="filter-category filters">
@@ -105,7 +99,7 @@ function Filter() {
                 <label htmlFor="women's clothing">Women's clothing</label>
               </div>
 
-              <button>Filter</button>
+              <button onClick={handleActiveFilter}>Filter</button>
             </div>
           </div>
         </Offcanvas.Body>

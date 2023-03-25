@@ -10,11 +10,15 @@ type FilterContext = {
   maxPrice: number;
   minPrice: number;
   selectedOptions: string[];
+  maxPriceActive: number;
+  minPriceActive: number;
+  selectedOptionsActive: string[];
   handleCheckboxChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handleClearCategory: () => void;
   handleMinPriceChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handleMaxPriceChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handleClearRange: () => void;
+  handleActiveFilter: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 };
 
 const FilterContext = createContext({} as FilterContext);
@@ -34,6 +38,13 @@ export function FilterProvider({ children }: FilterProviderProps) {
   const [maxPrice, setMaxPrice] = useState(10000); // This is the state that will hold the max price from the range
 
   const [selectedOptions, setSelectedOptions] = useState<string[]>([]); // This is the state that will hold the selected options from the checkboxes
+
+  const [minPriceActive, setMinPriceActive] = useState(0); // This is the state that will hold active the min price from the range
+  const [maxPriceActive, setMaxPriceActive] = useState(10000); // This is the state that will hold active the max price from the range
+
+  const [selectedOptionsActive, setSelectedOptionsActive] = useState<string[]>(
+    []
+  ); // This is the state that will hold the active selected options from the checkboxes
 
   const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const option = event.target.value;
@@ -75,6 +86,14 @@ export function FilterProvider({ children }: FilterProviderProps) {
     }
   };
 
+  const handleActiveFilter = (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    setMinPriceActive(minPrice);
+    setMaxPriceActive(maxPrice);
+    setSelectedOptionsActive(selectedOptions);
+  };
+
   return (
     <FilterContext.Provider
       value={{
@@ -83,11 +102,15 @@ export function FilterProvider({ children }: FilterProviderProps) {
         maxPrice,
         minPrice,
         selectedOptions,
+        maxPriceActive,
+        minPriceActive,
+        selectedOptionsActive,
         handleCheckboxChange,
         handleClearCategory,
         handleMinPriceChange,
         handleMaxPriceChange,
         handleClearRange,
+        handleActiveFilter,
       }}
     >
       {children}

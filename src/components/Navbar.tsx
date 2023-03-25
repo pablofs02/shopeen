@@ -98,7 +98,7 @@ function Navbar() {
             <Offcanvas.Title>My cart</Offcanvas.Title>
           </Offcanvas.Header>
           <Offcanvas.Body className="body-oc p-2">
-            <h3>Placeholder info about the cart</h3>
+            <h3>Number of items in cart: {cartItems.length}</h3>
             <Container className="p-3">
               {cartItems.map((item) => (
                 <CartItem key={item.id} id={item.id} quantity={item.quantity}></CartItem>

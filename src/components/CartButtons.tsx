@@ -16,14 +16,18 @@ function CartButtons() {
           onClick={() => {
             if (getQuantity(id) === stock) return;
             addItem(id);
-          }}>+</button>
+          }}>
+          +
+        </button>
       </OverlayTrigger>
       <button
         className="btn btn-danger"
         onClick={() => {
           if (getQuantity(id) === 0) return;
           decreaseItemQuantity(id);
-        }}>-</button>
+        }}>
+        -
+      </button>
     </div>
   );
 }

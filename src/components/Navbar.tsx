@@ -25,7 +25,11 @@ function Navbar() {
   const handleCloseCart = () => setShowCart(false);
   const handleShowCart = () => setShowCart(true);
 
-  const { cartItems } = useGlobalContext();
+  const { cartItems, setCartItems } = useGlobalContext();
+
+  const handleCleanCart = () => {
+    setCartItems([]);
+  };
 
   return (
     <>
@@ -105,6 +109,9 @@ function Navbar() {
               ))}
             </Container>
           </Offcanvas.Body>
+          <div className="clean-cart">
+            <button onClick={handleCleanCart}>Clean Cart</button>
+          </div>
         </Offcanvas>
 
         {/* Offcanvas of the user account */}

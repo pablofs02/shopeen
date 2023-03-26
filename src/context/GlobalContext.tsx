@@ -10,6 +10,7 @@ type GlobalContext = {
   getQuantity: (id: number) => number;
   decreaseItemQuantity: (id: number) => void;
   removeItem: (id: number) => void;
+  setCartItems: (items: CartItem[]) => void;
 };
 
 type CartItem = {
@@ -107,7 +108,8 @@ export function GlobalProvider({ children }: GlobalProviderProps) {
         addItem,
         getQuantity,
         decreaseItemQuantity,
-        removeItem
+        removeItem,
+        setCartItems
       }}
     >
       {children}

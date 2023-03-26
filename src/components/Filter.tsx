@@ -6,13 +6,14 @@ import { useFilterContext } from '../context/FilterContext';
 function Filter() {
   const [show, setShow] = useState(false);
 
-  const {minPrice, maxPrice, selectedOptions, handleCheckboxChange, handleClearCategory, handleClearRange, handleMaxPriceChange,
+  const {minPrice, maxPrice, selectedCategories, handleCheckboxChange, handleClearCategory, handleClearRange, handleMaxPriceChange,
   handleMinPriceChange, handleActiveFilter} = useFilterContext();
 
   return (
     <>
       <div className="filter">
         {show ? null : (
+          <>
           <button
             className="show-filter"
             onClick={() => {
@@ -20,6 +21,8 @@ function Filter() {
             }}>
             Filter options...
           </button>
+          <span className='text-muted ms-4'>{selectedCategories.length ? "Categories selected:" : null} {selectedCategories.join(', ').slice(0,40) + " ..."}</span>
+          </>
         )}
       </div>
       <Offcanvas
@@ -56,7 +59,7 @@ function Filter() {
                 <input
                   type="checkbox"
                   value="men's clothing"
-                  checked={selectedOptions.includes("men's clothing")}
+                  checked={selectedCategories.includes("men's clothing")}
                   onChange={handleCheckboxChange}
                   id="men's clothing"
                 />
@@ -68,7 +71,7 @@ function Filter() {
                 <input
                   type="checkbox"
                   value="jewelry"
-                  checked={selectedOptions.includes("jewelry")}
+                  checked={selectedCategories.includes("jewelry")}
                   onChange={handleCheckboxChange}
                   id="jewelry"
                 />
@@ -80,7 +83,7 @@ function Filter() {
                 <input
                   type="checkbox"
                   value="electronics"
-                  checked={selectedOptions.includes("electronics")}
+                  checked={selectedCategories.includes("electronics")}
                   onChange={handleCheckboxChange}
                   id="electronics"
                 />
@@ -92,17 +95,20 @@ function Filter() {
                 <input
                   type="checkbox"
                   value="women's clothing"
-                  checked={selectedOptions.includes("women's clothing")}
+                  checked={selectedCategories.includes("women's clothing")}
                   onChange={handleCheckboxChange}
                   id="women's clothing"
                 />
                 <label htmlFor="women's clothing">Women's clothing</label>
               </div>
 
-              <button onClick={handleActiveFilter}>Filter</button>
+              
             </div>
           </div>
         </Offcanvas.Body>
+        <div className="filter-button">
+          <button onClick={handleActiveFilter}>Filter</button>
+        </div>
       </Offcanvas>
     </>
   );

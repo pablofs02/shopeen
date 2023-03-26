@@ -123,6 +123,26 @@
     letter-spacing: 2px;
 }
 
+.filter-button {
+    position: fixed;
+    bottom: 0;
+    width: inherit;
+}
+
+.filter-button button {
+    width: 100%;
+    border-radius: 0;
+    border: none;
+    background-color: var(--mainColor);
+    color: white;
+    font-weight: 500;
+    font-size: 1.2rem;
+    padding: 0.5rem;
+}
+
+
+
+
 
 /* Chrome, Safari, Edge, Opera */
 input[type="number"]::-webkit-inner-spin-button,

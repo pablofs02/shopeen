@@ -34,3 +34,22 @@
     align-items: center;
     gap: 10px;
 }
+
+.clean-cart {
+    position: fixed;
+    bottom: 0;
+    width: inherit;
+    background-color: whitesmoke;
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    align-items: center;
+}
+
+.clean-cart button {
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 7px;
+    padding: 0.2rem;
+    font-size: 1rem;
+    font-weight: 500;
+}

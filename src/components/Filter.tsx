@@ -21,7 +21,7 @@ function Filter() {
             }}>
             Filter options...
           </button>
-          <span className='text-muted ms-4'>{selectedCategories.length ? "Categories selected:" : null} {selectedCategories.join(', ').slice(0,40) + " ..."}</span>
+          <span className='text-muted ms-4'>{selectedCategories.length ? "Categories selected: " + selectedCategories.join(', ').slice(0,40) + " ..." : null}</span>
           </>
         )}
       </div>

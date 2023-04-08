@@ -3,7 +3,7 @@ import { OverlayTrigger, Tooltip } from "react-bootstrap";
 import { CartItemContext } from "../context/CartItemContext";
 
 function CartButtons() {
-  const { id, addItem, getQuantity, decreaseItemQuantity, stock } = useContext(CartItemContext);
+  const { id, addItem, getQuantity, decreaseItemQuantity, removeItem, stock } = useContext(CartItemContext);
 
   const renderTooltip = <Tooltip>No more stock available</Tooltip>;
 
@@ -21,12 +21,19 @@ function CartButtons() {
         </button>
       </OverlayTrigger>
       <button
-        className="btn btn-danger"
+        className="btn btn-primary"
         onClick={() => {
           if (getQuantity(id) === 0) return;
           decreaseItemQuantity(id);
         }}>
         -
+      </button>
+      <button
+        className="btn btn-danger"
+        onClick={() => {
+          removeItem(id);
+        }}>
+        x
       </button>
     </div>
   );

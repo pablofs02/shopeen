@@ -14,7 +14,7 @@ interface CartItemProps {
 function CartItem(props: CartItemProps) {
   const item = storeItems.find((item) => item.id === props.id);
 
-  const { getQuantity, addItem, decreaseItemQuantity } = useGlobalContext();
+  const { getQuantity, addItem, decreaseItemQuantity, removeItem } = useGlobalContext();
 
   const quantity = getQuantity(props.id);
 
@@ -32,7 +32,7 @@ function CartItem(props: CartItemProps) {
             <Card.Title>{item.title}</Card.Title>
             <Card.Text className="text-muted">Total: {formatCurrency(item.price * quantity)}</Card.Text>
           </Card.Body>
-          <CartItemContext.Provider value={{ id, addItem, getQuantity, decreaseItemQuantity, stock }}>
+          <CartItemContext.Provider value={{ id, addItem, getQuantity, decreaseItemQuantity, removeItem, stock }}>
             <div className="count-buttons">
               <h5>Quantity: {quantity}</h5>
               <CartButtons />

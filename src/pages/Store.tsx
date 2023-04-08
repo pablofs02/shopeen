@@ -20,9 +20,11 @@ function Store() {
 
   return (
     <>
-      <Filter />
       <section className="cuerpo">
-        <h1>Store</h1>
+        <div className="bar">
+          <h1>Store</h1>
+          <Filter />
+        </div>
         <Row md={2} lg={3} xs={1} className="g-3">
           {storeItemsFiltered.map((item) => (
             <Col key={item.id}>

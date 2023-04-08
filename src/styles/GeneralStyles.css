@@ -22,6 +22,10 @@ section.cuerpo {
     cursor: pointer;
 }
 
+.bar {
+    display: flex;
+}
+
 /* ::-webkit-scrollbar {
     width: auto;
 }

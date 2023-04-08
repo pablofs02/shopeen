@@ -1,5 +1,7 @@
 .filter, .filter-offcanvas {
-    position: absolute;
+    /*position: absolute;*/
+    margin-top: 14px;
+    margin-left: 32px;
     top: var(--navbarHeight)!important;
     left: 0;
 }

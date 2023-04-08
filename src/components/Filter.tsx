@@ -44,8 +44,9 @@ function Filter() {
             </div>
             <div className="filter-range-options">
               <span className="text-muted">Min €</span> <span className="text-muted">Max €</span>
-              <input type="number" name="min" value={minPrice} onChange={handleMinPriceChange} placeholder="0" />
-              <input type="number" name="max" value={maxPrice} onChange={handleMaxPriceChange} placeholder="10000" />
+              {/* split="0.01" shows decimal values */}
+              <input type="number" name="min" value={minPrice} onChange={handleMinPriceChange} min="0" placeholder="0.00" />
+              <input type="number" name="max" value={maxPrice} onChange={handleMaxPriceChange} min="0" placeholder="10000.00" />
             </div>
           </div>
           <div className="filter-category filters">

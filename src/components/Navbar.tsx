@@ -40,23 +40,23 @@ function Navbar() {
               <img src="/src/assets/hamburger-menu.svg" alt="hamburger menu button" />
             </button>
           </Col>
-          <Col>
-            <Link to={"/"} className={location.pathname === "/" ? "active" : ""}>
+          <Col className={location.pathname === "/" ? "active-page" : ""}>
+            <Link to={"/"}>
               Home
             </Link>
           </Col>
-          <Col>
-            <Link to={"/store"} className={location.pathname === "/store" ? "active" : ""}>
+          <Col className={location.pathname === "/store" ? "active-page" : ""}>
+            <Link to={"/store"}>
               Store
             </Link>
           </Col>
-          <Col>
-            <Link to={"/about"} className={location.pathname === "/about" ? "active" : ""}>
+          <Col className={location.pathname === "/about" ? "active-page" : ""}>
+            <Link to={"/about"}>
               About
             </Link>
           </Col>
-          <Col>
-            <Link to={"/help"} className={location.pathname === "/help" ? "active" : ""}>
+          <Col className={location.pathname === "/help" ? "active-page" : ""}>
+            <Link to={"/help"}>
               Help
             </Link>
           </Col>
@@ -67,16 +67,16 @@ function Navbar() {
             <Offcanvas.Title>Navigation options</Offcanvas.Title>
           </Offcanvas.Header>
           <Offcanvas.Body className="body-oc">
-            <Link to={"/"} className={location.pathname === "/" ? "active" : ""} onClick={handleClose}>
+            <Link to={"/"} className={location.pathname === "/" ? "active-page" : ""} onClick={handleClose}>
               Home
             </Link>
-            <Link to={"/store"} className={location.pathname === "/store" ? "active" : ""} onClick={handleClose}>
+            <Link to={"/store"} className={location.pathname === "/store" ? "active-page" : ""} onClick={handleClose}>
               Store
             </Link>
-            <Link to={"/about"} className={location.pathname === "/about" ? "active" : ""} onClick={handleClose}>
+            <Link to={"/about"} className={location.pathname === "/about" ? "active-page" : ""} onClick={handleClose}>
               About
             </Link>
-            <Link to={"/help"} className={location.pathname === "/help" ? "active" : ""} onClick={handleClose}>
+            <Link to={"/help"} className={location.pathname === "/help" ? "active-page" : ""} onClick={handleClose}>
               Help
             </Link>
           </Offcanvas.Body>

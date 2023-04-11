@@ -67,7 +67,7 @@
     height: 2.5rem;
 }
 
-.navbarTop .col:has(.active) {
+.navbarTop .active-page {
     background-color: rgb(232, 232, 232);
 }
 

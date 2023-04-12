@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Row, Button, Container, Col, Offcanvas } from "react-bootstrap/";
+import { Row, Button, Container, Col, Offcanvas, OverlayTrigger, Popover } from "react-bootstrap/";
 import { Routes, Route, Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import About from "../pages/About";
@@ -25,19 +25,36 @@ function Navbar() {
   const handleShowAcc = () => setShowAcc(true);
 
   const [showCart, setShowCart] = useState(false);
-  const handleCloseCart = () => setShowCart(false);
+  const handleCloseCart = () => {
+    setShowCart(false);
+    setShowPopover(false);
+  }
   const handleShowCart = () => setShowCart(true);
 
   const { cartItems, setCartItems,  } = useGlobalContext();
 
+  const [showPopover, setShowPopover] = useState(false);
+
   const handleCleanCart = () => {
     setCartItems([]);
+    setShowPopover(false);
   };
 
   const totalPrice = cartItems.reduce((acc, item) => {
     const itemPrice = storeItems.find((storeItem) => storeItem.id === item.id)?.price;
     return acc + itemPrice! * item.quantity;
   }, 0);
+
+  const confirmationCleanCart = (
+    <Popover id="popover-basic">
+      <Popover.Header as="h2">Confirmation</Popover.Header>
+      <Popover.Body>
+        <p className="fs-6"><strong>Are you sure you want to clean your cart?</strong></p>
+        <Button variant="danger" onClick={handleCleanCart}>Confirm cleaning</Button>
+        <Button variant="primary" onClick={() => setShowPopover(false)}>Cancel</Button>
+      </Popover.Body>
+    </Popover>
+  );
 
   return (
     <>
@@ -109,13 +126,15 @@ function Navbar() {
             <h3>Unique items in cart: {cartItems.length}</h3>
             <Container className="p-3">
               {cartItems.map((item) => (
-                <CartItem key={item.id} id={item.id} quantity={item.quantity}></CartItem>
+                <CartItem key={item.id} id={item.id} quantity={item.quantity} showCart={showCart}></CartItem>
               ))}
             </Container>
           </Offcanvas.Body>
           <div className="clean-cart">
             <p><strong>Total price: {formatCurrency(totalPrice)}</strong></p>
-            <button onClick={handleCleanCart}>Clean Cart</button>
+            <OverlayTrigger trigger="click" placement="top" overlay={confirmationCleanCart} show={showPopover}>
+              <button onClick={() => setShowPopover(true)} disabled={cartItems.length === 0}>Clean cart</button>
+            </OverlayTrigger>
           </div>
         </Offcanvas>
 

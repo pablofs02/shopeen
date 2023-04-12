@@ -9,6 +9,7 @@ import { useGlobalContext } from "../context/GlobalContext";
 interface CartItemProps {
   id: number;
   quantity: number;
+  showCart: boolean;
 }
 
 function CartItem(props: CartItemProps) {
@@ -35,7 +36,7 @@ function CartItem(props: CartItemProps) {
           <CartItemContext.Provider value={{ id, addItem, getQuantity, decreaseItemQuantity, removeItem, stock }}>
             <div className="count-buttons">
               <h5>Quantity: {quantity}</h5>
-              <CartButtons />
+              <CartButtons showCart={props.showCart}/>
             </div>
           </CartItemContext.Provider>
         </Card>

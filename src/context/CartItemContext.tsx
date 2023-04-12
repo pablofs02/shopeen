@@ -6,5 +6,7 @@ export const CartItemContext = createContext({} as {
     addItem: (id: number) => void,
     decreaseItemQuantity: (id: number) => void,
     removeItem: (id: number) => void,
-    stock: number
+    stock: number,
+    showWarningRemove: boolean,
+    setShowWarningRemove: (show: boolean) => void
 });

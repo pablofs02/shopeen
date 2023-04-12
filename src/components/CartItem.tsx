@@ -17,6 +17,8 @@ function CartItem(props: CartItemProps) {
 
   const { getQuantity, addItem, decreaseItemQuantity, removeItem } = useGlobalContext();
 
+  const [showWarningRemove, setShowWarningRemove] = useState(false)
+
   const quantity = getQuantity(props.id);
 
   const id = props.id;
@@ -33,7 +35,7 @@ function CartItem(props: CartItemProps) {
             <Card.Title>{item.title}</Card.Title>
             <Card.Text className="text-muted">Total: {formatCurrency(item.price * quantity)}</Card.Text>
           </Card.Body>
-          <CartItemContext.Provider value={{ id, addItem, getQuantity, decreaseItemQuantity, removeItem, stock }}>
+          <CartItemContext.Provider value={{ id, addItem, getQuantity, decreaseItemQuantity, removeItem, stock, showWarningRemove, setShowWarningRemove }}>
             <div className="count-buttons">
               <h5>Quantity: {quantity}</h5>
               <CartButtons showCart={props.showCart}/>

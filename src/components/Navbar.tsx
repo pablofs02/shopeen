@@ -29,6 +29,7 @@ function Navbar() {
     setShowCart(false);
     setShowPopover(false);
   }
+
   const handleShowCart = () => setShowCart(true);
 
   const { cartItems, setCartItems,  } = useGlobalContext();

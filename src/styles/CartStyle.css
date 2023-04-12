@@ -75,3 +75,16 @@
     top: 10px;
     right: 10px;
 }
+
+.warning-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.warning-buttons button {
+    width: 100%;
+}

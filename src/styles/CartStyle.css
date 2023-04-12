@@ -42,7 +42,7 @@
     background-color: whitesmoke;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: right;
     align-items: center;
 }
 
@@ -52,17 +52,14 @@
     padding: 0.2rem;
     font-size: 1rem;
     font-weight: 500;
+    margin-left: auto;
 }
 
-.clean-cart {
-    position: fixed;
-    bottom: 0;
-    width: inherit;
-    background-color: whitesmoke;
-    display: flex;
-    flex-direction: row;
-    justify-content: right;
-    align-items: center;
+.clean-cart p {
+    margin: 0;
+    padding: 0.5rem;
+    font-size: 1rem;
+    font-weight: 500;
 }
 
 .clean-cart button {

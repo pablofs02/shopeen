@@ -114,7 +114,7 @@ function Navbar() {
             </Container>
           </Offcanvas.Body>
           <div className="clean-cart">
-            <strong>Total price: {formatCurrency(totalPrice)}</strong>
+            <p><strong>Total price: {formatCurrency(totalPrice)}</strong></p>
             <button onClick={handleCleanCart}>Clean Cart</button>
           </div>
         </Offcanvas>

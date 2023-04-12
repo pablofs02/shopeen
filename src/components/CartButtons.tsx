@@ -29,7 +29,7 @@ function CartButtons() {
         -
       </button>
       <button
-        className="btn btn-danger"
+        className="btn btn-danger remove-item"
         onClick={() => {
           removeItem(id);
         }}>

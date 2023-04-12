@@ -6,6 +6,13 @@ import { useFilterContext } from '../context/FilterContext';
 function SearchBar() {
   const { setSearch } = useFilterContext();
 
+  // Solo actualiza el estado cuando el usuario pulsa intro
+  // const handleChange = (e: any) => {
+  //   if (e.key === "Enter") {
+  //     setSearch(e.target.value);
+  //   }
+  // };
+
   const handleChange = (e: any) => {
     setSearch(e.target.value);
   };

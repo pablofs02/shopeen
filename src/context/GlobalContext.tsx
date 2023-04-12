@@ -11,6 +11,15 @@ type GlobalContext = {
   decreaseItemQuantity: (id: number) => void;
   removeItem: (id: number) => void;
   setCartItems: (items: CartItem[]) => void;
+  userInfo: UserInfo;
+  setUserInfo: (userInfo: UserInfo) => void;
+};
+
+type UserInfo = {
+  name: string;
+  lastName: string;
+  email: string;
+  address: string;
 };
 
 type CartItem = {
@@ -27,6 +36,13 @@ export function useGlobalContext() {
 export function GlobalProvider({ children }: GlobalProviderProps) {
   
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
+
+  const [userInfo, setUserInfo] = useState<UserInfo>({
+    name: "John",
+    lastName: "Cena",
+    email: "johncena@example.com",
+    address: "5th Avenue",
+  });
 
   /**
    * This function gets the quantity of an item in the cart
@@ -109,7 +125,9 @@ export function GlobalProvider({ children }: GlobalProviderProps) {
         getQuantity,
         decreaseItemQuantity,
         removeItem,
-        setCartItems
+        setCartItems,
+        userInfo,
+        setUserInfo
       }}
     >
       {children}

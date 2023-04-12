@@ -9,6 +9,8 @@ import Store from "../pages/Store";
 import CartItem from "./CartItem";
 import SearchBar from "./SearchBar";
 import { useGlobalContext } from "../context/GlobalContext";
+import { formatCurrency } from '../utilities/formatCurrency';
+import storeItems from "../data/products.json";
 
 function Navbar() {
   const location = useLocation();
@@ -25,11 +27,16 @@ function Navbar() {
   const handleCloseCart = () => setShowCart(false);
   const handleShowCart = () => setShowCart(true);
 
-  const { cartItems, setCartItems } = useGlobalContext();
+  const { cartItems, setCartItems,  } = useGlobalContext();
 
   const handleCleanCart = () => {
     setCartItems([]);
   };
+
+  const totalPrice = cartItems.reduce((acc, item) => {
+    const itemPrice = storeItems.find((storeItem) => storeItem.id === item.id)?.price;
+    return acc + itemPrice! * item.quantity;
+  }, 0);
 
   return (
     <>
@@ -102,7 +109,7 @@ function Navbar() {
             <Offcanvas.Title>My cart</Offcanvas.Title>
           </Offcanvas.Header>
           <Offcanvas.Body className="body-oc p-2">
-            <h3>Number of items in cart: {cartItems.length}</h3>
+            <h3>Unique items in cart: {cartItems.length}</h3>
             <Container className="p-3">
               {cartItems.map((item) => (
                 <CartItem key={item.id} id={item.id} quantity={item.quantity}></CartItem>
@@ -110,6 +117,7 @@ function Navbar() {
             </Container>
           </Offcanvas.Body>
           <div className="clean-cart">
+            <strong>Total price: {formatCurrency(totalPrice)}</strong>
             <button onClick={handleCleanCart}>Clean Cart</button>
           </div>
         </Offcanvas>

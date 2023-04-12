@@ -108,7 +108,10 @@ function Filter() {
           </div>
         </Offcanvas.Body>
         <div className="filter-button">
-          <button onClick={handleActiveFilter}>Filter</button>
+          <button onClick={(e) => {
+            setShow(false);
+            handleActiveFilter(e);
+          }}>Filter</button>
         </div>
       </Offcanvas>
     </>

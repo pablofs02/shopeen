@@ -1,4 +1,5 @@
 import { createContext, ReactNode, useContext, useState } from "react";
+import products from "../data/products.json";
 
 type GlobalProviderProps = {
   children: ReactNode;
@@ -130,4 +131,14 @@ export function GlobalProvider({ children }: GlobalProviderProps) {
       {children}
     </GlobalContext.Provider>
   );
+}
+
+  /**
+   * This function return a list of random items.
+   */
+export function loadRandomItems() {
+    let item1 = products[Math.floor(Math.random()*products.length)];
+    let item2 = products[Math.floor(Math.random()*products.length)];
+    let item3 = products[Math.floor(Math.random()*products.length)];
+    return [item1, item2, item3];
 }

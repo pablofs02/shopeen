@@ -1,5 +1,5 @@
 import { Col, Row } from "react-bootstrap";
-import { HomeShortcut } from "../components/HomeShortcuts";
+import { StoreItem } from "../components/StoreItem";
 import { loadRandomItems } from "../context/GlobalContext";
 import '../styles/homeStyle.css'
 
@@ -10,7 +10,7 @@ export default function Home() {
 			<Row md={2} lg={3} xs={1} className="g-3">
 				{loadRandomItems().map((item) => (
                     <Col key={item.title}>
-						<HomeShortcut {...item}></HomeShortcut>
+                        <StoreItem {...item}></StoreItem>
                     </Col>
 				))}
 			</Row>
@@ -18,7 +18,7 @@ export default function Home() {
 			<Row md={2} lg={3} xs={1} className="g-3">
 				{loadRandomItems().map((item) => (
                     <Col key={item.title}>
-						<HomeShortcut {...item}></HomeShortcut>
+                        <StoreItem {...item}></StoreItem>
                     </Col>
 				))}
 			</Row>
@@ -26,7 +26,7 @@ export default function Home() {
 			<Row md={2} lg={3} xs={1} className="g-3">
 				{loadRandomItems().map((item) => (
                     <Col key={item.title}>
-						<HomeShortcut {...item}></HomeShortcut>
+                        <StoreItem {...item}></StoreItem>
                     </Col>
 				))}
 			</Row>

@@ -114,9 +114,6 @@ export function GlobalProvider({ children }: GlobalProviderProps) {
     });
   }
 
-
-  
-
   return (
     <GlobalContext.Provider
       value={{

@@ -48,24 +48,16 @@ function Navbar() {
             </button>
           </Col>
           <Col className={location.pathname === "/" ? "active-page" : ""}>
-            <Link to={"/"}>
-              Home
-            </Link>
+            <Link to={"/"}>Home</Link>
           </Col>
           <Col className={location.pathname === "/store" ? "active-page" : ""}>
-            <Link to={"/store"}>
-              Store
-            </Link>
+            <Link to={"/store"}>Store</Link>
           </Col>
           <Col className={location.pathname === "/about" ? "active-page" : ""}>
-            <Link to={"/about"}>
-              About
-            </Link>
+            <Link to={"/about"}>About</Link>
           </Col>
           <Col className={location.pathname === "/help" ? "active-page" : ""}>
-            <Link to={"/help"}>
-              Help
-            </Link>
+            <Link to={"/help"}>Help</Link>
           </Col>
         </Row>
 
@@ -89,19 +81,23 @@ function Navbar() {
           </Offcanvas.Body>
         </Offcanvas>
 
-        <SearchBar></SearchBar>
+        {showCart || showAcc ? null : (
+          <>
+            <SearchBar></SearchBar>
 
-        <div className="position-relative">
-          <img
-            src="/src/assets/shopping_cart.svg"
-            alt="shopping cart"
-            className="cursor-pointer"
-            onClick={handleShowCart}
-          />
-          {cartItems.length > 0 ? <div className="cart-amount">{cartItems.length}</div> : null}
-        </div>
+            <div className="position-relative">
+              <img
+                src="/src/assets/shopping_cart.svg"
+                alt="shopping cart"
+                className="cursor-pointer"
+                onClick={handleShowCart}
+              />
+              {cartItems.length > 0 ? <div className="cart-amount">{cartItems.length}</div> : null}
+            </div>
 
-        <img src="/src/assets/account.svg" alt="my account" onClick={handleShowAcc} />
+            <img src="/src/assets/account.svg" alt="my account" onClick={handleShowAcc} />
+          </>
+        )}
 
         {/* Offcanvas of user cart */}
         <Offcanvas show={showCart} onHide={handleCloseCart} placement="end">

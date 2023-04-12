@@ -11,6 +11,7 @@ import SearchBar from "./SearchBar";
 import { useGlobalContext } from "../context/GlobalContext";
 import { formatCurrency } from '../utilities/formatCurrency';
 import storeItems from "../data/products.json";
+import UserAccount from "./UserAccount";
 
 function Navbar() {
   const location = useLocation();
@@ -124,7 +125,7 @@ function Navbar() {
             <Offcanvas.Title>My account</Offcanvas.Title>
           </Offcanvas.Header>
           <Offcanvas.Body className="body-oc">
-            <h3>Placeholder info about the account</h3>
+            <UserAccount/>
           </Offcanvas.Body>
         </Offcanvas>
       </Container>

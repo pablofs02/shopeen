@@ -51,8 +51,10 @@ function Navbar() {
       <Popover.Header as="h2">Confirmation</Popover.Header>
       <Popover.Body>
         <p className="fs-6"><strong>Are you sure you want to clean your cart?</strong></p>
-        <Button variant="danger" onClick={handleCleanCart}>Confirm cleaning</Button>
-        <Button variant="primary" onClick={() => setShowPopover(false)}>Cancel</Button>
+        <div className="d-flex justify-content-between">
+          <Button variant="danger" onClick={handleCleanCart}>Confirm cleaning</Button>
+          <Button variant="primary" onClick={() => setShowPopover(false)}>Cancel</Button>
+        </div>
       </Popover.Body>
     </Popover>
   );

@@ -1,5 +1,7 @@
 import { createContext, ReactNode, useContext, useState } from "react";
-import products from "../data/products.json";
+import noRatingProducts from "../data/noRatingProducts.json";
+
+let products = noRatingProducts;
 
 type GlobalProviderProps = {
   children: ReactNode;
@@ -133,12 +135,56 @@ export function GlobalProvider({ children }: GlobalProviderProps) {
   );
 }
 
-  /**
-   * This function return a list of random items.
-   */
-export function loadRandomItems() {
-    let item1 = products[Math.floor(Math.random()*products.length)];
-    let item2 = products[Math.floor(Math.random()*products.length)];
-    let item3 = products[Math.floor(Math.random()*products.length)];
-    return [item1, item2, item3];
+/**
+ * This function return a list of recommended items.
+ */
+export function loadRecommendations() {
+    let items = products;
+    let res = [];
+    let elem = items[0];
+    for (let i = 0; i < 3; i++) {
+        do {
+            let num = Math.floor(Math.random()*items.length);
+            elem = items[num];
+        } while (res.filter((x) => {return x.id == elem.id}).length != 0)
+        items = items.filter((x) => {return x != elem});
+        res.push(elem);
+    }
+    return res;
+}
+
+/**
+ * This function return a list of bestseller items.
+ */
+export function loadBestsellers() {
+    let items = products;
+    let res = [];
+    let elem = items[0];
+    for (let i = 0; i < 3; i++) {
+        do {
+            let num = Math.floor(Math.random()*items.length);
+            elem = items[num];
+        } while (res.filter((x) => {return x.id == elem.id}).length != 0)
+        items = items.filter((x) => {return x != elem});
+        res.push(elem);
+    }
+    return res;
+}
+
+/**
+ * This function return a list of onstock items.
+ */
+export function loadOnStock() {
+    let items = products;
+    let res = [];
+    let elem = items[0];
+    for (let i = 0; i < 3; i++) {
+        do {
+            let num = Math.floor(Math.random()*items.length);
+            elem = items[num];
+        } while (elem.stock <= 0)
+        items = items.filter((x) => {return x != elem});
+        res.push(elem);
+    }
+    return res;
 }

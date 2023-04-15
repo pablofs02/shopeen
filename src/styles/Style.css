@@ -67,7 +67,7 @@
     height: 2.5rem;
 }
 
-.navbarTop .active-page {
+.active-page {
     background-color: rgb(232, 232, 232);
 }
 
@@ -159,6 +159,10 @@
     border: 1px solid rgba(55, 55, 55, 1);
     user-select: none;
     pointer-events: none;
+}
+
+.offcanvas {
+    width: 425px!important;
 }
 
 @media (max-width: 800px) {

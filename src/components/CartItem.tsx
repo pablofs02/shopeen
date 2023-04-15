@@ -37,7 +37,7 @@ function CartItem(props: CartItemProps) {
           </Card.Body>
           <CartItemContext.Provider value={{ id, addItem, getQuantity, decreaseItemQuantity, removeItem, stock, showWarningRemove, setShowWarningRemove }}>
             <div className="count-buttons">
-              <h5>Quantity: {quantity}</h5>
+              <h5 className="me-auto">Quantity: {quantity}</h5>
               <CartButtons showCart={props.showCart}/>
             </div>
           </CartItemContext.Provider>

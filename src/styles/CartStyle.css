@@ -18,7 +18,7 @@
 
 .cart-buttons button {
     width: 2rem;
-    aspect-ratio: 1;
+    height: 36px;
     text-align: center;
     padding: 5px!important;
 }
@@ -30,7 +30,7 @@
 .count-buttons {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: safe left;
     align-items: center;
     gap: 10px;
 }
@@ -38,21 +38,12 @@
 .clean-cart {
     position: fixed;
     bottom: 0;
-    width: inherit;
+    width: 100%;
     background-color: whitesmoke;
     display: flex;
     flex-direction: row;
-    justify-content: right;
+    justify-content: left;
     align-items: center;
-}
-
-.clean-cart button {
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    border-radius: 7px;
-    padding: 0.2rem;
-    font-size: 1rem;
-    font-weight: 500;
-    margin-left: auto;
 }
 
 .clean-cart p {
@@ -62,12 +53,20 @@
     font-weight: 500;
 }
 
-.clean-cart button {
+.clean-button {
+    margin-left: auto;
+    background: transparent;
+    padding-right: 10px;
+}
+
+.clean-button button {
     border: 1px solid rgba(0, 0, 0, 0.2);
     border-radius: 7px;
     padding: 0.2rem;
     font-size: 1rem;
     font-weight: 500;
+    display: flex;
+    place-items: center;
 }
 
 .remove-item {
@@ -79,12 +78,13 @@
 .warning-buttons {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     gap: 10px;
     width: 100%;
 }
 
 .warning-buttons button {
-    width: 100%;
+    width: 4.5rem;
+    height: 36px;
 }

@@ -19,7 +19,9 @@ function SearchBar() {
 
   return (
     <div className="searchBar">
-      <input type="text" onChange={handleChange} />
+      <Link to={"/store"} className="h-100">
+        <input type="text" onChange={handleChange} />
+      </Link>
       <Link to={"/store"}>
         <img src="/src/assets/search.svg" alt="search icon" />
       </Link>

@@ -2,7 +2,6 @@ import { useContext, useEffect, useState } from "react";
 import { OverlayTrigger, Tooltip, Button } from "react-bootstrap";
 import { CartItemContext } from "../context/CartItemContext";
 
-
 interface CartButtonsProps {
   showCart: boolean;
 }
@@ -27,11 +26,15 @@ function CartButtons(props: CartButtonsProps) {
             onClick={() => {
               removeItem(id);
             }}
-            variant="danger"
-            >
+            variant="danger">
             Remove
           </Button>
-          <Button onClick={() => {setShowWarningRemove(false)}}>Keep</Button>
+          <Button
+            onClick={() => {
+              setShowWarningRemove(false);
+            }}>
+            Keep
+          </Button>
         </div>
       ) : (
         <>

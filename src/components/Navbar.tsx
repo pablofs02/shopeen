@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Row, Button, Container, Col, Offcanvas, OverlayTrigger, Popover } from "react-bootstrap/";
 import { Routes, Route, Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import { FaTrashAlt } from "react-icons/fa";
 import About from "../pages/About";
 import Help from "../pages/Help";
 import Home from "../pages/Home";
@@ -9,7 +10,7 @@ import Store from "../pages/Store";
 import CartItem from "./CartItem";
 import SearchBar from "./SearchBar";
 import { useGlobalContext } from "../context/GlobalContext";
-import { formatCurrency } from '../utilities/formatCurrency';
+import { formatCurrency } from "../utilities/formatCurrency";
 import storeItems from "../data/products.json";
 import UserAccount from "./UserAccount";
 
@@ -28,11 +29,11 @@ function Navbar() {
   const handleCloseCart = () => {
     setShowCart(false);
     setShowPopover(false);
-  }
+  };
 
   const handleShowCart = () => setShowCart(true);
 
-  const { cartItems, setCartItems,  } = useGlobalContext();
+  const { cartItems, setCartItems } = useGlobalContext();
 
   const [showPopover, setShowPopover] = useState(false);
 
@@ -50,10 +51,16 @@ function Navbar() {
     <Popover id="popover-basic">
       <Popover.Header as="h2">Confirmation</Popover.Header>
       <Popover.Body>
-        <p className="fs-6"><strong>Are you sure you want to clean your cart?</strong></p>
+        <p className="fs-6">
+          <strong>Are you sure you want to clean your cart?</strong>
+        </p>
         <div className="d-flex justify-content-between">
-          <Button variant="danger" onClick={handleCleanCart}>Confirm cleaning</Button>
-          <Button variant="primary" onClick={() => setShowPopover(false)}>Cancel</Button>
+          <Button variant="danger" onClick={handleCleanCart}>
+            Confirm cleaning
+          </Button>
+          <Button variant="primary" onClick={() => setShowPopover(false)}>
+            Cancel
+          </Button>
         </div>
       </Popover.Body>
     </Popover>
@@ -82,6 +89,7 @@ function Navbar() {
           </Col>
         </Row>
 
+        {/* Offcanvas of hamburger menu navbar */}
         <Offcanvas show={show} onHide={handleClose}>
           <Offcanvas.Header className="header-oc" closeButton>
             <Offcanvas.Title>Navigation options</Offcanvas.Title>
@@ -125,8 +133,16 @@ function Navbar() {
           <Offcanvas.Header className="header-oc" closeButton>
             <Offcanvas.Title>My cart</Offcanvas.Title>
           </Offcanvas.Header>
-          <Offcanvas.Body className="body-oc p-2">
-            <h3>Unique items in cart: {cartItems.length}</h3>
+          <div className="clean-button mt-3">
+            <OverlayTrigger trigger="click" placement="left" overlay={confirmationCleanCart} show={showPopover}>
+              <Button onClick={() => setShowPopover(true)} disabled={cartItems.length === 0} variant="danger">
+                Clean cart
+                <FaTrashAlt className="ms-2" />
+              </Button>
+            </OverlayTrigger>
+          </div>
+          <Offcanvas.Body className="body-oc p-2 pt-0 mt-4">
+            <h3 className="mt-0">Unique items in cart: {cartItems.length}</h3>
             <Container className="p-3">
               {cartItems.map((item) => (
                 <CartItem key={item.id} id={item.id} quantity={item.quantity} showCart={showCart}></CartItem>
@@ -134,10 +150,9 @@ function Navbar() {
             </Container>
           </Offcanvas.Body>
           <div className="clean-cart">
-            <p><strong>Total price: {formatCurrency(totalPrice)}</strong></p>
-            <OverlayTrigger trigger="click" placement="top" overlay={confirmationCleanCart} show={showPopover}>
-              <button onClick={() => setShowPopover(true)} disabled={cartItems.length === 0}>Clean cart</button>
-            </OverlayTrigger>
+            <p>
+              <strong>Total price: {formatCurrency(totalPrice)}</strong>
+            </p>
           </div>
         </Offcanvas>
 
@@ -147,7 +162,7 @@ function Navbar() {
             <Offcanvas.Title>My account</Offcanvas.Title>
           </Offcanvas.Header>
           <Offcanvas.Body className="body-oc">
-            <UserAccount/>
+            <UserAccount />
           </Offcanvas.Body>
         </Offcanvas>
       </Container>

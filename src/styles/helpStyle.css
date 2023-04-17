@@ -1,10 +1,25 @@
-.help-section{
-    margin-left: 30px;
-    margin-right: 50px;
-}
-
-h3 {
-    margin-top: 40px;
-}
+.help-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px;
+    background: linear-gradient(to right, white, rgb(219, 247, 255));
+    min-height: 100vh;
+  }
   
+  h2 {
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+  }
+  
+  h3 {
+    font-size: 1.5rem;
+    margin-top: 50px;
+  }
+  
+  p {
+    font-size: 1.2rem;
+    text-align: justify;
+    margin: 20px 0;
+  }
   

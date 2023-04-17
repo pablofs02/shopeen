@@ -2,11 +2,9 @@ import { Col, Row } from "react-bootstrap";
 import { StoreItem } from "../components/StoreItem";
 import { useGlobalContext } from "../context/GlobalContext";
 import storeItems from "../data/noRatingProducts.json";
-import { useEffect } from "react";
 import Filter from "../components/Filter";
 import "../styles/FilterStyle.css";
 import { useFilterContext } from "../context/FilterContext";
-import { useLocation } from "react-router-dom";
 
 function Store() {
   const { searchBarValue, minPriceActive, maxPriceActive, selectedCategoriesActive } = useFilterContext();

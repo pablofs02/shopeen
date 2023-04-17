@@ -154,6 +154,7 @@ function Navbar() {
             <p>
               <strong>Total price: {formatCurrency(totalPrice)}</strong>
             </p>
+            <Button onClick={() => {}}>{cartItems.length > 0 ? <Link to={"/purchase"}>Buy All</Link> : null}</Button>
           </div>
         </Offcanvas>
 

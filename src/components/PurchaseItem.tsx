@@ -19,7 +19,6 @@ export function PurchaseItem(props: PurchaseItemProps) {
 
   return (
     <Card className="h-100 p-3 pt-4 pb-4 store-item">
-      <Link to={"/store"}>
         <Card.Img
           variant="top"
           src={props.image}
@@ -39,7 +38,6 @@ export function PurchaseItem(props: PurchaseItemProps) {
               : props.description}
           </Card.Text>
         </Card.Body>
-      </Link>
     </Card>
   );
 }

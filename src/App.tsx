@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import Store from "./pages/Store";
 import { GlobalProvider } from "./context/GlobalContext";
 import { FilterProvider } from "./context/FilterContext";
+import Purchase from "./pages/Purchase";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             <Route path="/about" element={<About />}></Route>
             <Route path="/store" element={<Container><Store /></Container>}></Route>
             <Route path="/help" element={<Help />}></Route>
+            <Route path="/purchase" element={<Purchase/>}></Route>
           </Routes>
         </FilterProvider>
       </GlobalProvider>

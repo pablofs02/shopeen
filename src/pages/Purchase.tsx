@@ -1,7 +1,5 @@
-import { Col, Row } from "react-bootstrap";
-import { StoreItem } from "../components/StoreItem";
 import { useGlobalContext } from "../context/GlobalContext";
-import CartItem from "../components/CartItem";
+import { PurchaseItem } from "../components/PurchaseItem";
 
 function Purchase() {
     const { cartItems } = useGlobalContext()
@@ -10,15 +8,15 @@ function Purchase() {
         <>
           <section className="cuerpo">
             <div className="bar">
-              <h1>Store</h1>
+              <h1>Guille fraude</h1>
             </div>
-            <Row md={2} lg={3} xs={1} className="g-3">
-              {cartItems.map((item) => (
-                <Col key={item.id}>
-                  <CartItem id={item.id} quantity={item.quantity} showCart></CartItem>
-                </Col>
+            <div className="row">
+              {cartItems.map((item:any) => (
+                <div className="col-12 col-md-6 col-lg-4">
+                  <PurchaseItem {...item} key={item.id} ></PurchaseItem>
+                </div>
               ))}
-            </Row>
+            </div>
           </section>
         </>
       );

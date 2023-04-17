@@ -21,7 +21,7 @@ function App() {
             <Route path="/about" element={<About />}></Route>
             <Route path="/store" element={<Container><Store /></Container>}></Route>
             <Route path="/help" element={<Help />}></Route>
-            <Route path="/purchase" element={<Purchase/>}></Route>
+            <Route path="/purchase" element={<Container><Purchase/></Container>}></Route>
           </Routes>
         </FilterProvider>
       </GlobalProvider>

@@ -7,17 +7,17 @@
     min-height: 100vh;
   }
   
-  h2 {
+  h2.help {
     font-size: 2.5rem;
     margin-bottom: 50px;
   }
   
-  h3 {
+  h3.help {
     font-size: 1.5rem;
     margin-top: 50px;
   }
   
-  p {
+  p.help {
     font-size: 1.2rem;
     text-align: justify;
     margin: 20px 0;

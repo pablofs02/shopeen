@@ -1,10 +1,12 @@
-import { createContext, ReactNode, useContext, useState } from "react";
+import { createContext, ReactNode, useContext, useEffect, useState } from "react";
 
 type FilterProviderProps = {
   children: ReactNode;
 };
 
 type FilterContext = {
+  searchBarInput: any;
+  setSearchBarInput: (s:any) => void;
   searchBarValue: string;
   setSearch: (s: string) => void;
   maxPrice: number;
@@ -28,9 +30,11 @@ export function useFilterContext() {
 }
 
 export function FilterProvider({ children }: FilterProviderProps) {
+  const [searchBarInput, setSearchBarInput] = useState<React.InputHTMLAttributes<HTMLInputElement>>({});
   const [searchBarValue, setSearchBarValue] = useState("");
 
   function setSearch(s: string) {
+    searchBarInput.value = s;
     setSearchBarValue(s);
   }
 
@@ -91,6 +95,8 @@ export function FilterProvider({ children }: FilterProviderProps) {
   return (
     <FilterContext.Provider
       value={{
+        searchBarInput,
+        setSearchBarInput,
         searchBarValue,
         setSearch,
         maxPrice,

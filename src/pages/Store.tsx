@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import Filter from "../components/Filter";
 import "../styles/FilterStyle.css";
 import { useFilterContext } from "../context/FilterContext";
+import { useLocation } from "react-router-dom";
 
 function Store() {
   const { searchBarValue, minPriceActive, maxPriceActive, selectedCategoriesActive } = useFilterContext();
@@ -17,6 +18,7 @@ function Store() {
       item.price <= maxPriceActive &&
       (selectedCategoriesActive.length === 0 || selectedCategoriesActive.includes(item.category.toLowerCase()))
   );
+
 
   return (
     <>

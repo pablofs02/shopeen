@@ -4,16 +4,14 @@ import { useGlobalContext } from "../context/GlobalContext";
 import { useFilterContext } from '../context/FilterContext';
 
 function SearchBar() {
-  const { setSearch } = useFilterContext();
+  const { setSearch, setSearchBarInput } = useFilterContext();
 
-  // Solo actualiza el estado cuando el usuario pulsa intro
-  // const handleChange = (e: any) => {
-  //   if (e.key === "Enter") {
-  //     setSearch(e.target.value);
-  //   }
-  // };
+  useEffect(() => {
+    setSearchBarInput(document.querySelector("input"));
+  }, []);
 
-  const handleChange = (e: any) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchBarInput(e.target)
     setSearch(e.target.value);
   };
 

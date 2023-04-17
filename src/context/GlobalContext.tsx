@@ -10,6 +10,7 @@ type GlobalProviderProps = {
 type GlobalContext = {
   cartItems: CartItem[];
   addItem: (id: number) => void;
+  searchItem: (title: string) => void;
   getQuantity: (id: number) => number;
   decreaseItemQuantity: (id: number) => void;
   removeItem: (id: number) => void;
@@ -83,6 +84,14 @@ export function GlobalProvider({ children }: GlobalProviderProps) {
   }
 
   /**
+   * This function change the page to the Store to search for the indicated product
+   * @param id Id of the item to search on the store
+   */
+  function searchItem(title: string) {
+    console.log(title);
+  }
+
+  /**
    * This function decreases the quantity of an item in the cart or removes the item from the cart if the quantity is 1
    * @param id Id of the item to decrease quantity of
    */
@@ -122,6 +131,7 @@ export function GlobalProvider({ children }: GlobalProviderProps) {
       value={{
         cartItems,
         addItem,
+        searchItem,
         getQuantity,
         decreaseItemQuantity,
         removeItem,
@@ -146,7 +156,7 @@ export function loadRecommendations() {
         do {
             let num = Math.floor(Math.random()*items.length);
             elem = items[num];
-        } while (res.filter((x) => {return x.id == elem.id}).length != 0)
+        } while (res.filter((x) => {return x.id == elem.id}).length != 0 || elem.stock <= 0)
         items = items.filter((x) => {return x != elem});
         res.push(elem);
     }

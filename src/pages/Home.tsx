@@ -1,5 +1,5 @@
 import { Col, Row } from "react-bootstrap";
-import { StoreItem } from "../components/StoreItem";
+import { HomeItem } from "../components/HomeItem";
 import { loadBestsellers, loadOnStock, loadRecommendations } from "../context/GlobalContext";
 import '../styles/homeStyle.css'
 
@@ -10,7 +10,7 @@ export default function Home() {
             <Row md={2} lg={3} xs={1} className="g-3">
                 {loadRecommendations().map(item => (
                     <Col key={item.title}>
-                        <StoreItem {...item}></StoreItem>
+                        <HomeItem {...item}></HomeItem>
                     </Col>
                 ))}
             </Row>
@@ -18,7 +18,7 @@ export default function Home() {
             <Row md={2} lg={3} xs={1} className="g-3">
                 {loadBestsellers().map(item => (
                     <Col key={item.title}>
-                        <StoreItem {...item}></StoreItem>
+                        <HomeItem {...item}></HomeItem>
                     </Col>
                 ))}
             </Row>
@@ -26,7 +26,7 @@ export default function Home() {
             <Row md={2} lg={3} xs={1} className="g-3">
                 {loadOnStock().map(item => (
                     <Col key={item.title}>
-                        <StoreItem {...item}></StoreItem>
+                        <HomeItem {...item}></HomeItem>
                     </Col>
                 ))}
             </Row>

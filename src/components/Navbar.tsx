@@ -133,16 +133,17 @@ function Navbar() {
           <Offcanvas.Header className="header-oc" closeButton>
             <Offcanvas.Title>My cart</Offcanvas.Title>
           </Offcanvas.Header>
-          <div className="clean-button mt-3">
-            <OverlayTrigger trigger="click" placement="left" overlay={confirmationCleanCart} show={showPopover}>
-              <Button onClick={() => setShowPopover(true)} disabled={cartItems.length === 0} variant="danger">
-                Clean cart
-                <FaTrashAlt className="ms-2" />
-              </Button>
-            </OverlayTrigger>
-          </div>
+
           <Offcanvas.Body className="body-oc p-2 pt-0 mt-4">
-            <h3 className="mt-0">Unique items in cart: {cartItems.length}</h3>
+            <div className="clean-button d-flex justify-content-between w-100">
+              <h4 className="me-0 text-left">Items in cart: {cartItems.length}</h4>
+              <OverlayTrigger trigger="click" placement="left" overlay={confirmationCleanCart} show={showPopover}>
+                <Button onClick={() => setShowPopover(true)} disabled={cartItems.length === 0} variant="danger" className="">
+                  Clean cart
+                  <FaTrashAlt className="ms-2" />
+                </Button>
+              </OverlayTrigger>
+            </div>
             <Container className="p-3">
               {cartItems.map((item) => (
                 <CartItem key={item.id} id={item.id} quantity={item.quantity} showCart={showCart}></CartItem>

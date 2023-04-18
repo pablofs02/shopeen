@@ -7,7 +7,7 @@ interface CartButtonsProps {
 }
 
 function CartButtons(props: CartButtonsProps) {
-  const { id, addItem, getQuantity, decreaseItemQuantity, removeItem, stock, showWarningRemove, setShowWarningRemove } =
+  const { id, addItem, getQuantityCart, decreaseItemQuantity, removeItem, stock, showWarningRemove, setShowWarningRemove } =
     useContext(CartItemContext);
 
   const renderTooltip = <Tooltip>No more stock available</Tooltip>;
@@ -15,7 +15,7 @@ function CartButtons(props: CartButtonsProps) {
   const [show, setShow] = useState(false);
 
   useEffect(() => {
-    setShow(getQuantity(id) === stock && props.showCart);
+    setShow(getQuantityCart(id) === stock && props.showCart);
   });
 
   return (
@@ -40,10 +40,10 @@ function CartButtons(props: CartButtonsProps) {
         <>
           <OverlayTrigger show={show} placement="bottom" overlay={renderTooltip}>
             <button
-              disabled={getQuantity(id) === stock}
+              disabled={getQuantityCart(id) === stock}
               className="btn btn-primary"
               onClick={() => {
-                if (getQuantity(id) === stock) return;
+                if (getQuantityCart(id) === stock) return;
                 addItem(id);
               }}>
               +
@@ -52,7 +52,7 @@ function CartButtons(props: CartButtonsProps) {
           <button
             className="btn btn-primary"
             onClick={() => {
-              if (getQuantity(id) === 1) {
+              if (getQuantityCart(id) === 1) {
                 setShowWarningRemove(true);
                 return;
               }

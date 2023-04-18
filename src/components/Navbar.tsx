@@ -55,7 +55,12 @@ function Navbar() {
           <strong>Are you sure you want to clean your cart?</strong>
         </p>
         <div className="d-flex justify-content-between">
-          <Button variant="danger" onClick={handleCleanCart}>
+          <Button variant="danger" onClick={() => {
+            handleCleanCart();
+            if (location.pathname === "/purchase") {
+              navigate("/store");
+            }
+          }}>
             Confirm cleaning
           </Button>
           <Button variant="primary" onClick={() => setShowPopover(false)}>

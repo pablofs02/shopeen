@@ -8,12 +8,13 @@ type GlobalProviderProps = {
 };
 
 type GlobalContext = {
-  boughtItems: Purchases[];
-  setBoughtItems: (items: Purchases[]) => void;
+  boughtItemsQuantity: BoughtItemsQuantity[];
+  boughtItems: Purchase[];
+  setBoughtItems: (items: Purchase[]) => void;
   cartItems: CartItem[];
   addItem: (id: number) => void;
   searchItem: (title: string) => void;
-  getQuantity: (id: number) => number;
+  getQuantityCart: (id: number) => number;
   decreaseItemQuantity: (id: number) => void;
   removeItem: (id: number) => void;
   setCartItems: (items: CartItem[]) => void;
@@ -33,8 +34,13 @@ type CartItem = {
   quantity: number;
 };
 
-type Purchases = {
+type Purchase = {
   [key: number]: CartItem[];
+};
+
+type BoughtItemsQuantity = {
+  id: number;
+  quantity: number;
 };
 
 const GlobalContext = createContext({} as GlobalContext);
@@ -47,7 +53,9 @@ export function GlobalProvider({ children }: GlobalProviderProps) {
   const cartLocalStorage = localStorage.getItem("cart");
   const boughtItemsLocalStorage = localStorage.getItem("boughtItems");
 
-  const [boughtItems, setBoughtItems] = useState<Purchases[]>(
+  const [boughtItemsQuantity, setBoughtItemsQuantity] = useState<BoughtItemsQuantity[]>([]);
+
+  const [boughtItems, setBoughtItems] = useState<Purchase[]>(
     boughtItemsLocalStorage ? JSON.parse(boughtItemsLocalStorage) : []
   );
   const [cartItems, setCartItems] = useState<CartItem[]>(cartLocalStorage ? JSON.parse(cartLocalStorage) : []);
@@ -65,14 +73,32 @@ export function GlobalProvider({ children }: GlobalProviderProps) {
 
   useEffect(() => {
     localStorage.setItem("boughtItems", JSON.stringify(boughtItems));
+    setBoughtItemsQuantity([]);
+    setBoughtItemsQuantity(getQuantityBought());
   }, [boughtItems]);
+
+  function getQuantityBought() {
+    const result: BoughtItemsQuantity[] = [];
+    boughtItems.forEach((item) => {
+      const itemArray = Object.values(item)[0];
+      itemArray.forEach((item) => {
+        const itemIndex = result.findIndex((resultItem) => resultItem.id === item.id);
+        if (itemIndex !== -1) {
+          result[itemIndex].quantity += item.quantity;
+        } else {
+          result.push({ id: item.id, quantity: item.quantity });
+        }
+      });
+    });
+    return result;
+  }
 
   /**
    * This function gets the quantity of an item in the cart
    * @param id Id of the item to get quantity of
    * @returns the quantity of the item in the cart
    */
-  function getQuantity(id: number) {
+  function getQuantityCart(id: number) {
     const item = cartItems.find((item) => item.id === id);
     if (item) {
       return item.quantity;
@@ -148,12 +174,13 @@ export function GlobalProvider({ children }: GlobalProviderProps) {
   return (
     <GlobalContext.Provider
       value={{
+        boughtItemsQuantity,
         boughtItems,
         setBoughtItems,
         cartItems,
         addItem,
         searchItem,
-        getQuantity,
+        getQuantityCart,
         decreaseItemQuantity,
         removeItem,
         setCartItems,

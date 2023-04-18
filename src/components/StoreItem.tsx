@@ -17,9 +17,10 @@ type StoreItemsProps = {
 export function StoreItem(props: StoreItemsProps) {
   const [showMore, setShowMore] = useState(false);
 
-  const { getQuantity, addItem, decreaseItemQuantity, removeItem } = useGlobalContext();
+  const { getQuantityCart, addItem, decreaseItemQuantity, removeItem, boughtItemsQuantity } = useGlobalContext();
 
-  const quantity = getQuantity(props.id);
+  const quantity = getQuantityCart(props.id);
+  const boughtQuantity = boughtItemsQuantity.find((item) => item.id === props.id)?.quantity || 0;
 
   const handleAdd = (e: any) => {
     e.preventDefault();
@@ -51,14 +52,14 @@ export function StoreItem(props: StoreItemsProps) {
 
         {showMore ? (
           <Alert variant="info" className="fs-5 text-center">
-            Avaliable stock {props.stock}
+            Avaliable stock {props.stock - boughtQuantity}
           </Alert>
         ) : (
           <></>
         )}
 
         <div className="position-relative h-100 options">
-          {props.stock > 0 ? (
+          {props.stock - boughtQuantity > 0 ? (
             quantity === 0 ? (
               <Button onClick={handleAdd} className="addItem">
                 + Add to cart

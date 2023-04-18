@@ -15,14 +15,15 @@ interface CartItemProps {
 function CartItem(props: CartItemProps) {
   const item = storeItems.find((item) => item.id === props.id);
 
-  const { getQuantity, addItem, decreaseItemQuantity, removeItem } = useGlobalContext();
+  const { getQuantityCart, addItem, decreaseItemQuantity, removeItem, boughtItemsQuantity } = useGlobalContext();
 
   const [showWarningRemove, setShowWarningRemove] = useState(false)
 
-  const quantity = getQuantity(props.id);
+  const quantity = getQuantityCart(props.id);
+  const quantityBought = boughtItemsQuantity.find((item) => item.id === props.id)?.quantity || 0;
 
   const id = props.id;
-  const stock: number = item!.stock;
+  const stock: number = item!.stock - quantityBought;
 
   if (!item || quantity <= 0) return null;
 
@@ -35,7 +36,7 @@ function CartItem(props: CartItemProps) {
             <Card.Title>{item.title}</Card.Title>
             <Card.Text className="text-muted">Total: {formatCurrency(item.price * quantity)}</Card.Text>
           </Card.Body>
-          <CartItemContext.Provider value={{ id, addItem, getQuantity, decreaseItemQuantity, removeItem, stock, showWarningRemove, setShowWarningRemove }}>
+          <CartItemContext.Provider value={{ id, addItem, getQuantityCart, decreaseItemQuantity, removeItem, stock, showWarningRemove, setShowWarningRemove }}>
             <div className="count-buttons">
               <h5 className="me-auto">Quantity: {quantity}</h5>
               <CartButtons showCart={props.showCart}/>

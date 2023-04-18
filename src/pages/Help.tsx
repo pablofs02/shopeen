@@ -25,7 +25,7 @@ function Help() {
             </p>
 
             <h3 className='help'>Search Bar</h3>
-            <p className='help'>The search bar can be found at the top of Shopeen at all times. To use it, simply type what you want to find in the text box.
+            <p className='help'>The search bar can be found at the top of Shopeen at all times. To use it, simply type what you want to find in the text box. The search results will be displayed on the store page. You can click on the "x" button to clear the search bar.
             </p>
 
             <h3 className='help'>Managing the Shopping Cart</h3>
@@ -42,7 +42,7 @@ function Help() {
             </p>
 
             <h3 className='help'>Purchase</h3>
-            <p className='help'>To be done.
+            <p className='help'>To make a purchase, you must first add the products you want to the cart. Once you have done this, you can click on the "Proceed to checkout" button of the cart. This will take you to the purchase page, where you can see the products you have added to the cart. There you can see the total price of the purchase and the total price of the products. To complete the purchase, you must click on the "Finish purchase" button.
             </p>
         </section>
     )

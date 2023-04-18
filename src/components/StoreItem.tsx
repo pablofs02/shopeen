@@ -27,11 +27,6 @@ export function StoreItem(props: StoreItemsProps) {
     addItem(props.id);
   };
 
-  const handleDecrease = (e: any) => {
-    e.preventDefault();
-    decreaseItemQuantity(props.id);
-  };
-
   const handleRemove = (e: any) => {
     e.preventDefault();
     removeItem(props.id);
@@ -52,7 +47,7 @@ export function StoreItem(props: StoreItemsProps) {
 
         {showMore ? (
           <Alert variant="info" className="fs-5 text-center">
-            Avaliable stock {props.stock - boughtQuantity}
+            Available stock {props.stock - boughtQuantity}
           </Alert>
         ) : (
           <></>
@@ -68,16 +63,6 @@ export function StoreItem(props: StoreItemsProps) {
               <button className="remove btn btn-danger m-0" onClick={handleRemove}>
                 - Remove from cart
               </button>
-              // <div className="cart-buttons-store-item">
-              //   <button onClick={handleAdd} className="btn btn-primary">
-              //     +
-              //   </button>
-              //   <span className="count-store fw-bold fs-5">{quantity} in cart </span>
-              //   <button className="btn btn-danger" onClick={handleDecrease}>
-              //     -
-              //   </button>
-
-              // </div>
             )
           ) : (
             <div className="alertStock mb-0">

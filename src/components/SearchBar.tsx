@@ -5,7 +5,7 @@ import { useFilterContext } from "../context/FilterContext";
 import { ImCross } from "react-icons/im";
 
 function SearchBar() {
-  const { setSearch, setSearchBarInput } = useFilterContext();
+  const { setSearch, setSearchBarInput, searchBarValue } = useFilterContext();
 
   useEffect(() => {
     setSearchBarInput(document.querySelector("input"));
@@ -19,7 +19,7 @@ function SearchBar() {
   return (
     <>
       <div className="searchBar">
-        <ImCross onClick={() => {setSearch("")}} />
+        {searchBarValue ? <ImCross onClick={() => {setSearch("")}} /> : null}
         <Link to={"/store"} className="h-100">
           <input type="text" onChange={handleChange} />
         </Link>

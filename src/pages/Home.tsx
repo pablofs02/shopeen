@@ -2,8 +2,18 @@ import { Col, Row } from "react-bootstrap";
 import { HomeItem } from "../components/HomeItem";
 import { loadBestsellers, loadOnStock, loadRecommendations } from "../context/GlobalContext";
 import '../styles/homeStyle.css'
+import { useFilterContext } from "../context/FilterContext";
+import { useEffect } from "react";
 
 export default function Home() {
+    
+    const {handleClearCategory, handleClearRange} = useFilterContext();
+    
+    useEffect(() => {
+        handleClearRange();
+        handleClearCategory();
+    }, []);
+
     return (
         <section className="cuerpo">
             <h2 className="section-home">Recommendations</h2>

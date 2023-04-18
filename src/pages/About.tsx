@@ -1,6 +1,16 @@
+import { useEffect } from 'react';
+import { useFilterContext } from '../context/FilterContext';
 import '../styles/AboutStyle.css'
 
 function About(){
+    
+    const {handleClearCategory, handleClearRange} = useFilterContext();
+    
+    useEffect(() => {
+        handleClearRange();
+        handleClearCategory();
+    }, []);
+    
     return(
         <section className="cuerpo about">
             <h1>About us:</h1>

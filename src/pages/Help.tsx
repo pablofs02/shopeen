@@ -1,7 +1,15 @@
+import { useEffect } from 'react';
+import { useFilterContext } from '../context/FilterContext';
 import '../styles/helpStyle.css'
 
 function Help() {
 
+    const {handleClearCategory, handleClearRange} = useFilterContext();
+    
+    useEffect(() => {
+        handleClearRange();
+        handleClearCategory();
+    }, []);
     
     return (
         <section className="help-section">

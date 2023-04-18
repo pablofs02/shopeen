@@ -6,6 +6,7 @@ import { formatCurrency } from "../utilities/formatCurrency";
 import storeItems from "../data/products.json";
 import { useEffect, useState } from "react";
 import { FaTrashAlt } from "react-icons/fa";
+import { useFilterContext } from "../context/FilterContext";
 
 function Purchase() {
   const { cartItems, setCartItems, boughtItems, setBoughtItems } = useGlobalContext();
@@ -16,6 +17,13 @@ function Purchase() {
     const itemPrice = storeItems.find((storeItem) => storeItem.id === item.id)?.price;
     return acc + itemPrice! * item.quantity;
   }, 0);
+
+  const {handleClearCategory, handleClearRange} = useFilterContext();
+    
+    useEffect(() => {
+        handleClearRange();
+        handleClearCategory();
+    }, []);
 
   const handleFinishPurchase = (e: any) => {
     const id: number = boughtItems.length;

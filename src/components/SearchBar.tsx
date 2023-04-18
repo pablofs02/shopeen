@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useGlobalContext } from "../context/GlobalContext";
-import { useFilterContext } from '../context/FilterContext';
+import { useFilterContext } from "../context/FilterContext";
+import { ImCross } from "react-icons/im";
 
 function SearchBar() {
   const { setSearch, setSearchBarInput } = useFilterContext();
@@ -11,19 +12,22 @@ function SearchBar() {
   }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchBarInput(e.target)
+    setSearchBarInput(e.target);
     setSearch(e.target.value);
   };
 
   return (
-    <div className="searchBar">
-      <Link to={"/store"} className="h-100">
-        <input type="text" onChange={handleChange} />
-      </Link>
-      <Link to={"/store"}>
-        <img src="/src/assets/search.svg" alt="search icon" />
-      </Link>
-    </div>
+    <>
+      <div className="searchBar">
+        <ImCross onClick={() => {setSearch("")}} />
+        <Link to={"/store"} className="h-100">
+          <input type="text" onChange={handleChange} />
+        </Link>
+        <Link to={"/store"}>
+          <img src="/src/assets/search.svg" alt="search icon" />
+        </Link>
+      </div>
+    </>
   );
 }
 

@@ -20,9 +20,9 @@ function Store() {
 
   return (
     <>
+    <h1 className="page-header">Store</h1>
       <section className="cuerpo">
         <div className="bar">
-          <h1>Store</h1>
           <Filter />
         </div>
         <Row md={2} lg={3} xs={1} className="g-3">

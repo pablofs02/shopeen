@@ -26,6 +26,15 @@ section.cuerpo {
     display: flex;
 }
 
+.page-header {
+    position: absolute;
+    top: var(--navbarHeight);
+    right: 30px;
+    color: #6c757d!important;
+    background-color: rgba(240, 240, 240, 0.8);
+    box-shadow: 0 0 20px 1px rgba(240, 230, 230, 0.8);
+}
+
 /* ::-webkit-scrollbar {
     width: auto;
 }

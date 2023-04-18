@@ -8,8 +8,8 @@ type GlobalProviderProps = {
 };
 
 type GlobalContext = {
-  buyedItems: CartItem[];
-  setBuyedItems: (items: CartItem[]) => void;
+  boughtItems: Purchases[];
+  setBoughtItems: (items: Purchases[]) => void;
   cartItems: CartItem[];
   addItem: (id: number) => void;
   searchItem: (title: string) => void;
@@ -33,6 +33,10 @@ type CartItem = {
   quantity: number;
 };
 
+type Purchases = {
+  [key: string]: CartItem[];
+};
+
 const GlobalContext = createContext({} as GlobalContext);
 
 export function useGlobalContext() {
@@ -41,7 +45,7 @@ export function useGlobalContext() {
 
 export function GlobalProvider({ children }: GlobalProviderProps) {
   
-  const [buyedItems, setBuyedItems] = useState<CartItem[]>([]);
+  const [boughtItems, setBoughtItems] = useState<Purchases[]>([]);
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
   const [userInfo, setUserInfo] = useState<UserInfo>({
@@ -132,8 +136,8 @@ export function GlobalProvider({ children }: GlobalProviderProps) {
   return (
     <GlobalContext.Provider
       value={{
-        buyedItems,
-        setBuyedItems,
+        boughtItems,
+        setBoughtItems,
         cartItems,
         addItem,
         searchItem,

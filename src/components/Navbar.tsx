@@ -3,10 +3,6 @@ import { Row, Button, Container, Col, Offcanvas, OverlayTrigger, Popover } from 
 import { Routes, Route, Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { FaTrashAlt } from "react-icons/fa";
-import About from "../pages/About";
-import Help from "../pages/Help";
-import Home from "../pages/Home";
-import Store from "../pages/Store";
 import CartItem from "./CartItem";
 import SearchBar from "./SearchBar";
 import { useGlobalContext } from "../context/GlobalContext";

@@ -39,6 +39,7 @@ export function useGlobalContext() {
 
 export function GlobalProvider({ children }: GlobalProviderProps) {
   
+  const [buyedItems, setBuyedItems] = useState<CartItem[]>([]);
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
   const [userInfo, setUserInfo] = useState<UserInfo>({

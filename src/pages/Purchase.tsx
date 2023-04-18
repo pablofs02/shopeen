@@ -15,7 +15,7 @@ function Purchase() {
   }, 0);
 
   const handleFinishPurchase = (e: any) => {
-    const id : number = boughtItems.length;
+    const id: number = boughtItems.length;
     setBoughtItems([...boughtItems, { [id]: cartItems }]);
     setCartItems([]);
   };
@@ -24,15 +24,20 @@ function Purchase() {
     <>
       <h1 className="page-header">Purchase</h1>
 
-      <div className="subtotal">
-        <p>
-          <strong>Total price: {formatCurrency(totalPrice)}</strong>
-        </p>
-        <Button variant="warning" onClick={handleFinishPurchase}>
-          Finish purchase
-        </Button>
-      </div>
-
+      {cartItems.length > 0 ? (
+        <div className="subtotal">
+          <p>
+            <strong>Total price: {formatCurrency(totalPrice)}</strong>
+          </p>
+          <Button variant="warning" onClick={handleFinishPurchase}>
+            Finish purchase
+          </Button>
+        </div>
+      ) : (
+        <div className="purchase-finished">
+          <h2>Purchase finished correctly</h2>
+        </div>
+      )}
       <section className="cuerpo mt-4">
         <Row md={2} lg={3} xs={1} className="g-3">
           {cartItems.map((item: any) => (

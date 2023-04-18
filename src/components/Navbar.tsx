@@ -1,14 +1,16 @@
 import { useState } from "react";
 import { Row, Button, Container, Col, Offcanvas, OverlayTrigger, Popover } from "react-bootstrap/";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, Navigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { FaTrashAlt } from "react-icons/fa";
+import { BsFillCartCheckFill } from "react-icons/bs";
 import CartItem from "./CartItem";
 import SearchBar from "./SearchBar";
 import { useGlobalContext } from "../context/GlobalContext";
 import { formatCurrency } from "../utilities/formatCurrency";
 import storeItems from "../data/products.json";
 import UserAccount from "./UserAccount";
+import { useNavigate } from "react-router-dom";
 
 function Navbar() {
   const location = useLocation();
@@ -37,6 +39,8 @@ function Navbar() {
     setCartItems([]);
     setShowPopover(false);
   };
+
+  const navigate = useNavigate();
 
   const totalPrice = cartItems.reduce((acc, item) => {
     const itemPrice = storeItems.find((storeItem) => storeItem.id === item.id)?.price;
@@ -134,7 +138,11 @@ function Navbar() {
             <div className="clean-button d-flex justify-content-between w-100">
               <h4 className="me-0 text-left">Items in cart: {cartItems.length}</h4>
               <OverlayTrigger trigger="click" placement="left" overlay={confirmationCleanCart} show={showPopover}>
-                <Button onClick={() => setShowPopover(true)} disabled={cartItems.length === 0} variant="danger" className="">
+                <Button
+                  onClick={() => setShowPopover(true)}
+                  disabled={cartItems.length === 0}
+                  variant="danger"
+                  className="">
                   Clean cart
                   <FaTrashAlt className="ms-2" />
                 </Button>
@@ -150,7 +158,17 @@ function Navbar() {
             <p>
               <strong>Total price: {formatCurrency(totalPrice)}</strong>
             </p>
-            {cartItems.length > 0 ? <Button onClick={() => {setShowCart(false)}}><Link to={"/purchase"}>Buy All</Link></Button> : null} 
+            {cartItems.length > 0 ? (
+              <Button
+                className="p-1 d-flex justify-content-center align-items-center"
+                onClick={() => {
+                  handleCloseCart();
+                  navigate("/purchase");
+                }}>
+                Proceed to checkout
+                <BsFillCartCheckFill className="ms-2" />
+              </Button>
+            ) : null}
           </div>
         </Offcanvas>
 

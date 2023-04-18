@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Offcanvas } from "react-bootstrap";
+import { Alert, Offcanvas } from "react-bootstrap";
 import { useGlobalContext } from "../context/GlobalContext";
 import { useFilterContext } from "../context/FilterContext";
 import { AiFillCaretDown, AiFillCaretRight } from "react-icons/ai";
@@ -80,6 +80,7 @@ function Filter() {
                 placeholder="10000.00"
               />
             </div>
+            {minPrice > maxPrice ? ( <Alert className="mt-3" variant="danger">The max price should be greater than the min price </Alert> ) : <></>}
           </div>
           <div className="filter-category filters">
             <div className="filter-header">
@@ -140,8 +141,10 @@ function Filter() {
         <div className="filter-button">
           <button
             onClick={(e) => {
-              setShow(false);
-              handleActiveFilter(e);
+              if (minPrice < maxPrice ) {
+                handleActiveFilter(e);
+                setShow(false);
+              } 
             }}>
             Filter
           </button>

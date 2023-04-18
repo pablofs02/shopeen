@@ -1,6 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import { OverlayTrigger, Tooltip, Button } from "react-bootstrap";
 import { CartItemContext } from "../context/CartItemContext";
+import { useNavigate } from "react-router-dom";
+import { useGlobalContext } from "../context/GlobalContext";
 
 interface CartButtonsProps {
   showCart: boolean;
@@ -18,6 +20,10 @@ function CartButtons(props: CartButtonsProps) {
     setShow(getQuantityCart(id) === stock && props.showCart);
   });
 
+  const {cartItems} = useGlobalContext()
+
+  const navigate = useNavigate()
+
   return (
     <div className="cart-buttons">
       {showWarningRemove ? (
@@ -25,6 +31,9 @@ function CartButtons(props: CartButtonsProps) {
           <Button
             onClick={() => {
               removeItem(id);
+              if (cartItems.length == 1 && location.pathname === "/purchase") {
+                navigate("/store");
+              }
             }}
             variant="danger">
             Remove

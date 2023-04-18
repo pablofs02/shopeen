@@ -88,12 +88,13 @@ export function FilterProvider({ children }: FilterProviderProps) {
   };
 
   const handleActiveFilter = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    if (isNaN(minPrice)) {
+    if (isNaN(minPrice) || minPrice > maxPrice) {
       setMinPriceActive(0);
     } else {
       setMinPriceActive(minPrice);
     }
-    if (isNaN(maxPrice)) {
+
+    if (isNaN(maxPrice) || maxPrice < minPrice) {
       setMaxPriceActive(10000);
     } else {
       setMaxPriceActive(maxPrice);

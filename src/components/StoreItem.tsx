@@ -17,8 +17,7 @@ type StoreItemsProps = {
 export function StoreItem(props: StoreItemsProps) {
   const [showMore, setShowMore] = useState(false);
 
-  const { getQuantity, addItem, decreaseItemQuantity, removeItem } =
-    useGlobalContext();
+  const { getQuantity, addItem, decreaseItemQuantity, removeItem } = useGlobalContext();
 
   const quantity = getQuantity(props.id);
 
@@ -39,37 +38,24 @@ export function StoreItem(props: StoreItemsProps) {
 
   return (
     <Card className="h-100 p-3 pt-4 pb-4 store-item d-flex justify-content-between align-item-center flex-column">
-      <Card.Img
-        variant="top"
-        src={props.image}
-        height="170px"
-        style={{ objectFit: "contain" }}
-      />
+      <Card.Img variant="top" src={props.image} height="170px" style={{ objectFit: "contain" }} />
       <Card.Body className="d-flex flex-column h-100 p-0 ps-2 pe-2">
-        <div>
-          <Card.Title className="mt-4 d-flex justify-content-between align-items-baseline">
-            <span>{props.title}</span>
-            <span className="fw-bold price fs-5 ms-3 text-muted">
-              {formatCurrency(props.price)}
-            </span>
-          </Card.Title>
+        <Card.Title className="mt-4 d-flex justify-content-between align-items-baseline">
+          <span>{props.title}</span>
+          <span className="fw-bold price fs-5 ms-3 text-muted">{formatCurrency(props.price)}</span>
+        </Card.Title>
 
-          <Card.Text className="desc-store d-flex flex-column justify-content-center align-items-center card-description mt-3">
-            <p>
-              {showMore
-                ? props.description
-                : props.description.slice(0, 50) + "..."}
-            </p>
-          </Card.Text>
-        </div>
-        
-          {showMore ? (
-            <Alert variant="info" className="fs-5 text-center">
-              Avaliable stock {props.stock}
-            </Alert>
-          ) : (
-            <></>
-          )}
+        <Card.Text className="desc-store d-flex flex-column justify-content-center align-items-center card-description mt-3">
+          {showMore ? props.description : props.description.slice(0, 50) + "..."}
+        </Card.Text>
+
+        {showMore ? (
+          <Alert variant="info" className="fs-5 text-center">
+            Avaliable stock {props.stock}
+          </Alert>
+        ) : (
+          <></>
+        )}
 
         <div className="position-relative h-100 options">
           {props.stock > 0 ? (
@@ -78,10 +64,7 @@ export function StoreItem(props: StoreItemsProps) {
                 + Add to cart
               </Button>
             ) : (
-              <button
-                className="remove btn btn-danger m-0"
-                onClick={handleRemove}
-              >
+              <button className="remove btn btn-danger m-0" onClick={handleRemove}>
                 - Remove from cart
               </button>
               // <div className="cart-buttons-store-item">
@@ -98,9 +81,7 @@ export function StoreItem(props: StoreItemsProps) {
           ) : (
             <div className="alertStock mb-0">
               <Alert variant="danger" className="text-center mb-0">
-                <span className="fw-bold fs-5 p-auto">
-                  There is no stock left.
-                </span>
+                <span className="fw-bold fs-5 p-auto">There is no stock left.</span>
               </Alert>
             </div>
           )}
@@ -108,8 +89,7 @@ export function StoreItem(props: StoreItemsProps) {
             onClick={() => {
               setShowMore(!showMore);
             }}
-            className="expandContractButton"
-          >
+            className="expandContractButton">
             {showMore ? (
               <>
                 <span>Show Less</span> <MdExpandLess className="ms-1" />

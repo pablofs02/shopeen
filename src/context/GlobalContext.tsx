@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useContext, useState } from "react";
+import { createContext, ReactNode, useContext, useEffect, useState } from "react";
 import noRatingProducts from "../data/noRatingProducts.json";
 
 let products = noRatingProducts;
@@ -34,7 +34,7 @@ type CartItem = {
 };
 
 type Purchases = {
-  [key: string]: CartItem[];
+  [key: number]: CartItem[];
 };
 
 const GlobalContext = createContext({} as GlobalContext);
@@ -44,9 +44,13 @@ export function useGlobalContext() {
 }
 
 export function GlobalProvider({ children }: GlobalProviderProps) {
-  
-  const [boughtItems, setBoughtItems] = useState<Purchases[]>([]);
-  const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const cartLocalStorage = localStorage.getItem("cart");
+  const boughtItemsLocalStorage = localStorage.getItem("boughtItems");
+
+  const [boughtItems, setBoughtItems] = useState<Purchases[]>(
+    boughtItemsLocalStorage ? JSON.parse(boughtItemsLocalStorage) : []
+  );
+  const [cartItems, setCartItems] = useState<CartItem[]>(cartLocalStorage ? JSON.parse(cartLocalStorage) : []);
 
   const [userInfo, setUserInfo] = useState<UserInfo>({
     name: "John",
@@ -54,6 +58,14 @@ export function GlobalProvider({ children }: GlobalProviderProps) {
     email: "johncena@example.com",
     address: "5th Avenue",
   });
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cartItems));
+  }, [cartItems]);
+
+  useEffect(() => {
+    localStorage.setItem("boughtItems", JSON.stringify(boughtItems));
+  }, [boughtItems]);
 
   /**
    * This function gets the quantity of an item in the cart
@@ -146,9 +158,8 @@ export function GlobalProvider({ children }: GlobalProviderProps) {
         removeItem,
         setCartItems,
         userInfo,
-        setUserInfo
-      }}
-    >
+        setUserInfo,
+      }}>
       {children}
     </GlobalContext.Provider>
   );
@@ -158,52 +169,67 @@ export function GlobalProvider({ children }: GlobalProviderProps) {
  * This function return a list of recommended items.
  */
 export function loadRecommendations() {
-    let items = products;
-    let res = [];
-    let elem = items[0];
-    for (let i = 0; i < 3; i++) {
-        do {
-            let num = Math.floor(Math.random()*items.length);
-            elem = items[num];
-        } while (res.filter((x) => {return x.id == elem.id}).length != 0 || elem.stock <= 0)
-        items = items.filter((x) => {return x != elem});
-        res.push(elem);
-    }
-    return res;
+  let items = products;
+  let res = [];
+  let elem = items[0];
+  for (let i = 0; i < 3; i++) {
+    do {
+      let num = Math.floor(Math.random() * items.length);
+      elem = items[num];
+    } while (
+      res.filter((x) => {
+        return x.id == elem.id;
+      }).length != 0 ||
+      elem.stock <= 0
+    );
+    items = items.filter((x) => {
+      return x != elem;
+    });
+    res.push(elem);
+  }
+  return res;
 }
 
 /**
  * This function return a list of bestseller items.
  */
 export function loadBestsellers() {
-    let items = products;
-    let res = [];
-    let elem = items[0];
-    for (let i = 0; i < 3; i++) {
-        do {
-            let num = Math.floor(Math.random()*items.length);
-            elem = items[num];
-        } while (res.filter((x) => {return x.id == elem.id}).length != 0)
-        items = items.filter((x) => {return x != elem});
-        res.push(elem);
-    }
-    return res;
+  let items = products;
+  let res = [];
+  let elem = items[0];
+  for (let i = 0; i < 3; i++) {
+    do {
+      let num = Math.floor(Math.random() * items.length);
+      elem = items[num];
+    } while (
+      res.filter((x) => {
+        return x.id == elem.id;
+      }).length != 0
+    );
+    items = items.filter((x) => {
+      return x != elem;
+    });
+    res.push(elem);
+  }
+  return res;
 }
 
 /**
  * This function return a list of onstock items.
  */
 export function loadOnStock() {
-    let items = products;
-    let res = [];
-    let elem = items[0];
-    for (let i = 0; i < 3; i++) {
-        do {
-            let num = Math.floor(Math.random()*items.length);
-            elem = items[num];
-        } while (elem.stock <= 0)
-        items = items.filter((x) => {return x != elem});
-        res.push(elem);
-    }
-    return res;
+  let items = products;
+  let res = [];
+  let elem = items[0];
+  for (let i = 0; i < 3; i++) {
+    do {
+      let num = Math.floor(Math.random() * items.length);
+      elem = items[num];
+    } while (elem.stock <= 0);
+    items = items.filter((x) => {
+      return x != elem;
+    });
+    res.push(elem);
+  }
+  return res;
 }

@@ -146,11 +146,11 @@ function Navbar() {
               ))}
             </Container>
           </Offcanvas.Body>
-          <div className="clean-cart">
+          <div className="total-price">
             <p>
               <strong>Total price: {formatCurrency(totalPrice)}</strong>
             </p>
-            <Button onClick={() => {}}>{cartItems.length > 0 ? <Link to={"/purchase"}>Buy All</Link> : null}</Button>
+            {cartItems.length > 0 ? <Button onClick={() => {}}><Link to={"/purchase"}>Buy All</Link></Button> : null} 
           </div>
         </Offcanvas>
 

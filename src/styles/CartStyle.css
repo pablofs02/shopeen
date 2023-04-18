@@ -35,7 +35,7 @@
     gap: 10px;
 }
 
-.clean-cart {
+.total-price {
     position: fixed;
     bottom: 0;
     width: 100%;
@@ -46,7 +46,7 @@
     align-items: center;
 }
 
-.clean-cart p {
+.total-price p {
     margin: 0;
     padding: 0.5rem;
     font-size: 1rem;
@@ -87,4 +87,22 @@
 .warning-buttons button {
     width: 4.5rem;
     height: 36px;
+}
+
+.subtotal {
+    background-color: white;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
+    padding: 7px;
+    padding-left: 15px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    flex-direction: row;
+    width: fit-content;
+    border-radius: 7px;
+}
+
+.subtotal p {
+    margin: 0;
+    margin-right: 1rem;
 }

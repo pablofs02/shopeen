@@ -21,6 +21,12 @@ type FilterContext = {
   handleMaxPriceChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handleClearRange: () => void;
   handleActiveFilter: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  setMinPrice: (n: number) => void;
+  setMaxPrice: (n: number) => void;
+  setSelectedCategories: (s: string[]) => void;
+  setMinPriceActive: (n: number) => void;
+  setMaxPriceActive: (n: number) => void;
+  setSelectedCategoriesActive: (s: string[]) => void;
 };
 
 const FilterContext = createContext({} as FilterContext);
@@ -68,6 +74,8 @@ export function FilterProvider({ children }: FilterProviderProps) {
   const handleClearRange = () => {
     setMinPrice(0);
     setMaxPrice(10000);
+    setMaxPriceActive(10000);
+    setMinPriceActive(0);
   };
 
   const handleMinPriceChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -111,6 +119,12 @@ export function FilterProvider({ children }: FilterProviderProps) {
         handleMaxPriceChange,
         handleClearRange,
         handleActiveFilter,
+        setMinPrice,
+        setMaxPrice,
+        setSelectedCategories,
+        setMinPriceActive,
+        setMaxPriceActive,
+        setSelectedCategoriesActive,
       }}>
       {children}
     </FilterContext.Provider>

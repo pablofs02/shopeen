@@ -19,6 +19,11 @@ function Filter() {
     handleActiveFilter,
   } = useFilterContext();
 
+  useEffect(() => {
+    handleClearRange();
+    handleClearCategory();
+  }, []);
+
   return (
     <>
       <div className="filter">

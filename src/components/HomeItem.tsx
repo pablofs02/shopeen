@@ -18,6 +18,8 @@ export function HomeItem(props: HomeItemsProps) {
   const navigate = useNavigate();
   const { setSearch } = useFilterContext();
 
+  const { setMaxPrice, setMinPrice, setMinPriceActive, setMaxPriceActive, setSelectedCategories} = useFilterContext();
+
   const handleSelection = (e: any) => {
     e.preventDefault();
     navigate("/store");

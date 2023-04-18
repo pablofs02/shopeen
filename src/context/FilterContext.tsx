@@ -69,6 +69,7 @@ export function FilterProvider({ children }: FilterProviderProps) {
 
   const handleClearCategory = () => {
     setSelectedCategories([]);
+    setSelectedCategoriesActive([]);
   };
 
   const handleClearRange = () => {

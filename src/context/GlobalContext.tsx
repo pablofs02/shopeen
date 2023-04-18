@@ -8,6 +8,8 @@ type GlobalProviderProps = {
 };
 
 type GlobalContext = {
+  buyedItems: CartItem[];
+  setBuyedItems: (items: CartItem[]) => void;
   cartItems: CartItem[];
   addItem: (id: number) => void;
   searchItem: (title: string) => void;
@@ -130,6 +132,8 @@ export function GlobalProvider({ children }: GlobalProviderProps) {
   return (
     <GlobalContext.Provider
       value={{
+        buyedItems,
+        setBuyedItems,
         cartItems,
         addItem,
         searchItem,

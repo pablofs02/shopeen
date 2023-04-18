@@ -115,16 +115,15 @@ function Navbar() {
             <SearchBar></SearchBar>
 
             <div className="position-relative">
-              <img
-                src="/src/assets/shopping_cart.svg"
-                alt="shopping cart"
-                className="cursor-pointer"
-                onClick={handleShowCart}
-              />
+              <button onClick={handleShowCart} className="btn-icons">
+                <img src="/src/assets/shopping_cart.svg" alt="shopping cart" />
+              </button>
               {cartItems.length > 0 ? <div className="cart-amount">{cartItems.length}</div> : null}
             </div>
 
-            <img src="/src/assets/account.svg" alt="my account" onClick={handleShowAcc} />
+            <button onClick={handleShowAcc} className="btn-icons">
+              <img src="/src/assets/account.svg" alt="my account" />
+            </button>
           </>
         )}
 

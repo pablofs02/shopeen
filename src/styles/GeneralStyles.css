@@ -33,6 +33,11 @@ section.cuerpo {
     color: #6c757d!important;
 }
 
+.btn-icons {
+    background: transparent;
+    border: none;
+}
+
 /* ::-webkit-scrollbar {
     width: auto;
 }

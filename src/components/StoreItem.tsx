@@ -17,7 +17,7 @@ type StoreItemsProps = {
 export function StoreItem(props: StoreItemsProps) {
   const [showMore, setShowMore] = useState(false);
 
-  const { getQuantityCart, addItem, decreaseItemQuantity, removeItem, boughtItemsQuantity } = useGlobalContext();
+  const { getQuantityCart, addItem, removeItem, boughtItemsQuantity } = useGlobalContext();
 
   const quantity = getQuantityCart(props.id);
   const boughtQuantity = boughtItemsQuantity.find((item) => item.id === props.id)?.quantity || 0;

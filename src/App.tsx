@@ -17,7 +17,7 @@ function App() {
         <FilterProvider>
           <Navbar />
           <Routes>
-            <Route path="/" element={<Container><Home /></Container>} />
+            <Route path="/ProyIU" element={<Container><Home /></Container>} />
             <Route path="/about" element={<About />}></Route>
             <Route path="/store" element={<Container><Store /></Container>}></Route>
             <Route path="/help" element={<Help />}></Route>

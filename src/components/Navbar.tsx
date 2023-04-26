@@ -99,8 +99,8 @@ function Navbar() {
               />
             </button>
           </Col>
-          <Col className={location.pathname === "/" ? "active-page" : ""}>
-            <Link to={"/"}>Home</Link>
+          <Col className={location.pathname === "/ProyIU" ? "active-page" : ""}>
+            <Link to={"/ProyIU"}>Home</Link>
           </Col>
           <Col className={location.pathname === "/store" ? "active-page" : ""}>
             <Link to={"/store"}>Store</Link>
@@ -119,11 +119,7 @@ function Navbar() {
             <Offcanvas.Title>Navigation options</Offcanvas.Title>
           </Offcanvas.Header>
           <Offcanvas.Body className="body-oc">
-            <Link
-              to={"/"}
-              className={location.pathname === "/" ? "active-page" : ""}
-              onClick={handleClose}
-            >
+            <Link to={"/ProyIU"} className={location.pathname === "/ProyIU" ? "active-page" : ""} onClick={handleClose}>
               Home
             </Link>
             <Link

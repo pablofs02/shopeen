@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useGlobalContext } from "../context/GlobalContext";
 import { useFilterContext } from "../context/FilterContext";
 import { ImCross } from "react-icons/im";
+import search from "../assets/search.svg";
 
 function SearchBar() {
   const { setSearch, setSearchBarInput, searchBarValue } = useFilterContext();
@@ -24,7 +25,7 @@ function SearchBar() {
           <input type="text" onChange={handleChange} />
         </Link>
         <Link to={"/store"}>
-          <img src="/src/assets/search.svg" alt="search icon" />
+          <img src={search} alt="search icon" />
         </Link>
       </div>
     </>

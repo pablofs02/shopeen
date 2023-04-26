@@ -1,5 +1,13 @@
 import { useEffect, useState } from "react";
-import { Row, Button, Container, Col, Offcanvas, OverlayTrigger, Popover } from "react-bootstrap/";
+import {
+  Row,
+  Button,
+  Container,
+  Col,
+  Offcanvas,
+  OverlayTrigger,
+  Popover,
+} from "react-bootstrap/";
 import { Routes, Route, Link, Navigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { FaTrashAlt } from "react-icons/fa";
@@ -11,6 +19,9 @@ import { formatCurrency } from "../utilities/formatCurrency";
 import storeItems from "../data/products.json";
 import UserAccount from "./UserAccount";
 import { useNavigate } from "react-router-dom";
+import hamburger from "../assets/hamburger-menu.svg";
+import account from "../assets/account.svg";
+import shopping_cart from "../assets/shopping_cart.svg";
 
 function Navbar() {
   const location = useLocation();
@@ -43,7 +54,9 @@ function Navbar() {
   const navigate = useNavigate();
 
   const totalPrice = cartItems.reduce((acc, item) => {
-    const itemPrice = storeItems.find((storeItem) => storeItem.id === item.id)?.price;
+    const itemPrice = storeItems.find(
+      (storeItem) => storeItem.id === item.id
+    )?.price;
     return acc + itemPrice! * item.quantity;
   }, 0);
 
@@ -55,12 +68,15 @@ function Navbar() {
           <strong>Are you sure you want to clean your cart?</strong>
         </p>
         <div className="d-flex justify-content-between">
-          <Button variant="danger" onClick={() => {
-            handleCleanCart();
-            if (location.pathname === "/purchase") {
-              navigate("/store");
-            }
-          }}>
+          <Button
+            variant="danger"
+            onClick={() => {
+              handleCleanCart();
+              if (location.pathname === "/purchase") {
+                navigate("/store");
+              }
+            }}
+          >
             Confirm cleaning
           </Button>
           <Button variant="primary" onClick={() => setShowPopover(false)}>
@@ -77,7 +93,10 @@ function Navbar() {
         <Row md={4} lg={4} className="text-center">
           <Col className="hamburger-menu">
             <button className="hamburger-button" onClick={handleShow}>
-              <img src="/src/assets/hamburger-menu.svg" alt="hamburger menu button" />
+              <img
+                src={hamburger}
+                alt="hamburger menu button"
+              />
             </button>
           </Col>
           <Col className={location.pathname === "/" ? "active-page" : ""}>
@@ -100,16 +119,32 @@ function Navbar() {
             <Offcanvas.Title>Navigation options</Offcanvas.Title>
           </Offcanvas.Header>
           <Offcanvas.Body className="body-oc">
-            <Link to={"/"} className={location.pathname === "/" ? "active-page" : ""} onClick={handleClose}>
+            <Link
+              to={"/"}
+              className={location.pathname === "/" ? "active-page" : ""}
+              onClick={handleClose}
+            >
               Home
             </Link>
-            <Link to={"/store"} className={location.pathname === "/store" ? "active-page" : ""} onClick={handleClose}>
+            <Link
+              to={"/store"}
+              className={location.pathname === "/store" ? "active-page" : ""}
+              onClick={handleClose}
+            >
               Store
             </Link>
-            <Link to={"/about"} className={location.pathname === "/about" ? "active-page" : ""} onClick={handleClose}>
+            <Link
+              to={"/about"}
+              className={location.pathname === "/about" ? "active-page" : ""}
+              onClick={handleClose}
+            >
               About
             </Link>
-            <Link to={"/help"} className={location.pathname === "/help" ? "active-page" : ""} onClick={handleClose}>
+            <Link
+              to={"/help"}
+              className={location.pathname === "/help" ? "active-page" : ""}
+              onClick={handleClose}
+            >
               Help
             </Link>
           </Offcanvas.Body>
@@ -121,13 +156,15 @@ function Navbar() {
 
             <div className="position-relative">
               <button onClick={handleShowCart} className="btn-icons">
-                <img src="/src/assets/shopping_cart.svg" alt="shopping cart" />
+                <img src={shopping_cart} alt="shopping cart" />
               </button>
-              {cartItems.length > 0 ? <div className="cart-amount">{cartItems.length}</div> : null}
+              {cartItems.length > 0 ? (
+                <div className="cart-amount">{cartItems.length}</div>
+              ) : null}
             </div>
 
             <button onClick={handleShowAcc} className="btn-icons">
-              <img src="/src/assets/account.svg" alt="my account" />
+              <img src={account} alt="my account" />
             </button>
           </>
         )}
@@ -140,21 +177,57 @@ function Navbar() {
 
           <Offcanvas.Body className="body-oc p-2 pt-0 mt-4">
             <div className="clean-button d-flex justify-content-between w-100">
-              <h4 className="me-0 text-left">Items in cart: {cartItems.length}</h4>
-              <OverlayTrigger trigger="click" placement="left" overlay={confirmationCleanCart} show={showPopover}>
+              <h4 className="me-0 text-left">
+                Items in cart: {cartItems.length}
+              </h4>
+              {showPopover ? ( // Popover to confirm cleaning cart
+                <Popover id="popover-basic">
+                  <Popover.Header as="h2">Confirmation</Popover.Header>
+                  <Popover.Body>
+                    <p className="fs-6">
+                      <strong>Are you sure you want to clean your cart?</strong>
+                    </p>
+                    <div className="d-flex justify-content-between">
+                      <Button
+                        variant="danger"
+                        onClick={() => {
+                          handleCleanCart();
+                          if (location.pathname === "/purchase") {
+                            navigate("/store");
+                          }
+                        }}
+                      >
+                        Confirm cleaning
+                      </Button>
+                      <Button
+                        variant="primary"
+                        onClick={() => setShowPopover(false)}
+                      >
+                        Cancel
+                      </Button>
+                    </div>
+                  </Popover.Body>
+                </Popover>
+              ) : (
                 <Button
                   onClick={() => setShowPopover(true)}
                   disabled={cartItems.length === 0}
                   variant="danger"
-                  className="">
+                  className=""
+                >
                   Clean cart
                   <FaTrashAlt className="ms-2" />
                 </Button>
-              </OverlayTrigger>
+              )}
             </div>
             <Container className="p-3">
               {cartItems.map((item) => (
-                <CartItem key={item.id} id={item.id} quantity={item.quantity} showCart={showCart}></CartItem>
+                <CartItem
+                  key={item.id}
+                  id={item.id}
+                  quantity={item.quantity}
+                  showCart={showCart}
+                ></CartItem>
               ))}
             </Container>
           </Offcanvas.Body>
@@ -168,7 +241,8 @@ function Navbar() {
                 onClick={() => {
                   handleCloseCart();
                   navigate("/purchase");
-                }}>
+                }}
+              >
                 Proceed to checkout
                 <BsFillCartCheckFill className="ms-2" />
               </Button>

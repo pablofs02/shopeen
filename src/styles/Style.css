@@ -10,12 +10,21 @@
     display: flex;
     align-items: center;
     gap: 1vw;
-    background-color: white;
+    background-color: white;    
     box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
     overflow: hidden;
     position: fixed;
     z-index: 15;
     top: 0;
+}
+
+/* Image background styling */
+.navbarTop {
+    background: url(../assets/shopeen.svg);
+    object-fit: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
 }
 
 .navbarTop .col > a {
@@ -73,7 +82,7 @@
 
 .searchBar input:hover,
 .searchBar input:focus {
-    background-color: white;
+    background-color: transparent;
 }
 
 .navbarTop img {

@@ -22,10 +22,9 @@ export function HomeItem(props: HomeItemsProps) {
 
   const handleSelection = (e: any) => {
     e.preventDefault();
-    navigate("/store");
+    navigate("/product/" + props.id);
     handleClearCategory();
     handleClearRange();
-    setSearch(props.title);
   };
 
   return (

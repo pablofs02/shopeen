@@ -9,6 +9,7 @@ import Store from "./pages/Store";
 import { GlobalProvider } from "./context/GlobalContext";
 import { FilterProvider } from "./context/FilterContext";
 import Purchase from "./pages/Purchase";
+import Product from "./pages/Product";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <Route path="/store" element={<Container><Store /></Container>}></Route>
             <Route path="/help" element={<Help />}></Route>
             <Route path="/purchase" element={<Container><Purchase/></Container>}></Route>
+            <Route path="/product/:id" element={<Product></Product>}></Route>
           </Routes>
         </FilterProvider>
       </GlobalProvider>

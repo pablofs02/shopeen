@@ -7,6 +7,10 @@
     padding: 10px;
 }
 
+.cart-item img {
+    user-select: none;
+}
+
 .cart-buttons {
     display: flex;
     flex-direction: row;

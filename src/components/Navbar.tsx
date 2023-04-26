@@ -80,8 +80,8 @@ function Navbar() {
               <img src="/src/assets/hamburger-menu.svg" alt="hamburger menu button" />
             </button>
           </Col>
-          <Col className={location.pathname === "/" ? "active-page" : ""}>
-            <Link to={"/"}>Home</Link>
+          <Col className={location.pathname === "/ProyIU" ? "active-page" : ""}>
+            <Link to={"/ProyIU"}>Home</Link>
           </Col>
           <Col className={location.pathname === "/store" ? "active-page" : ""}>
             <Link to={"/store"}>Store</Link>
@@ -100,7 +100,7 @@ function Navbar() {
             <Offcanvas.Title>Navigation options</Offcanvas.Title>
           </Offcanvas.Header>
           <Offcanvas.Body className="body-oc">
-            <Link to={"/"} className={location.pathname === "/" ? "active-page" : ""} onClick={handleClose}>
+            <Link to={"/ProyIU"} className={location.pathname === "/ProyIU" ? "active-page" : ""} onClick={handleClose}>
               Home
             </Link>
             <Link to={"/store"} className={location.pathname === "/store" ? "active-page" : ""} onClick={handleClose}>

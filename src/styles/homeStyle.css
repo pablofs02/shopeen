@@ -1,5 +1,10 @@
-.col > div:hover:not(:has(.cart-buttons)) {
-	opacity: 92%;
+.home-item {
+	transition: transform 0.2s ease-out;
+}
+
+.home-item:hover {
+	transform: scale(1.05);
+	z-index: 1;
 }
 
 a, a:hover {

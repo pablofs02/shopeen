@@ -22,6 +22,7 @@ import { useNavigate } from "react-router-dom";
 import hamburger from "../assets/hamburger-menu.svg";
 import account from "../assets/account.svg";
 import shopping_cart from "../assets/shopping_cart.svg";
+import logo from "../assets/shopeen.svg";
 
 function Navbar() {
   const location = useLocation();
@@ -90,6 +91,9 @@ function Navbar() {
   return (
     <>
       <Container className="navbarTop">
+        
+        <img src={logo} alt="shopeen logo" className="logo"></img>
+        
         <Row md={4} lg={4} className="text-center">
           <Col className="hamburger-menu">
             <button className="hamburger-button" onClick={handleShow}>

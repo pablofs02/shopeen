@@ -28,7 +28,7 @@ export function HomeItem(props: HomeItemsProps) {
   };
 
   return (
-    <Card tabIndex={0} onClick={handleSelection} className="h-100 p-3 pt-4 pb-4 store-item">
+    <Card tabIndex={0} onClick={handleSelection} className="h-100 p-3 pt-4 pb-4 home-item store-item">
         <Card.Img
           alt={props.title}
           variant="top"

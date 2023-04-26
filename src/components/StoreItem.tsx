@@ -34,7 +34,7 @@ export function StoreItem(props: StoreItemsProps) {
 
   return (
     <Card className="h-100 p-3 pt-4 pb-4 store-item d-flex justify-content-between align-item-center flex-column">
-      <Card.Img variant="top" src={props.image} height="170px" style={{ objectFit: "contain" }} />
+      <Card.Img alt={props.title} variant="top" src={props.image} height="170px" style={{ objectFit: "contain" }} />
       <Card.Body className="d-flex flex-column h-100 p-0 ps-2 pe-2">
         <Card.Title className="mt-4 d-flex justify-content-between align-items-baseline">
           <span>{props.title}</span>

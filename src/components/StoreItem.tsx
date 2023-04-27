@@ -37,11 +37,11 @@ export function StoreItem(props: StoreItemsProps) {
       <Card.Img alt={props.title} variant="top" src={props.image} height="170px" style={{ objectFit: "contain" }} />
       <Card.Body className="d-flex flex-column h-100 p-0 ps-2 pe-2">
         <Card.Title className="mt-4 d-flex justify-content-between align-items-baseline">
-          <span>{props.title}</span>
-          <span className="fw-bold price fs-5 ms-3 text-muted">{formatCurrency(props.price)}</span>
+          <span tabIndex={0} >{props.title}</span>
+          <span tabIndex={0} className="fw-bold price fs-5 ms-3 text-muted">{formatCurrency(props.price)}</span>
         </Card.Title>
 
-        <Card.Text className="desc-store d-flex flex-column justify-content-center align-items-center card-description mt-3">
+        <Card.Text tabIndex={0} className="desc-store d-flex flex-column justify-content-center align-items-center card-description mt-3">
           {showMore ? props.description : props.description.slice(0, 50) + "..."}
         </Card.Text>
 

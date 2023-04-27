@@ -37,7 +37,7 @@ function Purchase() {
       <Popover.Header as="h2">Confirmation</Popover.Header>
       <Popover.Body>
         <p className="fs-6">
-          <strong>Are you sure you want purchase the items?</strong>
+          <strong tabIndex={0} >Are you sure you want purchase the items?</strong>
         </p>
         <div className="d-flex justify-content-between">
           <Button variant="primary" onClick={handleFinishPurchase}>
@@ -59,7 +59,7 @@ function Purchase() {
       {cartItems.length > 0 ? (
         <div className="subtotal">
           <p>
-            <strong>Total price: {formatCurrency(totalPrice)}</strong>
+            <strong tabIndex={0} >Total price: {formatCurrency(totalPrice)}</strong>
           </p>
           <OverlayTrigger trigger="click" placement="right" overlay={confirmationPurchase} show={showPopover}>
                 <Button
@@ -71,8 +71,8 @@ function Purchase() {
           </OverlayTrigger>
         </div>
       ) : (
-        <div className="purchase-finished">
-          <h2>Purchase finished correctly</h2>
+        <div tabIndex={0} className="purchase-finished">
+          <h2 tabIndex={0}>Purchase finished correctly</h2>
         </div>
       )}
       <section className="cuerpo mt-4">

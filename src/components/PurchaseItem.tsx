@@ -28,7 +28,7 @@ export function PurchaseItem(props: PurchaseItemProps) {
       />
       <Card.Body className="d-flex flex-column h-100 p-0 ps-2 pe-2">
         <Card.Title className="mt-4 d-flex justify-content-between align-items-baseline">
-          <span>{item.title}</span>
+          <span tabIndex={0}>{item.title}</span>
           <span className="fw-bold price fs-5 ms-3 text-muted">
             {formatCurrency(item.price)}
           </span>
@@ -54,10 +54,10 @@ export function PurchaseItem(props: PurchaseItemProps) {
             )}
           </button>
             <div className="d-flex justify-content-between align-items-center mt-3">
-                <span className="fw-bold price fs-6 ms-3 text-muted">
+                <span tabIndex={0} className="fw-bold price fs-6 ms-3 text-muted">
                     Quantity: {props.quantity}
                 </span>
-                <span className="fw-bold price fs-6 ms-3 text-muted">
+                <span tabIndex={0} className="fw-bold price fs-6 ms-3 text-muted">
                     Total: {formatCurrency(item.price * props.quantity)}
                 </span>
             </div>

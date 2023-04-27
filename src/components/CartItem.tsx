@@ -33,12 +33,12 @@ function CartItem(props: CartItemProps) {
         <Card className="cart-item">
           <Card.Img variant="top" src={item.image} height="100px" style={{ objectFit: "contain" }} />
           <Card.Body>
-            <Card.Title>{item.title}</Card.Title>
-            <Card.Text className="text-muted">Total: {formatCurrency(item.price * quantity)}</Card.Text>
+            <Card.Title tabIndex={0} >{item.title}</Card.Title>
+            <Card.Text tabIndex={0} className="text-muted">Total: {formatCurrency(item.price * quantity)}</Card.Text>
           </Card.Body>
           <CartItemContext.Provider value={{ id, addItem, getQuantityCart, decreaseItemQuantity, removeItem, stock, showWarningRemove, setShowWarningRemove }}>
             <div className="count-buttons">
-              <h5 className="me-auto">Quantity: {quantity}</h5>
+              <h5 tabIndex={0} className="me-auto">Quantity: {quantity}</h5>
               <CartButtons showCart={props.showCart}/>
             </div>
           </CartItemContext.Provider>

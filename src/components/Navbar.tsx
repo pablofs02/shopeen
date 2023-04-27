@@ -177,7 +177,7 @@ function Navbar() {
 
           <Offcanvas.Body className="body-oc p-2 pt-0 mt-4">
             <div className="clean-button d-flex justify-content-between w-100">
-              <h4 className="me-0 text-left">
+              <h4 tabIndex={0} className="me-0 text-left">
                 Items in cart: {cartItems.length}
               </h4>
               {showPopover ? ( // Popover to confirm cleaning cart
@@ -185,7 +185,7 @@ function Navbar() {
                   <Popover.Header as="h2">Confirmation</Popover.Header>
                   <Popover.Body>
                     <p className="fs-6">
-                      <strong>Are you sure you want to clean your cart?</strong>
+                      <strong tabIndex={0}>Are you sure you want to clean your cart?</strong>
                     </p>
                     <div className="d-flex justify-content-between">
                       <Button
@@ -233,7 +233,7 @@ function Navbar() {
           </Offcanvas.Body>
           <div className="total-price">
             <p>
-              <strong>Total price: {formatCurrency(totalPrice)}</strong>
+              <strong tabIndex={0}>Total price: {formatCurrency(totalPrice)}</strong>
             </p>
             {cartItems.length > 0 ? (
               <Button

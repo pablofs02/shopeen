@@ -25,7 +25,9 @@ function SearchBar() {
           <input type="text" onChange={handleChange} />
         </Link>
         <Link to={"/store"}>
-          <img src={search} alt="search icon" longdesc="Icon to search the value introduced in the input right next to it." />
+          <img src={search} alt="search icon"
+              //longdesc="Icon to search the value introduced in the input right next to it."
+            />
         </Link>
       </div>
     </>

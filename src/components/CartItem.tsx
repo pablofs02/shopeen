@@ -31,7 +31,9 @@ function CartItem(props: CartItemProps) {
     <Row className="mb-3">
       <Col>
         <Card className="cart-item">
-          <Card.Img longdesc={item.description} variant="top" src={item.image} height="100px" style={{ objectFit: "contain" }} />
+          <Card.Img
+            //longdesc={item.description}
+            variant="top" src={item.image} height="100px" style={{ objectFit: "contain" }} />
           <Card.Body>
             <Card.Title tabIndex={0} >{item.title}</Card.Title>
             <Card.Text tabIndex={0} className="text-muted">Total: {formatCurrency(item.price * quantity)}</Card.Text>

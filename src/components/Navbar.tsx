@@ -100,7 +100,7 @@ function Navbar() {
               <img
                 src={hamburger}
                 alt="hamburger menu button"
-                longdesc="Button that shows more info and options about navigation bar."
+                //longdesc="Button that shows more info and options about navigation bar."
               />
             </button>
           </Col>

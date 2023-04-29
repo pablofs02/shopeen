@@ -15,6 +15,8 @@ export default function Home() {
     }, []);
 
     return (
+    <>
+        <h1 className="page-header">Home</h1>
         <section className="cuerpo">
             <h2 className="section-home">Recommendations</h2>
             <Row md={2} lg={3} xs={1} className="g-3">
@@ -41,5 +43,6 @@ export default function Home() {
                 ))}
             </Row>
         </section>
+    </>
     );
 }

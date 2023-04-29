@@ -35,6 +35,7 @@ export function HomeItem(props: HomeItemsProps) {
           src={props.image}
           height="170px"
           style={{ objectFit: "contain" }}
+          longdesc={props.description}
         />
         <Card.Body className="d-flex flex-column p-0 ps-2 pe-2">
           <Card.Title className="mt-4 d-flex justify-content-between align-items-baseline fw-bold">

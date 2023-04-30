@@ -29,14 +29,14 @@ function Product() {
                     <img src={item!.image} alt={item!.title} className="img-fluid" />
                 </div>
                 <div className="col-12 col-md-6">
-                    <h1>{item!.title}</h1>
-                    <p>{item!.description}</p>
-                    <p className="price">{formatCurrency(item!.price)}</p>
-                    <p className="stock">{item!.stock > 0 ? "In Stock" : "Out of Stock"}</p>
-                    <Button variant="primary" onClick={() => addItem(item!.id)} disabled={item?.stock === 0}>
+                    <h1 tabIndex={1}>{item!.title}</h1>
+                    <p tabIndex={2}>{item!.description}</p>
+                    <p tabIndex={3} className="price">{formatCurrency(item!.price)}</p>
+                    <p tabIndex={4} className="stock">{item!.stock > 0 ? "In Stock" : "Out of Stock"}</p>
+                    <Button tabIndex={5} variant="primary" onClick={() => addItem(item!.id)} disabled={item?.stock === 0}>
                         Add to Cart
                     </Button>
-                    <Button variant="secondary" onClick={handleSelection}>
+                    <Button tabIndex={6} variant="secondary" onClick={handleSelection}>
                         Back to store
                     </Button>
                 </div>

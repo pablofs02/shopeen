@@ -37,13 +37,13 @@ function Purchase() {
       <Popover.Header as="h2">Confirmation</Popover.Header>
       <Popover.Body>
         <p className="fs-6">
-          <strong tabIndex={0} >Are you sure you want purchase the items?</strong>
+          <strong tabIndex={3} >Are you sure you want purchase the items?</strong>
         </p>
         <div className="d-flex justify-content-between">
-          <Button variant="primary" onClick={handleFinishPurchase}>
+          <Button tabIndex={4} variant="primary" onClick={handleFinishPurchase}>
             Confirm purchase
           </Button>
-          <Button variant="danger" onClick={() => setShowPopover(false)}>
+          <Button tabIndex={5} variant="danger" onClick={() => setShowPopover(false)}>
             Cancel
           </Button>
         </div>
@@ -59,10 +59,11 @@ function Purchase() {
       {cartItems.length > 0 ? (
         <div className="subtotal">
           <p>
-            <strong tabIndex={0} >Total price: {formatCurrency(totalPrice)}</strong>
+            <strong tabIndex={1} >Total price: {formatCurrency(totalPrice)}</strong>
           </p>
           <OverlayTrigger trigger="click" placement="right" overlay={confirmationPurchase} show={showPopover}>
                 <Button
+                  tabIndex={2}
                   onClick={() => setShowPopover(true)}
                   variant="warning"
                   className="">

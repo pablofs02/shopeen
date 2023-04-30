@@ -3,6 +3,8 @@ import { OverlayTrigger, Tooltip, Button } from "react-bootstrap";
 import { CartItemContext } from "../context/CartItemContext";
 import { useNavigate } from "react-router-dom";
 import { useGlobalContext } from "../context/GlobalContext";
+import { MdOutlineAdd, MdOutlineRemove } from "react-icons/md";
+import { RxCross1 } from "react-icons/rx";
 
 interface CartButtonsProps {
   showCart: boolean;
@@ -48,18 +50,20 @@ function CartButtons(props: CartButtonsProps) {
       ) : (
         <>
           <OverlayTrigger show={show} placement="bottom" overlay={renderTooltip}>
-            <button
+            <Button
               disabled={getQuantityCart(id) === stock}
-              className="btn btn-primary"
+              className="d-flex justify-content-center align-items-center"
+              variant="primary"
               onClick={() => {
                 if (getQuantityCart(id) === stock) return;
                 addItem(id);
               }}>
-              +
-            </button>
+              <MdOutlineAdd title="Increase item quantity" />
+            </Button>
           </OverlayTrigger>
-          <button
-            className="btn btn-primary"
+          <Button
+            className="d-flex justify-content-center align-items-center"
+            variant="primary"
             onClick={() => {
               if (getQuantityCart(id) === 1) {
                 setShowWarningRemove(true);
@@ -67,16 +71,17 @@ function CartButtons(props: CartButtonsProps) {
               }
               decreaseItemQuantity(id);
             }}>
-            -
-          </button>
+            <MdOutlineRemove title="Decrease item quantity"/>
+          </Button>
 
-          <button
-            className="btn btn-danger remove-item"
+          <Button
+            className="remove-item d-flex justify-content-center align-items-center"
+            variant="danger"
             onClick={() => {
               setShowWarningRemove(true);
             }}>
-            x
-          </button>
+            <RxCross1 title="Remove item from cart"/>
+          </Button>
         </>
       )}
     </div>

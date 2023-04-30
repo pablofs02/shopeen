@@ -22,13 +22,10 @@
 .navbarTop > .logo {
     position: fixed;
     left: 50%;
-    top: 10px;
-    transform: translateX(-50%);
+    top: 25px;
+    transform: translate(-50%, -50%);
     scale: 1.1;
     user-select: none;
-}
-
-.navbarTop > .logo {
     cursor: default;
 }
 

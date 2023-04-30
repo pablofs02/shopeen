@@ -45,10 +45,10 @@ export function StoreItem(props: StoreItemsProps) {
           {showMore ? props.description : props.description.slice(0, 50) + "..."}
         </Card.Text>
 
-        {showMore ? (
-          <Alert variant="info" className="fs-5 text-center">
-            Available stock {props.stock - boughtQuantity}
-          </Alert>
+        {showMore && props.stock - boughtQuantity > 0 ? (
+          <div tabIndex={0}  className="stock-left text-center mb-0">
+            <span className="fw-bold fs-5 p-auto">Available stock {props.stock - boughtQuantity}.</span>
+          </div>
         ) : (
           <></>
         )}
@@ -66,9 +66,9 @@ export function StoreItem(props: StoreItemsProps) {
             )
           ) : (
             <div className="alertStock mb-0">
-              <Alert variant="danger" className="text-center mb-0">
+              <div tabIndex={0}  className="no-stock-left text-center mb-0">
                 <span className="fw-bold fs-5 p-auto">There is no stock left.</span>
-              </Alert>
+              </div>
             </div>
           )}
           <button

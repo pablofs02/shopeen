@@ -64,6 +64,41 @@
     border: transparent;
 }
 
+.no-stock-left {
+    border: 2px solid #ff0000; 
+    padding: 10px; 
+    border-radius: 10px; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+    text-align: center; 
+}
+  
+.no-stock-left span {
+    display: block; 
+    font-size: 1.2rem; 
+    font-weight: bold; 
+    color: #ff0000; 
+    text-transform: uppercase; 
+    letter-spacing: 2px; 
+}
+  
+
+.stock-left {
+    border: 2px solid #00aeff; 
+    padding: 10px; 
+    border-radius: 10px; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+    text-align: center; 
+}
+  
+.stock-left span {
+    display: block; 
+    font-size: 1.2rem; 
+    font-weight: bold; 
+    color: #00aeff;  
+    text-transform: uppercase; 
+    letter-spacing: 2px; 
+}
+
 .searchBar input {
     height: 100%;
     background-color: rgba(230, 230, 230, 0.3);

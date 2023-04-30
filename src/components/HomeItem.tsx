@@ -21,22 +21,24 @@ export function HomeItem(props: HomeItemsProps) {
   const { handleClearCategory, handleClearRange} = useFilterContext();
 
   const handleSelection = (e: any) => {
-    e.preventDefault();
-    navigate("/product/" + props.id);
-    handleClearCategory();
-    handleClearRange();
+    //e.preventDefault();
+    //navigate("/product/" + props.id);
+    //handleClearCategory();
+    //handleClearRange();
   };
 
   return (
-    <Card tabIndex={0} onClick={handleSelection} className="h-100 p-3 pt-4 pb-4 home-item store-item">
-        <Card.Img
-          alt={props.title}
-          variant="top"
-          src={props.image}
-          height="170px"
-          style={{ objectFit: "contain" }}
-          //longdesc={props.description}
-        />
+    <Card className="h-100 p-3 pt-4 pb-4 home-item store-item">
+        <Link to={"/product/" + props.id} className={location.pathname === "/help" ? "active-page" : ""}>
+            <Card.Img
+              alt={props.title}
+              variant="top"
+              src={props.image}
+              height="170px"
+              style={{ objectFit: "contain" }}
+              //longdesc={props.description}
+            />
+        </Link>
         <Card.Body className="d-flex flex-column p-0 ps-2 pe-2">
           <Card.Title className="mt-4 d-flex justify-content-between align-items-baseline fw-bold">
             <span>{props.title}</span>

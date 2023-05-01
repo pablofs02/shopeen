@@ -12,7 +12,7 @@ function Help() {
     }, []);
     
     return (
-        <section className="help-section">
+        <section tabIndex={0} className="help-section">
             <h2 className='help'>Help Section</h2>
 
             <h3 className='help'>Home</h3>

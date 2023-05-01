@@ -46,12 +46,12 @@ function Product() {
                             disabled={item?.stock === 0}>
                             Add to Cart
                         </Button> : <Button
-                            tabIndex={5}
+                            tabIndex={6}
                             variant="success"
                             disabled={true}>
                             Added
                         </Button>}
-                        <Button tabIndex={6} variant="secondary" onClick={() => {navigate("/ProyIU")}}>
+                        <Button tabIndex={7} variant="secondary" onClick={() => {navigate("/ProyIU")}}>
                             Go back
                         </Button>
                     </div>

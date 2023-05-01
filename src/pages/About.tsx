@@ -12,7 +12,7 @@ function About(){
     }, []);
     
     return(
-        <section className="cuerpo about">
+        <section tabIndex={0} className="cuerpo about">
             <h1>About us:</h1>
             <section>
                 <div className="story-store">

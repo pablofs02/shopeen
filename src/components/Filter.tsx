@@ -36,7 +36,7 @@ function Filter() {
             Filter options...
             {!show ? <AiFillCaretRight /> : <AiFillCaretDown />}
           </button>
-          <span className="text-muted ms-4">
+          <span tabIndex={0} className="text-muted ms-4">
             {selectedCategories.length && !show
               ? "Categories selected: " + selectedCategories.join(", ")
               : null}
@@ -86,7 +86,7 @@ function Filter() {
                 aria-multiline="false"
               />
             </div>
-            {(minPrice > maxPrice || isNaN(minPrice) || isNaN(maxPrice)) ? ( <div tabIndex={0} className="mt-3 no-stock-left">
+            {(minPrice > maxPrice || isNaN(minPrice) || isNaN(maxPrice)) ? ( <div tabIndex={0} className="mt-3 alert-red">
               {minPrice > maxPrice ? <span>The max price should be greater than the min price</span> : <span>Please fill out all fields</span>} 
               </div> ) : <></>}
           </div>

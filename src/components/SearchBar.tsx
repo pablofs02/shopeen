@@ -22,7 +22,7 @@ function SearchBar() {
       <div className="searchBar">
         {searchBarValue ? <ImCross onClick={() => {setSearch("")}} /> : null}
         <Link to={"/store"} className="h-100" title="Search bar">
-          <input type="text" onChange={handleChange} />
+          <input aria-label="search-bar" type="text" onChange={handleChange} />
         </Link>
         <Link to={"/store"}>
           <img src={search} alt="search icon"

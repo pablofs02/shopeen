@@ -72,7 +72,7 @@ function Purchase() {
           </OverlayTrigger>
         </div>
       ) : (
-        <div tabIndex={1} className="purchase-finished">
+        <div className="purchase-finished">
           <h2 tabIndex={1}>Purchase finished correctly</h2>
         </div>
       )}

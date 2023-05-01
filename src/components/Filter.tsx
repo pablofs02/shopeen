@@ -69,7 +69,10 @@ function Filter() {
                 value={minPrice}
                 onChange={handleMinPriceChange}
                 min="0"
-                placeholder="0.00"
+                // placeholder="0"
+                aria-label="Enter a min price"
+                role="textbox"
+                aria-multiline="false"
               />
               <input
                 type="number"
@@ -77,10 +80,15 @@ function Filter() {
                 value={maxPrice}
                 onChange={handleMaxPriceChange}
                 min="0"
-                placeholder="10000.00"
+                // placeholder="10000.00"
+                aria-label="Enter a max price"
+                role="textbox"
+                aria-multiline="false"
               />
             </div>
-            {minPrice > maxPrice ? ( <Alert className="mt-3" variant="danger">The max price should be greater than the min price </Alert> ) : <></>}
+            {(minPrice > maxPrice || isNaN(minPrice) || isNaN(maxPrice)) ? ( <div tabIndex={0} className="mt-3 no-stock-left">
+              {minPrice > maxPrice ? <span>The max price should be greater than the min price</span> : <span>Please fill out all fields</span>} 
+              </div> ) : <></>}
           </div>
           <div className="filter-category filters">
             <div className="filter-header">
@@ -141,7 +149,7 @@ function Filter() {
         <div className="filter-button">
           <button
             onClick={(e) => {
-              if (minPrice < maxPrice ) {
+              if (minPrice <= maxPrice ) {
                 handleActiveFilter(e);
                 setShow(false);
               } 

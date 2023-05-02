@@ -31,7 +31,7 @@ function SearchBar() {
                     />
                 ) : null}
 
-                <input type="text" onChange={handleChange} />
+                <input aria-label="Search bar" type="text" onChange={handleChange} />
 
                 <img
                     src={search}

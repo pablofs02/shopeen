@@ -66,7 +66,7 @@ export function StoreItem(props: StoreItemsProps) {
             )
           ) : (
             <div className="alertStock mb-0">
-              <div tabIndex={0}  className="no-stock-left text-center mb-0">
+              <div tabIndex={0}  className="alert-red text-center mb-0">
                 <span className="fw-bold fs-5 p-auto">There is no stock left.</span>
               </div>
             </div>

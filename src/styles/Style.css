@@ -61,7 +61,7 @@
     border: transparent;
 }
 
-.no-stock-left {
+.alert-red {
     border: 2px solid #ff0000; 
     padding: 10px; 
     border-radius: 10px; 
@@ -69,7 +69,7 @@
     text-align: center; 
 }
   
-.no-stock-left span {
+.alert-red span {
     display: block; 
     font-size: 1.2rem; 
     font-weight: bold; 

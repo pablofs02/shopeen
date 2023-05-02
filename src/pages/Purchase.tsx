@@ -72,8 +72,8 @@ function Purchase() {
           </OverlayTrigger>
         </div>
       ) : (
-        <div tabIndex={0} className="purchase-finished">
-          <h2 tabIndex={0}>Purchase finished correctly</h2>
+        <div className="purchase-finished">
+          <h2 tabIndex={1}>Purchase finished correctly</h2>
         </div>
       )}
       <section className="cuerpo mt-4">

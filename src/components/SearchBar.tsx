@@ -1,37 +1,47 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useGlobalContext } from "../context/GlobalContext";
 import { useFilterContext } from "../context/FilterContext";
 import { ImCross } from "react-icons/im";
 import search from "../assets/search.svg";
 
 function SearchBar() {
-  const { setSearch, setSearchBarInput, searchBarValue } = useFilterContext();
+    const { setSearch, setSearchBarInput, searchBarValue } = useFilterContext();
+    const navigate = useNavigate();
 
-  useEffect(() => {
-    setSearchBarInput(document.querySelector("input"));
-  }, []);
+    useEffect(() => {
+        setSearchBarInput(document.querySelector("input"));
+    }, []);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchBarInput(e.target);
-    setSearch(e.target.value);
-  };
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setSearchBarInput(e.target);
+        setSearch(e.target.value);
+        navigate("/store");
+    };
 
-  return (
-    <>
-      <div className="searchBar">
-        {searchBarValue ? <ImCross onClick={() => {setSearch("")}} /> : null}
-        <Link to={"/store"} className="h-100">
-          <input type="text" onChange={handleChange} />
-        </Link>
-        <Link to={"/store"}>
-          <img src={search} alt="search icon"
-              //longdesc="Icon to search the value introduced in the input right next to it."
-            />
-        </Link>
-      </div>
-    </>
-  );
+    return (
+        <>
+            <div className="searchBar">
+                {searchBarValue ? (
+                    <ImCross
+                        onClick={() => {
+                            setSearch("");
+                        }}
+                        title="Clear search"
+                    />
+                ) : null}
+
+                <input type="text" onChange={handleChange} />
+
+                <img
+                    src={search}
+                    alt="search icon"
+                    onClick={() => {navigate("/store");}}
+                    //longdesc="Icon to search the value introduced in the input right next to it."
+                />
+            </div>
+        </>
+    );
 }
 
 export default SearchBar;

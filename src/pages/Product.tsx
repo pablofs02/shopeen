@@ -9,7 +9,7 @@ import { useState } from "react";
 
 function Product() {
     const { id } = useParams<{ id: string }>();
-    const { addItem } = useGlobalContext();
+    const { addItem, getQuantityCart } = useGlobalContext();
     const { handleClearCategory, handleClearRange } = useFilterContext();
     const navigate = useNavigate();
 
@@ -19,8 +19,6 @@ function Product() {
         handleClearCategory();
         handleClearRange();
     };
-
-    const [added, setAdded] = useState(false);
 
     const item = products.find((item) => item.id === parseInt(id!));
 
@@ -39,10 +37,10 @@ function Product() {
                     <div className="product-bottom">
                         <h3 tabIndex={3}>{formatCurrency(item!.price)}</h3>
                         <h4 tabIndex={4}>{item!.stock > 0 ? "In Stock" : "Out of Stock"}</h4>
-                        {!added ? <Button
+                        {getQuantityCart(item!.id) <= 0 ? <Button
                             tabIndex={5}
                             variant="primary"
-                            onClick={() => {addItem(item!.id); setAdded(true)}}
+                            onClick={() => {addItem(item!.id);}}
                             disabled={item?.stock === 0}>
                             Add to Cart
                         </Button> : <Button

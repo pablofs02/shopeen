@@ -33,7 +33,7 @@ function Store() {
           ))}
           {storeItemsFiltered.length === 0 && (
             <div className="no-products">
-              <h2>NO PRODUCTS FOUND</h2>
+              <h2 tabIndex={0}>NO PRODUCTS FOUND</h2>
             </div>
           )}
         </Row>

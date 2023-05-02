@@ -9,7 +9,7 @@ import { useState } from "react";
 
 function Product() {
     const { id } = useParams<{ id: string }>();
-    const { addItem, getQuantityCart } = useGlobalContext();
+    const { addItem, getQuantityCart, removeItem } = useGlobalContext();
     const { handleClearCategory, handleClearRange } = useFilterContext();
     const navigate = useNavigate();
 
@@ -42,12 +42,12 @@ function Product() {
                             variant="primary"
                             onClick={() => {addItem(item!.id);}}
                             disabled={item?.stock === 0}>
-                            Add to Cart
+                            + Add to cart
                         </Button> : <Button
                             tabIndex={6}
-                            variant="success"
-                            disabled={true}>
-                            Added
+                            onClick={() => {removeItem(item!.id);}}
+                            variant="danger">
+                            - Remove from cart
                         </Button>}
                         <Button tabIndex={7} variant="secondary" onClick={() => {navigate("/ProyIU")}}>
                             Go back

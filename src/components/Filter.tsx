@@ -58,7 +58,7 @@ function Filter() {
           <div className="filter-range filters">
             <div className="filter-header">
               <h5>Price range</h5>
-              <button onClick={handleClearRange}>Clear</button>
+              <button aria-label="Clear price range" onClick={handleClearRange}>Clear</button>
             </div>
             <div className="filter-range-options">
               <span className="text-muted">Min €</span> <span className="text-muted">Max €</span>
@@ -93,7 +93,7 @@ function Filter() {
           <div className="filter-category filters">
             <div className="filter-header">
               <h5>Category</h5>
-              <button onClick={handleClearCategory}>Clear</button>
+              <button aria-label="Clear categories" onClick={handleClearCategory}>Clear</button>
             </div>
             <div className="filter-category-options">
               {/* Men's clothing */}

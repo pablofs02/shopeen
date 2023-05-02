@@ -51,9 +51,9 @@ function CartButtons(props: CartButtonsProps) {
         <>
           <OverlayTrigger show={show} placement="bottom" overlay={renderTooltip}>
             <Button
-              disabled={getQuantityCart(id) === stock}
               className="d-flex justify-content-center align-items-center"
-              variant="primary"
+              variant={getQuantityCart(id) === stock ? "secondary" : "primary"}
+              aria-disabled={getQuantityCart(id) === stock}
               onClick={() => {
                 if (getQuantityCart(id) === stock) return;
                 addItem(id);

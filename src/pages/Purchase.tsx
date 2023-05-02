@@ -54,7 +54,7 @@ function Purchase() {
 
   return (
     <>
-      <h1 className="page-header">Purchase</h1>
+      <h1 tabIndex={1} className="page-header">Purchase</h1>
 
       {cartItems.length > 0 ? (
         <div className="subtotal">

@@ -33,8 +33,8 @@ function CartButtons(props: CartButtonsProps) {
           <Button
             onClick={() => {
               removeItem(id);
-              if (cartItems.length == 1 && location.pathname === "/purchase") {
-                navigate("/store");
+              if (cartItems.length == 1 && location.pathname === "/ProyIU/purchase") {
+                navigate("/ProyIU/store");
               }
             }}
             variant="danger">

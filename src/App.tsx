@@ -19,11 +19,11 @@ function App() {
           <Navbar />
           <Routes>
             <Route path="/ProyIU" element={<Container><Home /></Container>} />
-            <Route path="/about" element={<About />}></Route>
-            <Route path="/store" element={<Container><Store /></Container>}></Route>
-            <Route path="/help" element={<Help />}></Route>
-            <Route path="/purchase" element={<Container><Purchase/></Container>}></Route>
-            <Route path="/product/:id" element={<Product></Product>}></Route>
+            <Route path="/ProyIU/about" element={<About />}></Route>
+            <Route path="/ProyIU/store" element={<Container><Store /></Container>}></Route>
+            <Route path="/ProyIU/help" element={<Help />}></Route>
+            <Route path="/ProyIU/purchase" element={<Container><Purchase/></Container>}></Route>
+            <Route path="/ProyIU/product/:id" element={<Product></Product>}></Route>
           </Routes>
         </FilterProvider>
       </GlobalProvider>

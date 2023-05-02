@@ -29,7 +29,7 @@ export function HomeItem(props: HomeItemsProps) {
 
   return (
     <Card className="h-100 p-3 pt-4 pb-4 home-item store-item">
-        <Link to={"/product/" + props.id} className={location.pathname === "/help" ? "active-page" : ""}>
+        <Link to={"/ProyIU/product/" + props.id} className={location.pathname === "/ProyIU/help" ? "active-page" : ""}>
             <Card.Img
               alt={props.title}
               variant="top"

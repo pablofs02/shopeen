@@ -15,7 +15,7 @@ function Product() {
 
     const handleSelection = (e: any) => {
         e.preventDefault();
-        navigate("/store");
+        navigate("/ProyIU/store");
         handleClearCategory();
         handleClearRange();
     };

@@ -73,8 +73,8 @@ function Navbar() {
             variant="danger"
             onClick={() => {
               handleCleanCart();
-              if (location.pathname === "/purchase") {
-                navigate("/store");
+              if (location.pathname === "/ProyIU/purchase") {
+                navigate("/ProyIU/store");
               }
             }}
           >
@@ -107,14 +107,14 @@ function Navbar() {
           <Col className={location.pathname === "/ProyIU" ? "active-page" : ""}>
             <Link to={"/ProyIU"}>Home</Link>
           </Col>
-          <Col className={location.pathname === "/store" ? "active-page" : ""}>
-            <Link to={"/store"}>Store</Link>
+          <Col className={location.pathname === "/ProyIU/store" ? "active-page" : ""}>
+            <Link to={"/ProyIU/store"}>Store</Link>
           </Col>
-          <Col className={location.pathname === "/about" ? "active-page" : ""}>
-            <Link to={"/about"}>About</Link>
+          <Col className={location.pathname === "/ProyIU/about" ? "active-page" : ""}>
+            <Link to={"/ProyIU/about"}>About</Link>
           </Col>
-          <Col className={location.pathname === "/help" ? "active-page" : ""}>
-            <Link to={"/help"}>Help</Link>
+          <Col className={location.pathname === "/ProyIU/help" ? "active-page" : ""}>
+            <Link to={"/ProyIU/help"}>Help</Link>
           </Col>
         </Row>
 
@@ -128,22 +128,22 @@ function Navbar() {
               Home
             </Link>
             <Link
-              to={"/store"}
-              className={location.pathname === "/store" ? "active-page" : ""}
+              to={"/ProyIU/store"}
+              className={location.pathname === "/ProyIU/store" ? "active-page" : ""}
               onClick={handleClose}
             >
               Store
             </Link>
             <Link
-              to={"/about"}
-              className={location.pathname === "/about" ? "active-page" : ""}
+              to={"/ProyIU/about"}
+              className={location.pathname === "/ProyIU/about" ? "active-page" : ""}
               onClick={handleClose}
             >
               About
             </Link>
             <Link
-              to={"/help"}
-              className={location.pathname === "/help" ? "active-page" : ""}
+              to={"/ProyIU/help"}
+              className={location.pathname === "/ProyIU/help" ? "active-page" : ""}
               onClick={handleClose}
             >
               Help
@@ -193,8 +193,8 @@ function Navbar() {
                         variant="danger"
                         onClick={() => {
                           handleCleanCart();
-                          if (location.pathname === "/purchase") {
-                            navigate("/store");
+                          if (location.pathname === "/ProyIU/purchase") {
+                            navigate("/ProyIU/store");
                           }
                         }}
                       >
@@ -241,7 +241,7 @@ function Navbar() {
                 className="p-1 d-flex justify-content-center align-items-center"
                 onClick={() => {
                   handleCloseCart();
-                  navigate("/purchase");
+                  navigate("/ProyIU/purchase");
                 }}
               >
                 Proceed to checkout

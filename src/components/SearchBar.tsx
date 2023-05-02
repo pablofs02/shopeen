@@ -16,7 +16,7 @@ function SearchBar() {
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearchBarInput(e.target);
         setSearch(e.target.value);
-        navigate("/store");
+        navigate("/ProyIU/store");
     };
 
     return (
@@ -36,7 +36,7 @@ function SearchBar() {
                 <img
                     src={search}
                     alt="search icon"
-                    onClick={() => {navigate("/store");}}
+                    onClick={() => {navigate("/ProyIU/store");}}
                     //longdesc="Icon to search the value introduced in the input right next to it."
                 />
             </div>

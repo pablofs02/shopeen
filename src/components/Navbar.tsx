@@ -171,7 +171,7 @@ function Navbar() {
         )}
 
         {/* Offcanvas of user cart */}
-        <Offcanvas show={showCart} onHide={handleCloseCart} placement="end">
+        <Offcanvas aria-label="Shopping cart" show={showCart} onHide={handleCloseCart} placement="end">
           <Offcanvas.Header className="header-oc" closeButton>
             <Offcanvas.Title>My cart</Offcanvas.Title>
           </Offcanvas.Header>

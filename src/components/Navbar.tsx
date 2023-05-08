@@ -23,6 +23,9 @@ import hamburger from "../assets/hamburger-menu.svg";
 import account from "../assets/account.svg";
 import shopping_cart from "../assets/shopping_cart.svg";
 import logo from "../assets/shopeen.svg";
+import HamburgerMenuOffcanvas from "./HamburgerMenuOffcanvas";
+import CartOffcanvas from "./CartOffcanvas";
+import UserOffcanvas from "./UserOffcanvas";
 
 function Navbar() {
   const location = useLocation();
@@ -119,37 +122,7 @@ function Navbar() {
         </Row>
 
         {/* Offcanvas of hamburger menu navbar */}
-        <Offcanvas show={show} onHide={handleClose}>
-          <Offcanvas.Header className="header-oc" closeButton>
-            <Offcanvas.Title>Navigation options</Offcanvas.Title>
-          </Offcanvas.Header>
-          <Offcanvas.Body className="body-oc">
-            <Link to={"/ProyIU"} className={location.pathname === "/ProyIU" ? "active-page" : ""} onClick={handleClose}>
-              Home
-            </Link>
-            <Link
-              to={"/ProyIU/store"}
-              className={location.pathname === "/ProyIU/store" ? "active-page" : ""}
-              onClick={handleClose}
-            >
-              Store
-            </Link>
-            <Link
-              to={"/ProyIU/about"}
-              className={location.pathname === "/ProyIU/about" ? "active-page" : ""}
-              onClick={handleClose}
-            >
-              About
-            </Link>
-            <Link
-              to={"/ProyIU/help"}
-              className={location.pathname === "/ProyIU/help" ? "active-page" : ""}
-              onClick={handleClose}
-            >
-              Help
-            </Link>
-          </Offcanvas.Body>
-        </Offcanvas>
+        <HamburgerMenuOffcanvas show={show} handleClose={handleClose} location={location}/>
 
         {showCart || showAcc ? null : (
           <>
@@ -171,95 +144,11 @@ function Navbar() {
         )}
 
         {/* Offcanvas of user cart */}
-        <Offcanvas aria-label="Shopping cart" show={showCart} onHide={handleCloseCart} placement="end">
-          <Offcanvas.Header className="header-oc" closeButton>
-            <Offcanvas.Title>My cart</Offcanvas.Title>
-          </Offcanvas.Header>
-
-          <Offcanvas.Body className="body-oc p-2 pt-0 mt-4">
-            <div className="clean-button d-flex justify-content-between w-100">
-              <h4 tabIndex={0} className="me-0 text-left">
-                Items in cart: {cartItems.length}
-              </h4>
-              {showPopover ? ( // Popover to confirm cleaning cart
-                <Popover id="popover-basic">
-                  <Popover.Header as="h2">Confirmation</Popover.Header>
-                  <Popover.Body>
-                    <p className="fs-6">
-                      <strong tabIndex={0}>Are you sure you want to clean your cart?</strong>
-                    </p>
-                    <div className="d-flex justify-content-between">
-                      <Button
-                        variant="danger"
-                        onClick={() => {
-                          handleCleanCart();
-                          if (location.pathname === "/ProyIU/purchase") {
-                            navigate("/ProyIU/store");
-                          }
-                        }}
-                      >
-                        Confirm cleaning
-                      </Button>
-                      <Button
-                        variant="primary"
-                        onClick={() => setShowPopover(false)}
-                      >
-                        Cancel
-                      </Button>
-                    </div>
-                  </Popover.Body>
-                </Popover>
-              ) : (
-                <Button
-                  onClick={() => setShowPopover(true)}
-                  disabled={cartItems.length === 0}
-                  variant="danger"
-                  className=""
-                >
-                  Clean cart
-                  <FaTrashAlt className="ms-2" />
-                </Button>
-              )}
-            </div>
-            <Container className="p-3">
-              {cartItems.map((item) => (
-                <CartItem
-                  key={item.id}
-                  id={item.id}
-                  quantity={item.quantity}
-                  showCart={showCart}
-                ></CartItem>
-              ))}
-            </Container>
-          </Offcanvas.Body>
-          <div className="total-price">
-            <p>
-              <strong tabIndex={0}>Total price: {formatCurrency(totalPrice)}</strong>
-            </p>
-            {cartItems.length > 0 ? (
-              <Button
-                className="p-1 d-flex justify-content-center align-items-center"
-                onClick={() => {
-                  handleCloseCart();
-                  navigate("/ProyIU/purchase");
-                }}
-              >
-                Proceed to checkout
-                <BsFillCartCheckFill className="ms-2" />
-              </Button>
-            ) : null}
-          </div>
-        </Offcanvas>
+        <CartOffcanvas showCart={showCart} handleCloseCart={handleCloseCart} cartItems={cartItems} showPopover={showPopover} handleCleanCart={handleCleanCart} location={location} navigate={navigate} setShowPopover={setShowPopover} totalPrice={totalPrice} />
 
         {/* Offcanvas of the user account */}
-        <Offcanvas show={showAcc} onHide={handleCloseAcc} placement="end">
-          <Offcanvas.Header className="header-oc" closeButton>
-            <Offcanvas.Title>My account</Offcanvas.Title>
-          </Offcanvas.Header>
-          <Offcanvas.Body className="body-oc">
-            <UserAccount />
-          </Offcanvas.Body>
-        </Offcanvas>
+        <UserOffcanvas showAcc={showAcc} handleCloseAcc={handleCloseAcc} />
+        
       </Container>
     </>
   );

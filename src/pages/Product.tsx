@@ -49,7 +49,7 @@ function Product() {
                             variant="danger">
                             - Remove from cart
                         </Button>}
-                        <Button tabIndex={7} variant="secondary" onClick={() => {navigate("/ProyIU")}}>
+                        <Button tabIndex={7} variant="secondary" onClick={() => {navigate("/ProyIU/")}}>
                             Go back
                         </Button>
                     </div>

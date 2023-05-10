@@ -15,8 +15,8 @@ function HamburgerMenuOffcanvas(props: HamburgerMenuOffcanvasProps) {
             </Offcanvas.Header>
             <Offcanvas.Body className="body-oc">
                 <Link
-                    to={"/ProyIU"}
-                    className={location.pathname === "/ProyIU" ? "active-page" : ""}
+                    to={"/ProyIU/"}
+                    className={location.pathname === "/ProyIU/" ? "active-page" : ""}
                     onClick={props.handleClose}>
                     Home
                 </Link>

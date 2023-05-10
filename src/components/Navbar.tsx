@@ -107,8 +107,8 @@ function Navbar() {
               />
             </button>
           </Col>
-          <Col className={location.pathname === "/ProyIU" ? "active-page" : ""}>
-            <Link to={"/ProyIU"}>Home</Link>
+          <Col className={location.pathname === "/ProyIU/" ? "active-page" : ""}>
+            <Link to={"/ProyIU/"}>Home</Link>
           </Col>
           <Col className={location.pathname === "/ProyIU/store" ? "active-page" : ""}>
             <Link to={"/ProyIU/store"}>Store</Link>

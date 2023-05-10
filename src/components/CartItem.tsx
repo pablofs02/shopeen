@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { useState } from "react";
 import { Card, Col, Row } from "react-bootstrap";
 import { CartItemContext } from "../context/CartItemContext";
 import { formatCurrency } from "../utilities/formatCurrency";
@@ -12,7 +12,7 @@ interface CartItemProps {
   showCart: boolean;
 }
 
-function CartItem(props: CartItemProps) {
+export default function CartItem(props: CartItemProps) {
   const item = storeItems.find((item) => item.id === props.id);
 
   const { getQuantityCart, addItem, decreaseItemQuantity, removeItem, boughtItemsQuantity } = useGlobalContext();
@@ -49,5 +49,3 @@ function CartItem(props: CartItemProps) {
     </Row>
   );
 }
-
-export default CartItem;

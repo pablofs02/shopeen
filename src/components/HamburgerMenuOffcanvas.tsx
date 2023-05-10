@@ -7,7 +7,7 @@ type HamburgerMenuOffcanvasProps = {
     location: any;
 }
 
-function HamburgerMenuOffcanvas(props: HamburgerMenuOffcanvasProps) {
+export default function HamburgerMenuOffcanvas(props: HamburgerMenuOffcanvasProps) {
     return (
         <Offcanvas show={props.show} onHide={props.handleClose}>
             <Offcanvas.Header className="header-oc" closeButton>
@@ -42,5 +42,3 @@ function HamburgerMenuOffcanvas(props: HamburgerMenuOffcanvasProps) {
         </Offcanvas>
     );
 }
-
-export default HamburgerMenuOffcanvas;

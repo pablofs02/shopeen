@@ -1,7 +1,6 @@
 import { Card } from "react-bootstrap";
 import { formatCurrency } from "../utilities/formatCurrency";
 import storeItems from "../data/products.json";
-import { Link } from "react-router-dom";
 import { useState } from "react";
 import { MdExpandLess, MdExpandMore } from "react-icons/md";
 
@@ -10,8 +9,8 @@ type PurchaseItemProps = {
   quantity: number;
 };
 
-export function PurchaseItem(props: PurchaseItemProps) {
-  const [item, setItem] = useState(
+export default function PurchaseItem(props: PurchaseItemProps) {
+  const [item] = useState(
     storeItems.find((item) => item.id === props.id)!
   );
 

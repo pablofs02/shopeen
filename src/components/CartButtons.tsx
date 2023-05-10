@@ -10,7 +10,7 @@ interface CartButtonsProps {
   showCart: boolean;
 }
 
-function CartButtons(props: CartButtonsProps) {
+export default function CartButtons(props: CartButtonsProps) {
   const { id, addItem, getQuantityCart, decreaseItemQuantity, removeItem, stock, showWarningRemove, setShowWarningRemove } =
     useContext(CartItemContext);
 
@@ -87,5 +87,3 @@ function CartButtons(props: CartButtonsProps) {
     </div>
   );
 }
-
-export default CartButtons;

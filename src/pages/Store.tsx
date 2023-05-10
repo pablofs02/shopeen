@@ -1,12 +1,11 @@
 import { Col, Row } from "react-bootstrap";
-import { StoreItem } from "../components/StoreItem";
-import { useGlobalContext } from "../context/GlobalContext";
+import StoreItem from "../components/StoreItem";
 import storeItems from "../data/noRatingProducts.json";
 import Filter from "../components/Filter";
 import "../styles/FilterStyle.css";
 import { useFilterContext } from "../context/FilterContext";
 
-function Store() {
+export default function Store() {
   const { searchBarValue, minPriceActive, maxPriceActive, selectedCategoriesActive } = useFilterContext();
 
   const storeItemsFiltered = storeItems.filter(
@@ -41,5 +40,3 @@ function Store() {
     </>
   );
 }
-
-export default Store;

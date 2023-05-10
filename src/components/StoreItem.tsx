@@ -14,7 +14,7 @@ type StoreItemsProps = {
   stock: number;
 };
 
-export function StoreItem(props: StoreItemsProps) {
+export default function StoreItem(props: StoreItemsProps) {
   const [showMore, setShowMore] = useState(false);
 
   const { getQuantityCart, addItem, removeItem, boughtItemsQuantity } = useGlobalContext();

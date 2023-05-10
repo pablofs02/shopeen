@@ -1,11 +1,10 @@
-import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { useGlobalContext } from "../context/GlobalContext";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { useFilterContext } from "../context/FilterContext";
 import { ImCross } from "react-icons/im";
 import search from "../assets/search.svg";
 
-function SearchBar() {
+export default function SearchBar() {
     const { setSearch, setSearchBarInput, searchBarValue } = useFilterContext();
     const navigate = useNavigate();
 
@@ -42,5 +41,3 @@ function SearchBar() {
         </>
     );
 }
-
-export default SearchBar;

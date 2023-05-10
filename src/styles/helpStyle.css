@@ -1,25 +1,24 @@
 .help-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 50px;
-    background: linear-gradient(to right, white, rgb(219, 247, 255));
-    min-height: 100vh;
-  }
-  
-  h2.help {
-    font-size: 2.5rem;
-    margin-bottom: 50px;
-  }
-  
-  h3.help {
-    font-size: 1.5rem;
-    margin-top: 50px;
-  }
-  
-  p.help {
-    font-size: 1.2rem;
-    text-align: justify;
-    margin: 20px 0;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px;
+  background: linear-gradient(to right, white, rgb(219, 247, 255));
+  min-height: 100vh;
+}
+
+h1.help {
+  font-size: 2.5rem;
+  margin-bottom: 50px;
+}
+
+h2.help {
+  font-size: 1.5rem;
+  margin-top: 50px;
+}
+
+p.help {
+  font-size: 1.2rem;
+  text-align: justify;
+  margin: 20px 0;
+}

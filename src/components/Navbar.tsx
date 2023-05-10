@@ -90,7 +90,7 @@ export default function Navbar() {
         <img src={logo} alt="shopeen logo" className="logo"></img>
         <Row md={4} lg={4} className="text-center">
           <Col className="hamburger-menu">
-            <button className="hamburger-button" onClick={handleShow}>
+            <button tabIndex={0} className="hamburger-button" onClick={handleShow}>
               <img
                 src={hamburger}
                 alt="hamburger menu button"

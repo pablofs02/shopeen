@@ -1,4 +1,4 @@
-import { Mock, expect, test } from 'vitest';
+import { expect, test } from 'vitest';
 import { render, screen } from "@testing-library/react"
 import Filter from "../components/Filter";
 import { describe } from "vitest";

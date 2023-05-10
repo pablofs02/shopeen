@@ -4,16 +4,17 @@
 
     text-align: center;
     position: relative;
-    
+
     overflow: hidden;
     --start: #0062ac21;
     --end: transparent;
 }
 
-.about section, .about footer {
+.about section,
+.about footer {
     opacity: 0.7;
     animation-name: fade;
-    animation-duration: 1.5s;
+    animation-duration: 0.8s;
     animation-fill-mode: forwards;
 }
 
@@ -23,19 +24,17 @@
     margin-bottom: 3rem;
     position: relative;
     isolation: isolate;
-    text-align: center;    
+    text-align: center;
 }
 
 .story-store::after {
     content: "";
     transform: skewY(-2deg);
-    background: linear-gradient(to bottom, var(--start) , var(--end));
+    background: linear-gradient(to bottom, var(--start), var(--end));
     position: absolute;
     inset: 0;
     z-index: -1;
 }
-
-
 
 .about .team {
     padding: 50px;
@@ -46,7 +45,7 @@
     text-align: center;
     opacity: 0;
     animation-name: fade;
-    animation-duration: 1s;
+    animation-duration: 0.8s;
     animation-fill-mode: forwards;
 }
 
@@ -64,8 +63,8 @@
     margin: 0;
 }
 
-.about li:not(:last-child) { 
-    margin-bottom: 15px;  
+.about li:not(:last-child) {
+    margin-bottom: 15px;
 }
 
 .about .tech-used {
@@ -76,14 +75,14 @@
     text-align: center;
     opacity: 0;
     animation-name: fade;
-    animation-duration: 1s;
+    animation-duration: 0.8s;
     animation-fill-mode: forwards;
 }
 
 .about .tech-used::after {
     content: "";
     transform: skewY(-2deg);
-    background: linear-gradient(to top, var(--start) , var(--end));
+    background: linear-gradient(to top, var(--start), var(--end));
     position: absolute;
     inset: 0;
     z-index: -1;
@@ -91,9 +90,9 @@
 
 @keyframes fade {
     from {
-      opacity: 0;
+        opacity: 0;
     }
     to {
-      opacity: 1;
+        opacity: 1;
     }
-  }
+}

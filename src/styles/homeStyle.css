@@ -1,15 +1,16 @@
 .home-item {
-	transition: transform 0.2s ease-out;
+    transition: transform 0.2s ease-out;
 }
 
 .home-item:hover {
-	transform: scale(1.05);
-	z-index: 1;
+    transform: scale(1.05);
+    z-index: 1;
 }
 
-a, a:hover {
-	color: black;
-	text-decoration: none;
+a,
+a:hover {
+    color: black;
+    text-decoration: none;
 }
 
 .section-home {

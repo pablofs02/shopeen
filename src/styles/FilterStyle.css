@@ -1,6 +1,7 @@
-.filter, .filter-offcanvas {
+.filter,
+.filter-offcanvas {
     margin-top: 14px;
-    top: var(--navbarHeight)!important;
+    top: var(--navbarHeight) !important;
     left: 0;
 }
 
@@ -13,7 +14,7 @@
 }
 
 .selected {
-    color: #6B747B;
+    color: #6b747b;
 }
 
 .show-filter {
@@ -27,7 +28,7 @@
 }
 
 .filter-offcanvas {
-    border: transparent!important;
+    border: transparent !important;
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
     z-index: 0;
     margin: 0;
@@ -40,7 +41,7 @@
     align-items: center;
     padding: 1rem;
     background-color: white;
-    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2)
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
 }
 
 .filter-options button {
@@ -91,10 +92,10 @@
     width: 70%;
 }
 
-.filter-range-options input:hover, .filter-range-options input:focus {
+.filter-range-options input:hover,
+.filter-range-options input:focus {
     background-color: white;
 } /* End of price filtering styling */
-
 
 /* Styling for the filtering options by categories */
 .filter-category-options {
@@ -110,7 +111,8 @@
     gap: 0.5rem;
 }
 
-.no-products, .purchase-finished {
+.no-products,
+.purchase-finished {
     background-color: #f7f7f7;
     border: 1px solid #ccc;
     border-radius: 10px;
@@ -120,14 +122,15 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
     padding: 20px;
     margin: 50px auto;
     text-align: center;
     width: 60%;
 }
 
-.no-products h2, .purchase-finished h2 {
+.no-products h2,
+.purchase-finished h2 {
     font-size: 2.5rem;
     color: #ff6f69;
     margin: 0;
@@ -159,19 +162,15 @@
     padding: 0.5rem;
 }
 
-
-
-
-
 /* Chrome, Safari, Edge, Opera */
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 /* For Firefox */
 input[type="number"]::-moz-number-spin-up,
 input[type="number"]::-moz-number-spin-down {
-  display: none;
+    display: none;
 }

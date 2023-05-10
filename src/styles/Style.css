@@ -208,7 +208,7 @@
     bottom: 0;
     right: 0;
     z-index: 10;
-    background: var(--mainColor); /* Alternative -> #db324e */
+    background: var(--mainColor);
     border-radius: 50%;
     color: white;
     height: 1.3rem;

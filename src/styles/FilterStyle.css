@@ -137,7 +137,6 @@
 
 .purchase-finished h2 {
     padding: 5px;
-    /* Give more separation between each line */
     line-height: 1.5;
     font-weight: bold;
     color: var(--mainColor);

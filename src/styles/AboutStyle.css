@@ -1,11 +1,6 @@
 .about {
-    /* Claro */
     background: linear-gradient(to bottom, rgb(250, 250, 250), rgb(235, 233, 233));
     color: black;
-
-    /* Oscuro */
-    /* background: linear-gradient(to bottom, #1f1f1f, black);
-    color: white; */
 
     text-align: center;
     position: relative;
@@ -58,7 +53,6 @@
 .about .team::after {
     content: "";
     transform: skewY(-2deg);
-    /* background: linear-gradient(to bottom, var(--end), #0062ac28 , var(--end)); */
     position: absolute;
     inset: 0;
     z-index: -1;

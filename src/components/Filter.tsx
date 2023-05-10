@@ -62,14 +62,12 @@ function Filter() {
             </div>
             <div className="filter-range-options">
               <span className="text-muted">Min €</span> <span className="text-muted">Max €</span>
-              {/* split="0.01" shows decimal values */}
               <input
                 type="number"
                 name="min"
                 value={minPrice}
                 onChange={handleMinPriceChange}
                 min="0"
-                // placeholder="0"
                 aria-label="Enter a min price"
                 role="textbox"
                 aria-multiline="false"
@@ -80,7 +78,6 @@ function Filter() {
                 value={maxPrice}
                 onChange={handleMaxPriceChange}
                 min="0"
-                // placeholder="10000.00"
                 aria-label="Enter a max price"
                 role="textbox"
                 aria-multiline="false"
@@ -154,7 +151,7 @@ function Filter() {
                 setShow(false);
               } 
             }}>
-            Filter
+            Apply filter
           </button>
         </div>
       </Offcanvas>

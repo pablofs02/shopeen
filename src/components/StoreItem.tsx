@@ -1,4 +1,4 @@
-import { Alert, Button, Card } from "react-bootstrap";
+import { Button, Card } from "react-bootstrap";
 import { MdExpandMore, MdExpandLess } from "react-icons/md";
 import { useState } from "react";
 import { formatCurrency } from "../utilities/formatCurrency";
@@ -14,7 +14,7 @@ type StoreItemsProps = {
   stock: number;
 };
 
-export function StoreItem(props: StoreItemsProps) {
+export default function StoreItem(props: StoreItemsProps) {
   const [showMore, setShowMore] = useState(false);
 
   const { getQuantityCart, addItem, removeItem, boughtItemsQuantity } = useGlobalContext();

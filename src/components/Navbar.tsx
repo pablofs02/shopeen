@@ -1,23 +1,16 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import {
   Row,
   Button,
   Container,
   Col,
-  Offcanvas,
-  OverlayTrigger,
   Popover,
 } from "react-bootstrap/";
-import { Routes, Route, Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-import { FaTrashAlt } from "react-icons/fa";
-import { BsFillCartCheckFill } from "react-icons/bs";
-import CartItem from "./CartItem";
 import SearchBar from "./SearchBar";
 import { useGlobalContext } from "../context/GlobalContext";
-import { formatCurrency } from "../utilities/formatCurrency";
 import storeItems from "../data/products.json";
-import UserAccount from "./UserAccount";
 import { useNavigate } from "react-router-dom";
 import hamburger from "../assets/hamburger-menu.svg";
 import account from "../assets/account.svg";
@@ -27,7 +20,7 @@ import HamburgerMenuOffcanvas from "./HamburgerMenuOffcanvas";
 import CartOffcanvas from "./CartOffcanvas";
 import UserOffcanvas from "./UserOffcanvas";
 
-function Navbar() {
+export default function Navbar() {
   const location = useLocation();
 
   const [show, setShow] = useState(false);
@@ -94,16 +87,13 @@ function Navbar() {
   return (
     <>
       <Container className="navbarTop">
-        
         <img src={logo} alt="shopeen logo" className="logo"></img>
-        
         <Row md={4} lg={4} className="text-center">
           <Col className="hamburger-menu">
             <button className="hamburger-button" onClick={handleShow}>
               <img
                 src={hamburger}
                 alt="hamburger menu button"
-                //longdesc="Button that shows more info and options about navigation bar."
               />
             </button>
           </Col>
@@ -148,10 +138,7 @@ function Navbar() {
 
         {/* Offcanvas of the user account */}
         <UserOffcanvas showAcc={showAcc} handleCloseAcc={handleCloseAcc} />
-        
       </Container>
     </>
   );
 }
-
-export default Navbar;

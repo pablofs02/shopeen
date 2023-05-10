@@ -12,6 +12,10 @@
     width: inherit;
 }
 
+.selected {
+    color: #6B747B;
+}
+
 .show-filter {
     background-color: var(--mainColor);
     padding: 7px;

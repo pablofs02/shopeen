@@ -36,7 +36,7 @@ function Filter() {
             Filter options...
             {!show ? <AiFillCaretRight /> : <AiFillCaretDown />}
           </button>
-          <span tabIndex={0} className="text-muted ms-4">
+          <span tabIndex={0} className="selected ms-4">
             {selectedCategories.length && !show
               ? "Categories selected: " + selectedCategories.join(", ")
               : null}

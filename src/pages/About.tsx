@@ -2,15 +2,14 @@ import { useEffect } from 'react';
 import { useFilterContext } from '../context/FilterContext';
 import '../styles/AboutStyle.css'
 
-function About(){
-    
+export default function About(){
     const {handleClearCategory, handleClearRange} = useFilterContext();
-    
+
     useEffect(() => {
         handleClearRange();
         handleClearCategory();
     }, []);
-    
+
     return(
         <section tabIndex={0} className="cuerpo about">
             <h1>About us:</h1>
@@ -46,5 +45,3 @@ function About(){
         </section>
     );
 }
-
-export default About

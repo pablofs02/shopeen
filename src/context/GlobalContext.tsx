@@ -193,7 +193,8 @@ export function GlobalProvider({ children }: GlobalProviderProps) {
 }
 
 /**
- * This function return a list of recommended items.
+ * This function return a list of recommended items
+ * @returns a list of recommended items
  */
 export function loadRecommendations() {
   let items = products;
@@ -218,7 +219,8 @@ export function loadRecommendations() {
 }
 
 /**
- * This function return a list of bestseller items.
+ * This function return a list of bestseller items
+ * @returns a list of bestseller items
  */
 export function loadBestsellers() {
   let items = products;
@@ -242,7 +244,8 @@ export function loadBestsellers() {
 }
 
 /**
- * This function return a list of onstock items.
+ * This function return a list of onstock items
+ * @returns a list of items that are on stock
  */
 export function loadOnStock() {
   let items = products;

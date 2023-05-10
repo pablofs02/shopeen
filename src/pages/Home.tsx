@@ -6,9 +6,8 @@ import { useFilterContext } from "../context/FilterContext";
 import { useEffect } from "react";
 
 export default function Home() {
-    
     const {handleClearCategory, handleClearRange} = useFilterContext();
-    
+
     useEffect(() => {
         handleClearRange();
         handleClearCategory();

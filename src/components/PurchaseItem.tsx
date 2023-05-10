@@ -9,7 +9,7 @@ type PurchaseItemProps = {
   quantity: number;
 };
 
-export default function PurchaseItem(props: PurchaseItemProps) {
+export function PurchaseItem(props: PurchaseItemProps) {
   const [item] = useState(
     storeItems.find((item) => item.id === props.id)!
   );

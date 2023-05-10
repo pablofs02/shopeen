@@ -1,8 +1,6 @@
 import '../styles/helpStyle.css'
 
-function Help() {
-
-    
+export default function Help() {
     return (
         <section className="help-section">
             <h1 className='help'>Help Section</h1>
@@ -48,5 +46,3 @@ function Help() {
     )
 
 }
-
-export default Help

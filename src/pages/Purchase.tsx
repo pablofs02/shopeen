@@ -1,5 +1,5 @@
 import { useGlobalContext } from "../context/GlobalContext";
-import { PurchaseItem } from "../components/PurchaseItem";
+import PurchaseItem from "../components/PurchaseItem";
 import { Button, Col, OverlayTrigger, Popover, Row } from "react-bootstrap";
 import { formatCurrency } from "../utilities/formatCurrency";
 import storeItems from "../data/products.json";

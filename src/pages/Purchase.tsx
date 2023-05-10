@@ -71,7 +71,7 @@ export default function Purchase() {
         </div>
       ) : (
         <div className="purchase-finished">
-          <h2 tabIndex={1}>Purchase finished correctly</h2>
+          <h3 tabIndex={1}>Purchase finished correctly</h3>
         </div>
       )}
       <section className="cuerpo mt-4">

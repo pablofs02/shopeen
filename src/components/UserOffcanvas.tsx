@@ -6,7 +6,7 @@ type UserOffcanvasProps = {
     handleCloseAcc: () => void;
 }
 
-function UserOffcanvas(props: UserOffcanvasProps) {
+export default function UserOffcanvas(props: UserOffcanvasProps) {
     return (
         <Offcanvas show={props.showAcc} onHide={props.handleCloseAcc} placement="end">
             <Offcanvas.Header className="header-oc" closeButton>
@@ -18,5 +18,3 @@ function UserOffcanvas(props: UserOffcanvasProps) {
         </Offcanvas>
     );
 }
-
-export default UserOffcanvas;

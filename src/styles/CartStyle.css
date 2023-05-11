@@ -17,14 +17,13 @@
     justify-content: space-between;
     align-items: center;
     gap: 10px;
-    
 }
 
 .cart-buttons button {
     width: 2rem;
     height: 36px;
     text-align: center;
-    padding: 5px!important;
+    padding: 5px !important;
 }
 
 .cart-buttons > button:first-child {

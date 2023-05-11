@@ -1,14 +1,12 @@
 import { useGlobalContext } from "../context/GlobalContext";
-import { PurchaseItem } from "../components/PurchaseItem";
+import PurchaseItem from "../components/PurchaseItem";
 import { Button, Col, OverlayTrigger, Popover, Row } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import { formatCurrency } from "../utilities/formatCurrency";
 import storeItems from "../data/products.json";
 import { useEffect, useState } from "react";
-import { FaTrashAlt } from "react-icons/fa";
 import { useFilterContext } from "../context/FilterContext";
 
-function Purchase() {
+export default function Purchase() {
   const { cartItems, setCartItems, boughtItems, setBoughtItems } = useGlobalContext();
 
   const [showPopover, setShowPopover] = useState(false);
@@ -19,13 +17,13 @@ function Purchase() {
   }, 0);
 
   const {handleClearCategory, handleClearRange} = useFilterContext();
-    
+
     useEffect(() => {
         handleClearRange();
         handleClearCategory();
     }, []);
 
-  const handleFinishPurchase = (e: any) => {
+  const handleFinishPurchase = () => {
     const id: number = boughtItems.length;
     setBoughtItems([...boughtItems, { [id]: cartItems }]);
     setCartItems([]);
@@ -73,7 +71,7 @@ function Purchase() {
         </div>
       ) : (
         <div className="purchase-finished">
-          <h2 tabIndex={1}>Purchase finished correctly</h2>
+          <h3 tabIndex={1}>Purchase finished correctly</h3>
         </div>
       )}
       <section className="cuerpo mt-4">
@@ -88,5 +86,3 @@ function Purchase() {
     </>
   );
 }
-
-export default Purchase;

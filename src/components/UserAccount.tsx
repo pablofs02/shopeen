@@ -2,8 +2,8 @@ import { useGlobalContext } from "../context/GlobalContext";
 import "../styles/UserAccountStyle.css"
 
 
-function UserAccount() {
-    const { userInfo, setUserInfo } = useGlobalContext();
+export default function UserAccount() {
+    const { userInfo } = useGlobalContext();
 
     const { name, lastName, email, address } = userInfo;
 
@@ -15,5 +15,3 @@ function UserAccount() {
         </div>
     </>
 }
-
-export default UserAccount

@@ -1,24 +1,14 @@
 import { useParams, useNavigate } from "react-router-dom";
-import { useFilterContext } from "../context/FilterContext";
 import { formatCurrency } from "../utilities/formatCurrency";
 import { useGlobalContext } from "../context/GlobalContext";
 import products from "../data/products.json";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import "../styles/ProductStyle.css";
-import { useState } from "react";
 
-function Product() {
+export default function Product() {
     const { id } = useParams<{ id: string }>();
     const { addItem, getQuantityCart, removeItem } = useGlobalContext();
-    const { handleClearCategory, handleClearRange } = useFilterContext();
     const navigate = useNavigate();
-
-    const handleSelection = (e: any) => {
-        e.preventDefault();
-        navigate("/ProyIU/store");
-        handleClearCategory();
-        handleClearRange();
-    };
 
     const item = products.find((item) => item.id === parseInt(id!));
 
@@ -49,7 +39,7 @@ function Product() {
                             variant="danger">
                             - Remove from cart
                         </Button>}
-                        <Button tabIndex={7} variant="secondary" onClick={() => {navigate("/ProyIU")}}>
+                        <Button tabIndex={7} variant="secondary" onClick={() => {navigate("/ProyIU/")}}>
                             Go back
                         </Button>
                     </div>
@@ -58,5 +48,3 @@ function Product() {
         </Container>
     );
 }
-
-export default Product;

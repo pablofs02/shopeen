@@ -4,13 +4,13 @@
 }
 
 .navbarTop {
-    max-width: 100vw!important;
+    max-width: 100vw !important;
     height: var(--navbarHeight);
-    margin: 0!important;
+    margin: 0 !important;
     display: flex;
     align-items: center;
     gap: 1vw;
-    background-color: white;    
+    background-color: white;
     box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
     overflow: hidden;
     position: fixed;
@@ -27,6 +27,7 @@
     scale: 1.1;
     user-select: none;
     cursor: default;
+    z-index: -1;
 }
 
 .navbarTop .col > a {
@@ -62,38 +63,37 @@
 }
 
 .alert-red {
-    border: 2px solid #ff0000; 
-    padding: 10px; 
-    border-radius: 10px; 
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
-    text-align: center; 
+    border: 2px solid #ff0000;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
-  
+
 .alert-red span {
-    display: block; 
-    font-size: 1.2rem; 
-    font-weight: bold; 
-    color: #ff0000; 
-    text-transform: uppercase; 
-    letter-spacing: 2px; 
+    display: block;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #ff0000;
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
-  
 
 .stock-left {
-    border: 2px solid #00aeff; 
-    padding: 10px; 
-    border-radius: 10px; 
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
-    text-align: center; 
+    border: 2px solid #00aeff;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
-  
+
 .stock-left span {
-    display: block; 
-    font-size: 1.2rem; 
-    font-weight: bold; 
-    color: #00aeff;  
-    text-transform: uppercase; 
-    letter-spacing: 2px; 
+    display: block;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #00aeff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
 .searchBar input {
@@ -105,8 +105,8 @@
     width: 100%;
     padding-left: 1.5rem;
     -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
-    box-sizing: border-box;         /* Opera/IE 8+ */
+    -moz-box-sizing: border-box; /* Firefox, other Gecko */
+    box-sizing: border-box; /* Opera/IE 8+ */
 }
 
 .searchBar svg {
@@ -137,7 +137,7 @@
 
 .hamburger-button {
     border: none;
-    background-color: transparent;
+    background-color: white;
 }
 
 .hamburger-button > img {
@@ -149,13 +149,12 @@
     margin-bottom: 15px;
 }
 
-
-.count-store{
+.count-store {
     margin-left: 15px;
     margin-right: 15px;
 }
 
-.desc-store{
+.desc-store {
     margin-bottom: 15px;
 }
 
@@ -186,7 +185,8 @@
     font-weight: 500;
 }
 
-.addItem, .remove {
+.addItem,
+.remove {
     width: 50%;
 }
 
@@ -207,7 +207,7 @@
     bottom: 0;
     right: 0;
     z-index: 10;
-    background: var(--mainColor); /* Alternative -> #db324e */
+    background: var(--mainColor);
     border-radius: 50%;
     color: white;
     height: 1.3rem;
@@ -221,7 +221,7 @@
 }
 
 .offcanvas {
-    width: 425px!important;
+    width: 425px !important;
 }
 
 @media (max-width: 800px) {
@@ -235,5 +235,16 @@
 
     .navbarTop {
         padding-block: 5px;
+    }
+
+    .navbarTop > .logo {
+        display: block !important;
+        left: 100px;
+    }
+}
+
+@media (max-width: 870px) {
+    .navbarTop > .logo {
+        display: none;
     }
 }

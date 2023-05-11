@@ -1,5 +1,3 @@
-/* d-flex justify-content-center align-items-left flex-column */
-
 .product-container {
     display: flex;
     flex-direction: row;

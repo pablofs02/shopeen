@@ -36,7 +36,7 @@ function Filter() {
             Filter options...
             {!show ? <AiFillCaretRight /> : <AiFillCaretDown />}
           </button>
-          <span tabIndex={0} className="text-muted ms-4">
+          <span tabIndex={0} className="selected ms-4">
             {selectedCategories.length && !show
               ? "Categories selected: " + selectedCategories.join(", ")
               : null}
@@ -62,7 +62,6 @@ function Filter() {
             </div>
             <div className="filter-range-options">
               <span className="text-muted">Min €</span> <span className="text-muted">Max €</span>
-              {/* split="0.01" shows decimal values */}
               <input
                 title="Enter a min price"
                 type="number"
@@ -154,7 +153,7 @@ function Filter() {
                 setShow(false);
               } 
             }}>
-            Filter
+            Apply filter
           </button>
         </div>
       </Offcanvas>

@@ -16,7 +16,7 @@ type CartOffcanvasProps = {
     totalPrice: number;
 };
 
-function CartOffcanvas(props: CartOffcanvasProps) {
+export default function CartOffcanvas(props: CartOffcanvasProps) {
     return (
         <Offcanvas aria-label="Shopping cart" show={props.showCart} onHide={props.handleCloseCart} placement="end">
             <Offcanvas.Header className="header-oc" closeButton>
@@ -88,5 +88,3 @@ function CartOffcanvas(props: CartOffcanvasProps) {
         </Offcanvas>
     );
 }
-
-export default CartOffcanvas;

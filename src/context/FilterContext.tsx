@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useContext, useEffect, useState } from "react";
+import { createContext, ReactNode, useContext, useState } from "react";
 
 type FilterProviderProps = {
   children: ReactNode;
@@ -87,7 +87,7 @@ export function FilterProvider({ children }: FilterProviderProps) {
     setMaxPrice(parseInt(event.target.value));
   };
 
-  const handleActiveFilter = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  const handleActiveFilter = () => {
     if (isNaN(minPrice) || minPrice > maxPrice) {
       setMinPriceActive(0);
     } else {

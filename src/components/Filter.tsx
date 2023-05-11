@@ -64,23 +64,23 @@ function Filter() {
               <span className="text-muted">Min €</span> <span className="text-muted">Max €</span>
               {/* split="0.01" shows decimal values */}
               <input
+                title="Enter a min price"
                 type="number"
                 name="min"
                 value={minPrice}
                 onChange={handleMinPriceChange}
                 min="0"
-                // placeholder="0"
                 aria-label="Enter a min price"
                 role="textbox"
                 aria-multiline="false"
               />
               <input
+                title="Enter a max price"
                 type="number"
                 name="max"
                 value={maxPrice}
                 onChange={handleMaxPriceChange}
                 min="0"
-                // placeholder="10000.00"
                 aria-label="Enter a max price"
                 role="textbox"
                 aria-multiline="false"

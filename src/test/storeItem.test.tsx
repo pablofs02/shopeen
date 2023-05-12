@@ -1,13 +1,18 @@
 import { afterEach, beforeEach, expect, test } from 'vitest';
-import { render, screen, fireEvent } from "@testing-library/react"
+import { render, screen, fireEvent, waitFor } from "@testing-library/react"
 import Filter from "../components/Filter";
 import { describe } from "vitest";
-import { FilterProvider } from '../context/FilterContext';
+import { FilterProvider, useFilterContext } from '../context/FilterContext';
+import { useContext } from 'react';
+
+
 
 describe("Filter", () => {
-    
+
     beforeEach(() => {
+        
         render(
+
             <FilterProvider>
                 <Filter />
             </FilterProvider>
@@ -38,13 +43,24 @@ describe("Filter", () => {
         expect(screen.getAllByText("Clear")).toHaveLength(2);
     });
 
+    test("should hide the filter options when the button apply filter is clicked", async () => {
+        const button = screen.getByText("Filter options...");
+        fireEvent.click(button);
+        const applyButton = screen.getByText("Apply filter");
+        fireEvent.click(applyButton);
+        await waitFor(() => {
+            expect(screen.queryByText("Price range")).toBeNull();
+            expect(screen.queryByText("Category")).toBeNull();
+          });
+    });
+
     test("should not be any values for the min and max price" , () => {
         const button = screen.getByText("Filter options...");
         fireEvent.click(button);
-        const minPriceInput = screen.getByTitle("Enter a min price");
-        const maxPriceInput = screen.getByTitle("Enter a max price");
-        expect(minPriceInput.nodeValue).toBeNull();
-        expect(maxPriceInput.nodeValue).toBeNull();
+        const minPriceInput = screen.getByTitle("Enter a min price") as HTMLInputElement;
+        const maxPriceInput = screen.getByTitle("Enter a max price") as HTMLInputElement;
+        expect(minPriceInput.value).toBe('0');
+        expect(maxPriceInput.value).toBe('10000');
     });
 
     test("should render a warning when one of the price inputs is empty" , () => {
@@ -68,16 +84,12 @@ describe("Filter", () => {
     test("should change the max and min price values when entered its value" , () => {
         const button = screen.getByText("Filter options...");
         fireEvent.click(button);
-        const minPriceInput = screen.getByTitle("Enter a min price");
-        const maxPriceInput = screen.getByTitle("Enter a max price");
+        const minPriceInput = screen.getByTitle("Enter a min price") as HTMLInputElement;;
+        const maxPriceInput = screen.getByTitle("Enter a max price") as HTMLInputElement;;
         fireEvent.change(minPriceInput, { target: { value: "10" } });
         fireEvent.change(maxPriceInput, { target: { value: "50" } });
-        
-        const applyButton = screen.getByText("Filter");
-        fireEvent.click(applyButton);
-
-        expect(minPriceInput.nodeValue).toEqual("10");
-        expect(maxPriceInput.nodeValue).toEqual("50");
+        expect(minPriceInput.value).toEqual("10");
+        expect(maxPriceInput.value).toEqual("50");        
     });
     
     test("should not check any category by default", () => {
@@ -89,76 +101,61 @@ describe("Filter", () => {
         });
     });
 
-});
-
-/*
-
-
-    test("updates the min and max price range values", () => {
-        render(
-            <FilterProvider>
-                <Filter />
-            </FilterProvider>
-        );
-        
-        const minPriceInput = screen.getByLabelText("Min price:");
-        const maxPriceInput = screen.getByLabelText("Max price:");
-        fireEvent.change(minPriceInput, { target: { value: "10" } });
-        fireEvent.change(maxPriceInput, { target: { value: "50" } });
-        expect(minPriceInput.value).toEqual("10");
-        expect(maxPriceInput.value).toEqual("50");
-    });
-
     test("updates the selected categories", () => {
-        render(
-            <FilterProvider>
-                <Filter />
-            </FilterProvider>
-        );
+        const button = screen.getByText("Filter options...");
+        fireEvent.click(button);
         
-        const categoryInputs = screen.getAllByLabelText("category-checkbox");
-        const firstCategoryInput = categoryInputs[0];
-        const secondCategoryInput = categoryInputs[1];
+        const categoryInputs = screen.getAllByTitle("checkbox");
+        const firstCategoryInput = categoryInputs[0] as HTMLInputElement;
+        const secondCategoryInput = categoryInputs[1] as HTMLInputElement;
+        const thirdCategoryInput = categoryInputs[2] as HTMLInputElement;
+        const fourthCategoryInput = categoryInputs[3] as HTMLInputElement;
 
         fireEvent.click(firstCategoryInput);
-        expect(firstCategoryInput.checked).toBeTruthy();
-        expect(secondCategoryInput.checked).toBeFalsy();
-
         fireEvent.click(secondCategoryInput);
+
         expect(firstCategoryInput.checked).toBeTruthy();
         expect(secondCategoryInput.checked).toBeTruthy();
+        expect(thirdCategoryInput.checked).toBeFalsy();
+        expect(fourthCategoryInput.checked).toBeFalsy();
     });
 
-    test("clears the filter values", () => {
-        render(
-            <FilterProvider>
-                <Filter />
-            </FilterProvider>
-        );
+    test("should clear the price range when the button clear is clicked", () => {
+        const button = screen.getByText("Filter options...");
+        fireEvent.click(button);
         
-        const searchBarInput = screen.getByPlaceholderText("Search products...");
-        fireEvent.change(searchBarInput, { target: { value: "test" } });
-
-        const minPriceInput = screen.getByLabelText("Min price:");
-        const maxPriceInput = screen.getByLabelText("Max price:");
+        const minPriceInput = screen.getByTitle("Enter a min price") as HTMLInputElement;;
+        const maxPriceInput = screen.getByTitle("Enter a max price") as HTMLInputElement;;
         fireEvent.change(minPriceInput, { target: { value: "10" } });
         fireEvent.change(maxPriceInput, { target: { value: "50" } });
 
-        const categoryInputs = screen.getAllByLabelText("category-checkbox");
-        const firstCategoryInput = categoryInputs[0];
-        const secondCategoryInput = categoryInputs[1];
+        const clearButton = screen.getByTitle("clear price");
+        fireEvent.click(clearButton);
+
+        expect(minPriceInput.value).toEqual("0");
+        expect(maxPriceInput.value).toEqual("10000");
+    });
+
+    test("should clear the categories when the button clear is clicked", () => {
+        const button = screen.getByText("Filter options...");
+        fireEvent.click(button);
+
+        const categoryInputs = screen.getAllByTitle("checkbox");
+        const firstCategoryInput = categoryInputs[0] as HTMLInputElement;
+        const secondCategoryInput = categoryInputs[1] as HTMLInputElement;
+        const thirdCategoryInput = categoryInputs[2] as HTMLInputElement;
+        const fourthCategoryInput = categoryInputs[3] as HTMLInputElement;
+
         fireEvent.click(firstCategoryInput);
         fireEvent.click(secondCategoryInput);
 
-        const clearButton = screen.getByText("Clear");
+        const clearButton = screen.getByTitle("clear categories");
         fireEvent.click(clearButton);
 
-        expect(searchBarInput.value).toEqual("");
-        expect(minPriceInput.value).toEqual("");
-        expect(maxPriceInput.value).toEqual("");
         expect(firstCategoryInput.checked).toBeFalsy();
         expect(secondCategoryInput.checked).toBeFalsy();
+        expect(thirdCategoryInput.checked).toBeFalsy();
+        expect(fourthCategoryInput.checked).toBeFalsy();
     });
-});
 
-*/
+});

@@ -58,7 +58,7 @@ function Filter() {
           <div className="filter-range filters">
             <div className="filter-header">
               <h5>Price range</h5>
-              <button aria-label="Clear price range" onClick={handleClearRange}>Clear</button>
+              <button title="clear price" aria-label="Clear price range" onClick={handleClearRange}>Clear</button>
             </div>
             <div className="filter-range-options">
               <span className="text-muted">Min €</span> <span className="text-muted">Max €</span>
@@ -66,7 +66,7 @@ function Filter() {
                 title="Enter a min price"
                 type="number"
                 name="min"
-                value={minPrice}
+                value={isNaN(minPrice) ? "" : minPrice}
                 onChange={handleMinPriceChange}
                 min="0"
                 aria-label="Enter a min price"
@@ -77,7 +77,7 @@ function Filter() {
                 title="Enter a max price"
                 type="number"
                 name="max"
-                value={maxPrice}
+                value={isNaN(maxPrice) ? "" : maxPrice}
                 onChange={handleMaxPriceChange}
                 min="0"
                 aria-label="Enter a max price"
@@ -92,12 +92,13 @@ function Filter() {
           <div className="filter-category filters">
             <div className="filter-header">
               <h5>Category</h5>
-              <button aria-label="Clear categories" onClick={handleClearCategory}>Clear</button>
+              <button title="clear categories" aria-label="Clear categories" onClick={handleClearCategory}>Clear</button>
             </div>
             <div className="filter-category-options">
               {/* Men's clothing */}
               <div>
                 <input
+                  title="checkbox"
                   type="checkbox"
                   value="men's clothing"
                   checked={selectedCategories.includes("men's clothing")}
@@ -110,6 +111,7 @@ function Filter() {
               {/* Jewelry */}
               <div>
                 <input
+                  title="checkbox"
                   type="checkbox"
                   value="jewelry"
                   checked={selectedCategories.includes("jewelry")}
@@ -122,6 +124,7 @@ function Filter() {
               {/* Electronics */}
               <div>
                 <input
+                  title="checkbox"
                   type="checkbox"
                   value="electronics"
                   checked={selectedCategories.includes("electronics")}
@@ -134,6 +137,7 @@ function Filter() {
               {/* Women's clothing */}
               <div>
                 <input
+                  title="checkbox"
                   type="checkbox"
                   value="women's clothing"
                   checked={selectedCategories.includes("women's clothing")}

@@ -20,7 +20,7 @@ export default function SearchBar() {
 
     return (
         <>
-            <div className="searchBar">
+            <div className={searchBarValue ? "searchBar hide-bg" : "searchBar"}>
                 {searchBarValue ? (
                     <ImCross
                         onClick={() => {

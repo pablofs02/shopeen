@@ -224,6 +224,12 @@
     width: 425px !important;
 }
 
+@media (max-width: 870px) {
+    .navbarTop > .logo {
+        display: none;
+    }
+}
+
 @media (max-width: 800px) {
     .navbarTop .hamburger-menu {
         display: block;
@@ -238,13 +244,38 @@
     }
 
     .navbarTop > .logo {
-        display: block !important;
+        display: block;
         left: 100px;
     }
 }
 
-@media (max-width: 870px) {
+@media (max-width: 520px) {
+    .searchBar input {
+        background-color: transparent;
+        background: url(../assets/shopeen.svg) no-repeat;
+        background-size: 70%;
+        background-position: center center;
+        background-origin: content-box;
+        background-clip: border-box;
+        opacity: 1;
+    }
+
+    .searchBar input:hover,
+    .searchBar input:focus {
+        background: transparent;
+    }
+
     .navbarTop > .logo {
         display: none;
+    }
+
+    .hide-bg input {
+        background: transparent;
+    }
+}
+
+@media (max-width: 380px) {
+    .searchBar input {
+        background: transparent;
     }
 }

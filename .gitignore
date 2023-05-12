@@ -25,3 +25,6 @@ dist-ssr
 
 # Coverage
 coverage
+
+# Test
+test

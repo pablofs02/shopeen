@@ -43,10 +43,14 @@ Las dos versiones tienen las mismas funcionalidades, por lo que recomendamos el 
   - En la terminal del **server** ejecutamos los siguientes comandos:
 
   `cd server`
+  
+  `npm i`
 
   `npm run start`
 
   - En la terminal del **frontend**
+
+  `npm i`
 
   `npm run dev`
 

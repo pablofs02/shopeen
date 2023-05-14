@@ -82,7 +82,7 @@ function Filter() {
                             <input
                                 type="number"
                                 name="min"
-                                value={minPrice}
+                                placeholder={minPrice.toString()}
                                 onChange={handleMinPriceChange}
                                 min="0"
                                 aria-label="Enter a min price"
@@ -92,7 +92,7 @@ function Filter() {
                             <input
                                 type="number"
                                 name="max"
-                                value={maxPrice}
+                                placeholder={maxPrice.toString()}
                                 onChange={handleMaxPriceChange}
                                 min="0"
                                 aria-label="Enter a max price"

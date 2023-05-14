@@ -7,7 +7,6 @@ type GlobalProviderProps = {
 
 // This is the type of the context
 type GlobalContext = {
-<<<<<<< HEAD
     boughtItemsQuantity: BoughtItemsQuantity[];
     boughtItems: Purchase[];
     setBoughtItems: (items: Purchase[]) => void;
@@ -20,55 +19,25 @@ type GlobalContext = {
     setCartItems: (items: CartItem[]) => void;
     userInfo: UserInfo;
     setUserInfo: (userInfo: UserInfo) => void;
-=======
-  boughtItemsQuantity: BoughtItemsQuantity[];
-  boughtItems: Purchase[];
-  setBoughtItems: (items: Purchase[]) => void; 
-  cartItems: CartItem[];
-  addItem: (id: number) => void;
-  searchItem: (title: string) => void;
-  getQuantityCart: (id: number) => number;
-  decreaseItemQuantity: (id: number) => void;
-  removeItem: (id: number) => void;
-  setCartItems: (items: CartItem[]) => void;
-  userInfo: UserInfo; 
-  setUserInfo: (userInfo: UserInfo) => void;
->>>>>>> master
 };
 
 // This is the type of the user info
 type UserInfo = {
-<<<<<<< HEAD
     name: string;
     lastName: string;
     email: string;
     address: string;
-=======
-  name: string; // This is the name of the user
-  lastName: string; // This is the last name of the user
-  email: string; // This is the email of the user
-  address: string; // This is the address of the user
->>>>>>> master
 };
 
 // This is the type of the items in the cart
 type CartItem = {
-<<<<<<< HEAD
     id: number;
     quantity: number;
-=======
-  id: number; // This is the id of the item
-  quantity: number; // This is the quantity of the item
->>>>>>> master
 };
 
 // This is the type of the items bought
 type Purchase = {
-<<<<<<< HEAD
     [key: number]: CartItem[];
-=======
-  [key: number]: CartItem[]; // This is the id of the purchase and the items bought
->>>>>>> master
 };
 
 // This is the type of the items bought and the quantity of each item
@@ -94,7 +63,6 @@ export function useGlobalContext() {
 }
 
 export function GlobalProvider({ children }: GlobalProviderProps) {
-<<<<<<< HEAD
     const cartLocalStorage = localStorage.getItem("cart");
     const boughtItemsLocalStorage = localStorage.getItem("boughtItems");
 
@@ -110,59 +78,6 @@ export function GlobalProvider({ children }: GlobalProviderProps) {
         lastName: "Cena",
         email: "johncena@example.com",
         address: "5th Avenue",
-=======
-  // We get the cart and bought items from local storage
-  const cartLocalStorage = localStorage.getItem("cart");
-  const boughtItemsLocalStorage = localStorage.getItem("boughtItems");
-
-  // We set the states of the cart and bought items
-  const [boughtItemsQuantity, setBoughtItemsQuantity] = useState<BoughtItemsQuantity[]>([]);
-
-  // We set the states of the cart and bought items
-  const [boughtItems, setBoughtItems] = useState<Purchase[]>(
-    boughtItemsLocalStorage ? JSON.parse(boughtItemsLocalStorage) : []
-  );
-
-  // We set the state of the cart
-  const [cartItems, setCartItems] = useState<CartItem[]>(cartLocalStorage ? JSON.parse(cartLocalStorage) : []);
-
-  // We set the state of the user info
-  const [userInfo, setUserInfo] = useState<UserInfo>({
-    name: "John",
-    lastName: "Cena",
-    email: "johncena@example.com",
-    address: "5th Avenue",
-  });
-
-  // We set the state of the bought items quantity
-  useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cartItems));
-  }, [cartItems]);
-
-  // We set the state of the bought items quantity
-  useEffect(() => {
-    localStorage.setItem("boughtItems", JSON.stringify(boughtItems));
-    setBoughtItemsQuantity([]);
-    setBoughtItemsQuantity(getQuantityBought());
-  }, [boughtItems]);
-
-  /**
-   * Function that gets the quantity of each item bought
-   * @returns the quantity of each item bought
-   */
-  function getQuantityBought() {
-    const result: BoughtItemsQuantity[] = [];
-    boughtItems.forEach((item) => {
-      const itemArray = Object.values(item)[0];
-      itemArray.forEach((item) => {
-        const itemIndex = result.findIndex((resultItem) => resultItem.id === item.id);
-        if (itemIndex !== -1) {
-          result[itemIndex].quantity += item.quantity;
-        } else {
-          result.push({ id: item.id, quantity: item.quantity });
-        }
-      });
->>>>>>> master
     });
 
     useEffect(() => {

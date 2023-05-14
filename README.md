@@ -26,7 +26,7 @@ Las dos versiones tienen las mismas funcionalidades, por lo que recomendamos el 
 
 - Clonar el repositorio. 
 
-`git clone https://github.com/pablofs02/ProyIU.git`
+`git clone https://github.com/pablofs02/ProyIU.git .`
 
 - Cambiar a rama **backend**
 

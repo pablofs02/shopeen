@@ -3,14 +3,16 @@ import noRatingProducts from "../data/noRatingProducts.json";
 
 let products = noRatingProducts;
 
+// This is the context that will hold the global state of the app
 type GlobalProviderProps = {
   children: ReactNode;
 };
 
+// This is the type of the context
 type GlobalContext = {
   boughtItemsQuantity: BoughtItemsQuantity[];
   boughtItems: Purchase[];
-  setBoughtItems: (items: Purchase[]) => void;
+  setBoughtItems: (items: Purchase[]) => void; 
   cartItems: CartItem[];
   addItem: (id: number) => void;
   searchItem: (title: string) => void;
@@ -18,26 +20,30 @@ type GlobalContext = {
   decreaseItemQuantity: (id: number) => void;
   removeItem: (id: number) => void;
   setCartItems: (items: CartItem[]) => void;
-  userInfo: UserInfo;
+  userInfo: UserInfo; 
   setUserInfo: (userInfo: UserInfo) => void;
 };
 
+// This is the type of the user info
 type UserInfo = {
-  name: string;
-  lastName: string;
-  email: string;
-  address: string;
+  name: string; // This is the name of the user
+  lastName: string; // This is the last name of the user
+  email: string; // This is the email of the user
+  address: string; // This is the address of the user
 };
 
+// This is the type of the items in the cart
 type CartItem = {
-  id: number;
-  quantity: number;
+  id: number; // This is the id of the item
+  quantity: number; // This is the quantity of the item
 };
 
+// This is the type of the items bought
 type Purchase = {
-  [key: number]: CartItem[];
+  [key: number]: CartItem[]; // This is the id of the purchase and the items bought
 };
 
+// This is the type of the items bought and the quantity of each item
 type BoughtItemsQuantity = {
   id: number;
   quantity: number;
@@ -50,16 +56,22 @@ export function useGlobalContext() {
 }
 
 export function GlobalProvider({ children }: GlobalProviderProps) {
+  // We get the cart and bought items from local storage
   const cartLocalStorage = localStorage.getItem("cart");
   const boughtItemsLocalStorage = localStorage.getItem("boughtItems");
 
+  // We set the states of the cart and bought items
   const [boughtItemsQuantity, setBoughtItemsQuantity] = useState<BoughtItemsQuantity[]>([]);
 
+  // We set the states of the cart and bought items
   const [boughtItems, setBoughtItems] = useState<Purchase[]>(
     boughtItemsLocalStorage ? JSON.parse(boughtItemsLocalStorage) : []
   );
+
+  // We set the state of the cart
   const [cartItems, setCartItems] = useState<CartItem[]>(cartLocalStorage ? JSON.parse(cartLocalStorage) : []);
 
+  // We set the state of the user info
   const [userInfo, setUserInfo] = useState<UserInfo>({
     name: "John",
     lastName: "Cena",
@@ -67,16 +79,22 @@ export function GlobalProvider({ children }: GlobalProviderProps) {
     address: "5th Avenue",
   });
 
+  // We set the state of the bought items quantity
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cartItems));
   }, [cartItems]);
 
+  // We set the state of the bought items quantity
   useEffect(() => {
     localStorage.setItem("boughtItems", JSON.stringify(boughtItems));
     setBoughtItemsQuantity([]);
     setBoughtItemsQuantity(getQuantityBought());
   }, [boughtItems]);
 
+  /**
+   * Function that gets the quantity of each item bought
+   * @returns the quantity of each item bought
+   */
   function getQuantityBought() {
     const result: BoughtItemsQuantity[] = [];
     boughtItems.forEach((item) => {

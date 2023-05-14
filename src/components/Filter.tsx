@@ -5,22 +5,25 @@ import { useFilterContext } from "../context/FilterContext";
 import { AiFillCaretDown, AiFillCaretRight } from "react-icons/ai";
 
 function Filter() {
+    // Variable and function to show the filter
     const [show, setShow] = useState(false);
 
+    // Variables and functions from the context
     const {
-        minPrice,
-        maxPrice,
-        minPriceActive,
-        maxPriceActive,
-        selectedCategories,
-        handleCheckboxChange,
-        handleClearCategory,
-        handleClearRange,
-        handleMaxPriceChange,
-        handleMinPriceChange,
-        handleActiveFilter,
-    } = useFilterContext();
+        minPrice, // Minimum price of the range that is being shown
+        maxPrice, // Maximum price of the range that is being shown
+        minPriceActive, // Minimum price of the range 
+        maxPriceActive, // Maximum price of the range 
+        selectedCategories, // Categories that are selected
+        handleCheckboxChange, // Function to handle the change of a checkbox
+        handleClearCategory, // Function to clear the selected categories
+        handleClearRange, // Function to clear the selected range
+        handleMaxPriceChange, // Function to handle the change of the maximum price
+        handleMinPriceChange, // Function to handle the change of the minimum price
+        handleActiveFilter, // Function to handle the active filter
+    } = useFilterContext(); 
 
+    // Clear the filter when the component is mounted
     useEffect(() => {
         handleClearRange();
         handleClearCategory();
@@ -30,6 +33,7 @@ function Filter() {
         <>
             <div className="filter">
                 <>
+                    {/* Button to show the filter options */}
                     <button
                         className="show-filter"
                         onClick={() => {
@@ -38,6 +42,7 @@ function Filter() {
                         Filter options...
                         {!show ? <AiFillCaretRight /> : <AiFillCaretDown />}
                     </button>
+                    {/* Showing the selected categories and price range */}
                     <span tabIndex={0} className="selected ms-4">
                         {minPriceActive > 0 || maxPriceActive < 10000 ? (
                             <>
@@ -66,11 +71,13 @@ function Filter() {
                     <div className="filter-range filters">
                         <div className="filter-header">
                             <h5>Price range</h5>
+                            {/* Button for clearing the price range */}
                             <button aria-label="Clear price range" onClick={handleClearRange}>
                                 Clear
                             </button>
                         </div>
                         <div className="filter-range-options">
+                            {/* The maximum and minumum prices */}
                             <span className="text-muted">Min €</span> <span className="text-muted">Max €</span>
                             <input
                                 type="number"
@@ -93,6 +100,7 @@ function Filter() {
                                 aria-multiline="false"
                             />
                         </div>
+                        {/* Alert for when the min price is greater than the max price or when one of the inputs is empty*/}
                         {minPrice > maxPrice || isNaN(minPrice) || isNaN(maxPrice) ? (
                             <div tabIndex={0} className="mt-3 alert-red">
                                 {minPrice > maxPrice ? (
@@ -106,6 +114,7 @@ function Filter() {
                     <div className="filter-category filters">
                         <div className="filter-header">
                             <h5>Category</h5>
+                            {/* Button for clearing the categories */}
                             <button aria-label="Clear categories" onClick={handleClearCategory}>
                                 Clear
                             </button>
@@ -162,6 +171,7 @@ function Filter() {
                     </div>
                 </Offcanvas.Body>
                 <div className="filter-button">
+                    {/* Button for apply the filter options */}
                     <button
                         onClick={(e) => {
                             if (minPrice <= maxPrice) {

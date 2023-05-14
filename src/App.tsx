@@ -11,6 +11,10 @@ import { FilterProvider } from "./context/FilterContext";
 import Purchase from "./pages/Purchase";
 import Product from "./pages/Product";
 
+/**
+ *  This functions returns the main component of the application with the routes and the context providers
+ * @returns The main component of the application
+ */
 function App() {
   return (
     <BrowserRouter>

@@ -3,8 +3,10 @@ import "../styles/UserAccountStyle.css"
 
 
 export default function UserAccount() {
+    // Get the user info from the context
     const { userInfo } = useGlobalContext();
 
+    // Get the necessary info from the user
     const { name, lastName, email, address } = userInfo;
 
     return <>

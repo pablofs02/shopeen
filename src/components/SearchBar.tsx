@@ -5,13 +5,18 @@ import { ImCross } from "react-icons/im";
 import search from "../assets/search.svg";
 
 export default function SearchBar() {
+    // We get the variables and functions from the context
     const { setSearch, setSearchBarInput, searchBarValue } = useFilterContext();
+    
+    // Function to change the location
     const navigate = useNavigate();
 
+    // We get the input element
     useEffect(() => {
         setSearchBarInput(document.querySelector("input"));
     }, []);
 
+    // Function to handle the change of the input
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearchBarInput(e.target);
         setSearch(e.target.value);

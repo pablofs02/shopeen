@@ -1,9 +1,10 @@
 import { Offcanvas } from "react-bootstrap";
 import UserAccount from "./UserAccount";
 
+// The props of the component
 type UserOffcanvasProps = {
-    showAcc: boolean;
-    handleCloseAcc: () => void;
+    showAcc: boolean; // Whether the offcanvas is shown or not
+    handleCloseAcc: () => void; // Function to close the offcanvas
 }
 
 export default function UserOffcanvas(props: UserOffcanvasProps) {

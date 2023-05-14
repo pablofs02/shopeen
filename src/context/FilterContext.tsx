@@ -1,9 +1,11 @@
 import { createContext, ReactNode, useContext, useState } from "react";
 
+// This is the context that will hold the global state of the filter
 type FilterProviderProps = {
   children: ReactNode;
 };
 
+// This is the type of the context
 type FilterContext = {
   searchBarInput: any;
   setSearchBarInput: (s:any) => void;
@@ -36,9 +38,11 @@ export function useFilterContext() {
 }
 
 export function FilterProvider({ children }: FilterProviderProps) {
+  // We get the cart and bought items from local storage
   const [searchBarInput, setSearchBarInput] = useState<React.InputHTMLAttributes<HTMLInputElement>>({});
   const [searchBarValue, setSearchBarValue] = useState("");
 
+  // This function sets the search bar value
   function setSearch(s: string) {
     searchBarInput.value = s;
     setSearchBarValue(s);
@@ -54,6 +58,10 @@ export function FilterProvider({ children }: FilterProviderProps) {
 
   const [selectedCategoriesActive, setSelectedCategoriesActive] = useState<string[]>([]); // This is the state that will hold the active selected options from the checkboxes
 
+  /**
+   * This function handles the change of the checkboxes
+   * @param event This is the event that is triggered when a checkbox is clicked
+   */
   const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const option = event.target.value;
     const isChecked = event.target.checked;
@@ -67,11 +75,17 @@ export function FilterProvider({ children }: FilterProviderProps) {
     });
   };
 
+  /**
+   * This function clears the selected categoriesd
+   */
   const handleClearCategory = () => {
     setSelectedCategories([]);
     setSelectedCategoriesActive([]);
   };
 
+  /**
+   * This function clears the selected price range
+   */
   const handleClearRange = () => {
     setMinPrice(0);
     setMaxPrice(10000);
@@ -79,14 +93,25 @@ export function FilterProvider({ children }: FilterProviderProps) {
     setMinPriceActive(0);
   };
 
+  /**
+   * This function sets the active values of the filter
+   * @param event This is the event that is triggered when the filter button is clicked
+   */
   const handleMinPriceChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setMinPrice(parseInt(event.target.value));
   };
 
+  /**
+   *  This function sets the active values of the filter
+   * @param event This is the event that is triggered when the filter button is clicked
+   */
   const handleMaxPriceChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setMaxPrice(parseInt(event.target.value));
   };
 
+  /**
+   * This function sets the active values of the filter
+   */
   const handleActiveFilter = () => {
     if (isNaN(minPrice) || minPrice > maxPrice) {
       setMinPriceActive(0);

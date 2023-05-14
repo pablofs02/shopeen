@@ -21,35 +21,43 @@ import CartOffcanvas from "./CartOffcanvas";
 import UserOffcanvas from "./UserOffcanvas";
 
 export default function Navbar() {
+  // Get the location
   const location = useLocation();
 
+  // Variable to show the hamburger menu and handlers to show and hide it
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  // Variable to show the user menu and handlers to show and hide it
   const [showAcc, setShowAcc] = useState(false);
   const handleCloseAcc = () => setShowAcc(false);
   const handleShowAcc = () => setShowAcc(true);
 
+  // Variable to show the cart and handlers to show and hide it
   const [showCart, setShowCart] = useState(false);
   const handleCloseCart = () => {
     setShowCart(false);
     setShowPopover(false);
   };
-
   const handleShowCart = () => setShowCart(true);
 
+  // Get the cart items and the function to set them from the context
   const { cartItems, setCartItems } = useGlobalContext();
 
+  // Get the popover state and the function to set it from the context
   const [showPopover, setShowPopover] = useState(false);
 
+  // Function to handle the cleaning of the cart
   const handleCleanCart = () => {
     setCartItems([]);
     setShowPopover(false);
   };
 
+  // Function to navigate to another page
   const navigate = useNavigate();
 
+  // We calculate the total price of the cart
   const totalPrice = cartItems.reduce((acc, item) => {
     const itemPrice = storeItems.find(
       (storeItem) => storeItem.id === item.id
@@ -57,38 +65,12 @@ export default function Navbar() {
     return acc + itemPrice! * item.quantity;
   }, 0);
 
-  const confirmationCleanCart = (
-    <Popover id="popover-basic">
-      <Popover.Header as="h2">Confirmation</Popover.Header>
-      <Popover.Body>
-        <p className="fs-6">
-          <strong>Are you sure you want to clean your cart?</strong>
-        </p>
-        <div className="d-flex justify-content-between">
-          <Button
-            variant="danger"
-            onClick={() => {
-              handleCleanCart();
-              if (location.pathname === "/ProyIU/purchase") {
-                navigate("/ProyIU/store");
-              }
-            }}
-          >
-            Confirm cleaning
-          </Button>
-          <Button variant="primary" onClick={() => setShowPopover(false)}>
-            Cancel
-          </Button>
-        </div>
-      </Popover.Body>
-    </Popover>
-  );
-
   return (
     <>
       <Container className="navbarTop">
         <img src={logo} alt="shopeen logo" className="logo"></img>
         <Row md={4} lg={4} className="text-center">
+          {/* THe hamburger menu for when the screen is small */}
           <Col className="hamburger-menu">
             <button tabIndex={0} className="hamburger-button" onClick={handleShow}>
               <img
@@ -97,15 +79,19 @@ export default function Navbar() {
               />
             </button>
           </Col>
+          {/* Link to the Home page */}
           <Col className={location.pathname === "/ProyIU/" ? "active-page" : ""}>
             <Link to={"/ProyIU/"}>Home</Link>
           </Col>
+          {/* Link to the Store page */}
           <Col className={location.pathname === "/ProyIU/store" ? "active-page" : ""}>
             <Link to={"/ProyIU/store"}>Store</Link>
           </Col>
+          {/* Link to the About page */}
           <Col className={location.pathname === "/ProyIU/about" ? "active-page" : ""}>
             <Link to={"/ProyIU/about"}>About</Link>
           </Col>
+          {/* Link to the Help page */}
           <Col className={location.pathname === "/ProyIU/help" ? "active-page" : ""}>
             <Link to={"/ProyIU/help"}>Help</Link>
           </Col>

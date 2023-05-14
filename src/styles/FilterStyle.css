@@ -129,8 +129,8 @@
     width: 60%;
 }
 
-.no-products h2,
-.purchase-finished h2 {
+.no-products h3,
+.purchase-finished h3 {
     font-size: 2.5rem;
     color: #ff6f69;
     margin: 0;
@@ -138,7 +138,7 @@
     letter-spacing: 2px;
 }
 
-.purchase-finished h2 {
+.purchase-finished h3 {
     padding: 5px;
     line-height: 1.5;
     font-weight: bold;

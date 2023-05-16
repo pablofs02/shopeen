@@ -1,16 +1,36 @@
 import { afterEach, beforeEach, expect, test } from 'vitest';
 import { render, screen, fireEvent, waitFor, cleanup } from "@testing-library/react"
-import Filter from "../components/Filter";
+import StoreItem from "../components/StoreItem";
 import { describe } from "vitest";
-import { FilterProvider } from '../context/FilterContext';
+import { GlobalProvider } from '../context/GlobalContext';
 
-describe("Filter", () => {
+type StoreItemsProps = {
+  id: number;
+  title: string;
+  price: number;
+  description: string;
+  category: string;
+  image: string;
+  stock: number;
+};
+
+const item: StoreItemsProps = {
+    id: 1,
+    title: "Epic title",
+    price: 420,
+    description: "This item is just for a test",
+    category: "",
+    image: "https://imagenes.com/imagen123.png",
+    stock: 4,
+};
+
+describe("StoreItem", () => {
     // We can use the render function from the testing-library to render the component we want to test
     beforeEach(() => {
         render(
-            <FilterProvider>
-                <Filter />
-            </FilterProvider>
+            <GlobalProvider>
+                <StoreItem {...item}></StoreItem>
+            </GlobalProvider>
         );
     });
 

@@ -24,6 +24,16 @@ const item: StoreItemsProps = {
     stock: 2,
 };
 
+const noStock: StoreItemsProps = {
+    id: 2,
+    title: "Epic title",
+    price: 420,
+    description: "This item is just for a test",
+    category: "",
+    image: "https://imagenes.com/imagen123.png",
+    stock: 0,
+};
+
 describe("StoreItem", () => {
     // We can use the render function from the testing-library to render the component we want to test
     beforeEach(() => {
@@ -78,4 +88,41 @@ describe("StoreItem", () => {
         const cart = localStorage.getItem("cart")?.toString();
         expect(cart).toBe(JSON.stringify([]));
     });
+
+    test("Should render the show more button at start", () => {
+        expect(screen.getByText("Show More")).toBeDefined();
+    })
+
+    test("Should not render the show less button at start", () => {
+        expect(screen.queryByText("Show Less")).toBeNull();
+    })
+
+    test("Should render the show more button at start", () => {
+        const button = screen.getByText("Show More");
+        fireEvent.click(button);
+
+        // We check that the button text are rendered correctly
+        expect(screen.queryByText("Show Less")).toBeDefined();
+        expect(screen.queryByText("Show More")).toBeNull();
+    })
+
+    test("Should render the show more button at start", () => {
+        const button1 = screen.getByText("Show More");
+        fireEvent.click(button1);
+        const button = screen.getByText("Show Less");
+        fireEvent.click(button);
+
+        // We check that the button text are rendered correctly
+        expect(screen.queryByText("Show More")).toBeDefined();
+        expect(screen.queryByText("Show Less")).toBeNull();
+    })
+
+    test("Should be a tag of no stock and no add to cart button when quantity equals 0", () => {
+        render(
+            <GlobalProvider>
+                <StoreItem {...noStock}></StoreItem>
+            </GlobalProvider>
+        );
+        expect(screen.queryByText("There is no stock left.")).toBeDefined();
+    })
 });

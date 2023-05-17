@@ -41,6 +41,7 @@ describe("Another set of test", () => {
         expect(0).toBeFalsy();
         expect("").toBeFalsy();
         expect("hello").toBeTruthy();
+        //expect("hello").toBeFalsy();
         expect(null).toBeFalsy();
         expect(undefined).toBeFalsy();
     });

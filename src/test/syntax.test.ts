@@ -25,7 +25,7 @@ describe("Set of tests", () => {
 });
 
 
-describe("Set of tests", () => {
+describe("Another set of test", () => {
     
     test("test number of times a function is called", () => {
         const evenSpy = spyOn(evenFunction, "even");
@@ -40,8 +40,7 @@ describe("Set of tests", () => {
     test("test falsy and truthy values", () => {
         expect(0).toBeFalsy();
         expect("").toBeFalsy();
-        expect("hello").toBeTruthy(); 
-        // expect("hello").toBeFalsy();
+        expect("hello").toBeTruthy();
         expect(null).toBeFalsy();
         expect(undefined).toBeFalsy();
     });

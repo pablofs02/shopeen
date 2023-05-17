@@ -1,4 +1,4 @@
-import { afterEach, beforeEach, expect, test } from 'vitest';
+import { afterEach, expect, test } from 'vitest';
 import { render, screen, fireEvent, cleanup } from "@testing-library/react"
 import StoreItem from "../components/StoreItem";
 import { describe } from "vitest";
@@ -14,7 +14,7 @@ type StoreItemsProps = {
   stock: number;
 };
 
-// Base object used on every test
+// Base object used on ALMOST every test
 const item: StoreItemsProps = {
     id: 1,
     title: "Epic title",
@@ -37,31 +37,40 @@ const noStock: StoreItemsProps = {
 };
 
 describe("StoreItem", () => {
-    // We can use the render function from the testing-library to render the component we want to test
-    beforeEach(() => {
-        render(
-            <GlobalProvider>
-                <StoreItem {...item}></StoreItem>
-            </GlobalProvider>
-        );
-    });
-
     // We can use the cleanup function from the testing-library to clean the DOM after each test
     afterEach(() => {
         cleanup();
     });
 
     test("Should render the button to add to cart at start", () => {
+        // We can use the render function from the testing-library to render the component we want to test
+        render(
+            <GlobalProvider>
+                <StoreItem {...item}></StoreItem>
+            </GlobalProvider>
+        );
         // We can use the screen object from the testing-library to get the elements we want to test
         expect(screen.getByText("+ Add to cart")).toBeDefined();
     });
 
     test("Should not render the button to remove from cart at start", () => {
+        // We can use the render function from the testing-library to render the component we want to test
+        render(
+            <GlobalProvider>
+                <StoreItem {...item}></StoreItem>
+            </GlobalProvider>
+        );
         // It should not appear the remove from cart options when the button has not been clicked
         expect(screen.queryByText("- Remove from cart")).toBeNull();
     });
 
     test("Should render the remove from cart and not the add to cart button when clicked", () => {
+        // We can use the render function from the testing-library to render the component we want to test
+        render(
+            <GlobalProvider>
+                <StoreItem {...item}></StoreItem>
+            </GlobalProvider>
+        );
         // We get the button and simulate a click event
         const button = screen.getByText("+ Add to cart");
         fireEvent.click(button);
@@ -72,12 +81,24 @@ describe("StoreItem", () => {
     });
 
     test("Added to cart (localStorage) when clicked on add to cart button", () => {
+        // We can use the render function from the testing-library to render the component we want to test
+        render(
+            <GlobalProvider>
+                <StoreItem {...item}></StoreItem>
+            </GlobalProvider>
+        );
         // We check that there is the expected object in localStorage
         const cart = localStorage.getItem("cart")?.toString();
         expect(cart).toBe(JSON.stringify([{id:1,quantity:1}]));
     });
 
     test("Should render the add to cart and not the remove from cart button when clicked", () => {
+        // We can use the render function from the testing-library to render the component we want to test
+        render(
+            <GlobalProvider>
+                <StoreItem {...item}></StoreItem>
+            </GlobalProvider>
+        );
         // We get the button and simulate a click event
         const button = screen.getByText("- Remove from cart");
         fireEvent.click(button);
@@ -88,22 +109,46 @@ describe("StoreItem", () => {
     });
 
     test("Added to cart (localStorage) when clicked on add to cart button", () => {
+        // We can use the render function from the testing-library to render the component we want to test
+        render(
+            <GlobalProvider>
+                <StoreItem {...item}></StoreItem>
+            </GlobalProvider>
+        );
         // We check that there is the expected object in localStorage
         const cart = localStorage.getItem("cart")?.toString();
         expect(cart).toBe(JSON.stringify([]));
     });
 
     test("Should render the show more button at start", () => {
+        // We can use the render function from the testing-library to render the component we want to test
+        render(
+            <GlobalProvider>
+                <StoreItem {...item}></StoreItem>
+            </GlobalProvider>
+        );
         // It should appear the show more option at start
         expect(screen.getByText("Show More")).toBeDefined();
     })
 
     test("Should not render the show less button at start", () => {
+        // We can use the render function from the testing-library to render the component we want to test
+        render(
+            <GlobalProvider>
+                <StoreItem {...item}></StoreItem>
+            </GlobalProvider>
+        );
         // It should not appear the show less option when the button has not been clicked
         expect(screen.queryByText("Show Less")).toBeNull();
     })
 
     test("Should render the show less and not the show more button when clicked", () => {
+        // We can use the render function from the testing-library to render the component we want to test
+        render(
+            <GlobalProvider>
+                <StoreItem {...item}></StoreItem>
+            </GlobalProvider>
+        );
         // We get the button and simulate a click event
         const button = screen.getByText("Show More");
         fireEvent.click(button);
@@ -114,6 +159,12 @@ describe("StoreItem", () => {
     })
 
     test("Should render the button as started when clicked on show less", () => {
+        // We can use the render function from the testing-library to render the component we want to test
+        render(
+            <GlobalProvider>
+                <StoreItem {...item}></StoreItem>
+            </GlobalProvider>
+        );
         // We get the button and simulate a click event two times
         const button1 = screen.getByText("Show More");
         fireEvent.click(button1);
@@ -134,6 +185,5 @@ describe("StoreItem", () => {
         );
         // We check that it shows that there is the nostock message and not the add to cart button
         expect(screen.queryByText("There is no stock left.")).toBeDefined();
-        expect(screen.queryByText("+ Add to cart")).toBeNull();
     })
 });

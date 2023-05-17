@@ -11,6 +11,7 @@ describe("Set of tests", () => {
     
     test("test numbers", () => {
         expect(1 + 1).toBe(2);
+        //expect(1 + 1).toBe(3);
     });
 
     test("test string", () => {
@@ -41,7 +42,6 @@ describe("Another set of test", () => {
         expect(0).toBeFalsy();
         expect("").toBeFalsy();
         expect("hello").toBeTruthy();
-        //expect("hello").toBeFalsy();
         expect(null).toBeFalsy();
         expect(undefined).toBeFalsy();
     });

@@ -14,6 +14,7 @@ type StoreItemsProps = {
   stock: number;
 };
 
+// Base object used on every test
 const item: StoreItemsProps = {
     id: 1,
     title: "Epic title",
@@ -24,6 +25,7 @@ const item: StoreItemsProps = {
     stock: 2,
 };
 
+// Used to test the nostock functionality
 const noStock: StoreItemsProps = {
     id: 2,
     title: "Epic title",
@@ -69,7 +71,8 @@ describe("StoreItem", () => {
         expect(screen.queryByText("- Remove from cart")).toBeDefined();
     });
 
-    test("Added to cart when clicked on add to cart button", () => {
+    test("Added to cart (localStorage) when clicked on add to cart button", () => {
+        // We check that there is the expected object in localStorage
         const cart = localStorage.getItem("cart")?.toString();
         expect(cart).toBe(JSON.stringify([{id:1,quantity:1}]));
     });
@@ -84,20 +87,24 @@ describe("StoreItem", () => {
         expect(screen.queryByText("- Remove from cart")).toBeNull();
     });
 
-    test("Added to cart when clicked on add to cart button", () => {
+    test("Added to cart (localStorage) when clicked on add to cart button", () => {
+        // We check that there is the expected object in localStorage
         const cart = localStorage.getItem("cart")?.toString();
         expect(cart).toBe(JSON.stringify([]));
     });
 
     test("Should render the show more button at start", () => {
+        // It should appear the show more option at start
         expect(screen.getByText("Show More")).toBeDefined();
     })
 
     test("Should not render the show less button at start", () => {
+        // It should not appear the show less option when the button has not been clicked
         expect(screen.queryByText("Show Less")).toBeNull();
     })
 
-    test("Should render the show more button at start", () => {
+    test("Should render the show less and not the show more button when clicked", () => {
+        // We get the button and simulate a click event
         const button = screen.getByText("Show More");
         fireEvent.click(button);
 
@@ -106,7 +113,8 @@ describe("StoreItem", () => {
         expect(screen.queryByText("Show More")).toBeNull();
     })
 
-    test("Should render the show more button at start", () => {
+    test("Should render the button as started when clicked on show less", () => {
+        // We get the button and simulate a click event two times
         const button1 = screen.getByText("Show More");
         fireEvent.click(button1);
         const button = screen.getByText("Show Less");
@@ -118,11 +126,14 @@ describe("StoreItem", () => {
     })
 
     test("Should be a tag of no stock and no add to cart button when quantity equals 0", () => {
+        // We can use the render function from the testing-library to render the component we want to test
         render(
             <GlobalProvider>
                 <StoreItem {...noStock}></StoreItem>
             </GlobalProvider>
         );
+        // We check that it shows that there is the nostock message and not the add to cart button
         expect(screen.queryByText("There is no stock left.")).toBeDefined();
+        expect(screen.queryByText("+ Add to cart")).toBeNull();
     })
 });

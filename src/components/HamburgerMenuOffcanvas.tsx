@@ -17,29 +17,29 @@ export default function HamburgerMenuOffcanvas(props: HamburgerMenuOffcanvasProp
             <Offcanvas.Body className="body-oc">
                 {/* Link to the Home page */}
                 <Link
-                    to={"/ProyIU/"}
-                    className={location.pathname === "/ProyIU/" ? "active-page" : ""}
+                    to={"/shopeen/"}
+                    className={location.pathname === "/shopeen/" ? "active-page" : ""}
                     onClick={props.handleClose}>
                     Home
                 </Link>
                 {/* Link to the Store page */}
                 <Link
-                    to={"/ProyIU/store"}
-                    className={location.pathname === "/ProyIU/store" ? "active-page" : ""}
+                    to={"/shopeen/store"}
+                    className={location.pathname === "/shopeen/store" ? "active-page" : ""}
                     onClick={props.handleClose}>
                     Store
                 </Link>
                 {/* Link to the About page */}
                 <Link
-                    to={"/ProyIU/about"}
-                    className={location.pathname === "/ProyIU/about" ? "active-page" : ""}
+                    to={"/shopeen/about"}
+                    className={location.pathname === "/shopeen/about" ? "active-page" : ""}
                     onClick={props.handleClose}>
                     About
                 </Link>
                 {/* Link to the Help page */}
                 <Link
-                    to={"/ProyIU/help"}
-                    className={location.pathname === "/ProyIU/help" ? "active-page" : ""}
+                    to={"/shopeen/help"}
+                    className={location.pathname === "/shopeen/help" ? "active-page" : ""}
                     onClick={props.handleClose}>
                     Help
                 </Link>

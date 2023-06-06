@@ -17,7 +17,7 @@ export function HomeItem(props: HomeItemsProps) {
   return (
     <Card className="h-100 p-3 pt-4 pb-4 home-item store-item">
         {/* Link to the page of the product */}
-        <Link to={"/ProyIU/product/" + props.id} className={location.pathname === "/ProyIU/help" ? "active-page" : ""}>
+        <Link to={"/shopeen/product/" + props.id} className={location.pathname === "/ProyIU/help" ? "active-page" : ""}>
             {/* The image of the item */}
             <Card.Img
               alt={props.title}

@@ -20,7 +20,7 @@ export default function SearchBar() {
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearchBarInput(e.target);
         setSearch(e.target.value);
-        navigate("/ProyIU/store");
+        navigate("/shopeen/store");
     };
 
     return (
@@ -40,7 +40,7 @@ export default function SearchBar() {
                 <img
                     src={search}
                     alt="search icon"
-                    onClick={() => {navigate("/ProyIU/store");}}
+                    onClick={() => {navigate("/shopeen/store");}}
                 />
             </div>
         </>

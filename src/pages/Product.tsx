@@ -74,7 +74,7 @@ export default function Product() {
               tabIndex={7}
               variant="secondary"
               onClick={() => {
-                navigate("/ProyIU/");
+                navigate("/shopeen/");
               }}
             >
               Go back

@@ -20,13 +20,13 @@ Las dos versiones tienen las mismas funcionalidades, por lo que recomendamos el 
 
 ### Versión sin backend
 
-- Utilizando GitHub Pages [Shopeen](https://pablofs02.github.io/ProyIU/)
+- Utilizando GitHub Pages [Shopeen](https://pablofs02.github.io/shopeen/)
 
 ### Versión con backend
 
 - Clonar el repositorio. 
 
-`git clone https://github.com/pablofs02/ProyIU.git .`
+`git clone https://github.com/pablofs02/shopeen.git .`
 
 - Cambiar a rama **backend**
 

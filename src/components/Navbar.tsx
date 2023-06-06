@@ -80,20 +80,20 @@ export default function Navbar() {
             </button>
           </Col>
           {/* Link to the Home page */}
-          <Col className={location.pathname === "/ProyIU/" ? "active-page" : ""}>
-            <Link to={"/ProyIU/"}>Home</Link>
+          <Col className={location.pathname === "/shopeen/" ? "active-page" : ""}>
+            <Link to={"/shopeen/"}>Home</Link>
           </Col>
           {/* Link to the Store page */}
-          <Col className={location.pathname === "/ProyIU/store" ? "active-page" : ""}>
-            <Link to={"/ProyIU/store"}>Store</Link>
+          <Col className={location.pathname === "/shopeen/store" ? "active-page" : ""}>
+            <Link to={"/shopeen/store"}>Store</Link>
           </Col>
           {/* Link to the About page */}
-          <Col className={location.pathname === "/ProyIU/about" ? "active-page" : ""}>
-            <Link to={"/ProyIU/about"}>About</Link>
+          <Col className={location.pathname === "/shopeen/about" ? "active-page" : ""}>
+            <Link to={"/shopeen/about"}>About</Link>
           </Col>
           {/* Link to the Help page */}
-          <Col className={location.pathname === "/ProyIU/help" ? "active-page" : ""}>
-            <Link to={"/ProyIU/help"}>Help</Link>
+          <Col className={location.pathname === "/shopeen/help" ? "active-page" : ""}>
+            <Link to={"/shopeen/help"}>Help</Link>
           </Col>
         </Row>
 

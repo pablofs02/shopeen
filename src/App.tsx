@@ -22,12 +22,12 @@ function App() {
         <FilterProvider>
           <Navbar />
           <Routes>
-            <Route path="/ProyIU/" element={<Container><Home /></Container>} />
-            <Route path="/ProyIU/about" element={<About />}></Route>
-            <Route path="/ProyIU/store" element={<Container><Store /></Container>}></Route>
-            <Route path="/ProyIU/help" element={<Help />}></Route>
-            <Route path="/ProyIU/purchase" element={<Container><Purchase/></Container>}></Route>
-            <Route path="/ProyIU/product/:id" element={<Product></Product>}></Route>
+            <Route path="/shopeen/" element={<Container><Home /></Container>} />
+            <Route path="/shopeen/about" element={<About />}></Route>
+            <Route path="/shopeen/store" element={<Container><Store /></Container>}></Route>
+            <Route path="/shopeen/help" element={<Help />}></Route>
+            <Route path="/shopeen/purchase" element={<Container><Purchase/></Container>}></Route>
+            <Route path="/shopeen/product/:id" element={<Product></Product>}></Route>
           </Routes>
         </FilterProvider>
       </GlobalProvider>

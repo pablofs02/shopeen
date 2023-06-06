@@ -42,8 +42,8 @@ export default function CartOffcanvas(props: CartOffcanvasProps) {
                                         variant="danger"
                                         onClick={() => {
                                             props.handleCleanCart();
-                                            if (location.pathname === "/ProyIU/purchase") {
-                                                props.navigate("/ProyIU/store");
+                                            if (location.pathname === "/shopeen/purchase") {
+                                                props.navigate("/shopeen/store");
                                             }
                                         }}>
                                         Confirm cleaning
@@ -84,7 +84,7 @@ export default function CartOffcanvas(props: CartOffcanvasProps) {
                         className="p-1 d-flex justify-content-center align-items-center"
                         onClick={() => {
                             props.handleCloseCart();
-                            props.navigate("/ProyIU/purchase");
+                            props.navigate("/shopeen/purchase");
                         }}>
                         Proceed to checkout
                         <BsFillCartCheckFill className="ms-2" />

@@ -42,8 +42,8 @@ export default function CartButtons(props: CartButtonsProps) {
           <Button
             onClick={() => {
               removeItem(id);
-              if (cartItems.length == 1 && location.pathname === "/ProyIU/purchase") {
-                navigate("/ProyIU/store");
+              if (cartItems.length == 1 && location.pathname === "/shopeen/purchase") {
+                navigate("/shopeen/store");
               }
             }}
             variant="danger">
